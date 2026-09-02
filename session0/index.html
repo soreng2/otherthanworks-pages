@@ -1,0 +1,581 @@
+<meta charset="utf-8">
+<title>캐릭터 시트 만들기</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
+  :root {
+    --surface: #fcf9f8;
+    --surface-container: #f0eded;
+    --surface-container-high: #eae7e7;
+    --surface-variant: #e5e2e1;
+    --on-surface: #1c1b1b;
+    --on-surface-variant: #474835;
+    --outline: #777963;
+    --outline-variant: #c8c8af;
+
+    --primary: #5b6400;
+    --on-primary: #ffffff;
+    --primary-container: #efff5e;
+    --primary-container-dim: #dded4d;
+    --on-primary-container: #1a1d00;
+
+    --secondary: #4d6263;
+    --secondary-container: #cde4e4;
+    --on-secondary-container: #223738;
+
+    --tertiary-container: #f5f3ff;
+    --on-tertiary-container: #46435f;
+
+    --glass-bg: rgba(255, 255, 255, 0.45);
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+
+    --radius-lg: 24px;
+    --radius-md: 18px;
+    --radius-sm: 10px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --surface: #141310;
+      --surface-container: #201f1b;
+      --surface-container-high: #2a2822;
+      --surface-variant: #47483a;
+      --on-surface: #e5e2e1;
+      --on-surface-variant: #c8c8af;
+      --outline: #919181;
+      --outline-variant: #47483a;
+
+      --primary: #c1d032;
+      --on-primary: #303400;
+      --primary-container: #444b00;
+      --primary-container-dim: #363c00;
+      --on-primary-container: #dded4d;
+
+      --secondary: #b4cbcb;
+      --secondary-container: #364a4b;
+      --on-secondary-container: #d0e7e7;
+
+      --tertiary-container: #302f48;
+      --on-tertiary-container: #e0e0fa;
+
+      --glass-bg: rgba(32, 31, 27, 0.55);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --surface: #141310;
+    --surface-container: #201f1b;
+    --surface-container-high: #2a2822;
+    --surface-variant: #47483a;
+    --on-surface: #e5e2e1;
+    --on-surface-variant: #c8c8af;
+    --outline: #919181;
+    --outline-variant: #47483a;
+
+    --primary: #c1d032;
+    --on-primary: #303400;
+    --primary-container: #444b00;
+    --primary-container-dim: #363c00;
+    --on-primary-container: #dded4d;
+
+    --secondary: #b4cbcb;
+    --secondary-container: #364a4b;
+    --on-secondary-container: #d0e7e7;
+
+    --tertiary-container: #302f48;
+    --on-tertiary-container: #e0e0fa;
+
+    --glass-bg: rgba(32, 31, 27, 0.55);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+
+  * { box-sizing: border-box; }
+  html { color-scheme: light dark; }
+
+  body {
+    margin: 0;
+    background: var(--surface);
+    color: var(--on-surface);
+    font-family: "Manrope", "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .material-symbols-outlined {
+    font-family: "Material Symbols Outlined";
+    font-weight: normal;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 48px 20px 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  /* ---------- 마스트헤드 ---------- */
+
+  .masthead { display: flex; flex-direction: column; gap: 18px; }
+
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--secondary);
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .masthead h1 {
+    font-weight: 700;
+    font-size: clamp(24px, 5.5vw, 32px);
+    line-height: 1.35;
+    margin: 0;
+    text-wrap: balance;
+    letter-spacing: -0.01em;
+  }
+
+  .promise {
+    position: relative;
+    overflow: hidden;
+    padding: 22px 24px;
+    border-radius: var(--radius-lg);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .promise::before {
+    content: "";
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 130px; height: 130px;
+    border-radius: 50%;
+    background: var(--primary-container);
+    opacity: 0.3;
+    filter: blur(30px);
+  }
+
+  .promise p {
+    position: relative;
+    margin: 0;
+    font-size: 15.5px;
+    font-weight: 500;
+    line-height: 1.75;
+    color: var(--on-surface-variant);
+  }
+
+  .promise strong { color: var(--primary); }
+
+  /* ---------- 목차 칩 ---------- */
+
+  .toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .toc a {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px;
+    border-radius: 9999px;
+    background: var(--surface-container);
+    color: var(--on-surface-variant);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid var(--outline-variant);
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .toc a:hover { border-color: var(--secondary); background: var(--secondary-container); color: var(--on-secondary-container); }
+  .toc a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+  /* ---------- 섹션 ---------- */
+
+  section { display: flex; flex-direction: column; gap: 14px; scroll-margin-top: 24px; }
+
+  .section-head { display: flex; align-items: baseline; gap: 10px; }
+
+  .section-num {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--secondary);
+    letter-spacing: 0.04em;
+  }
+
+  .section-head h2 {
+    font-size: 19px;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 22px;
+    border-radius: var(--radius-lg);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .card > p { margin: 0; font-size: 14.5px; color: var(--on-surface-variant); line-height: 1.7; }
+  .card > p strong { color: var(--on-surface); }
+
+  /* ---------- 도구 비교 카드 ---------- */
+
+  .tool-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .tool-card {
+    padding: 14px 16px;
+    border-radius: var(--radius-md);
+    background: var(--surface-container);
+    border: 1px solid var(--outline-variant);
+  }
+
+  .tool-card .tool-name { font-weight: 700; font-size: 14.5px; margin-bottom: 4px; }
+  .tool-card .tool-meta { font-size: 12.5px; color: var(--outline); line-height: 1.6; }
+
+  /* ---------- 대화 비교 ---------- */
+
+  .chat-pair {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .bubble {
+    padding: 12px 14px;
+    border-radius: var(--radius-md);
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+
+  .bubble.before { background: var(--surface-container); color: var(--on-surface-variant); }
+  .bubble.after { background: var(--secondary-container); color: var(--on-secondary-container); }
+
+  .bubble .tag {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    opacity: 0.75;
+  }
+
+  /* ---------- 복사 템플릿 ---------- */
+
+  .template {
+    position: relative;
+    border-radius: var(--radius-md);
+    background: var(--surface-container-high);
+    border: 1px solid var(--outline-variant);
+    padding: 16px 18px;
+  }
+
+  .template pre {
+    margin: 0;
+    padding-right: 74px;
+    white-space: pre-wrap;
+    font-family: "Manrope", sans-serif;
+    font-size: 13.5px;
+    line-height: 1.85;
+    color: var(--on-surface);
+  }
+
+  .copy-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    border-radius: 9999px;
+    border: 1px solid var(--outline-variant);
+    background: var(--surface);
+    color: var(--on-surface-variant);
+    font: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .copy-btn .material-symbols-outlined { font-size: 15px; }
+  .copy-btn:hover { border-color: var(--primary); color: var(--primary); }
+  .copy-btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+  .copy-btn.copied { background: var(--primary-container); color: var(--on-primary-container); border-color: transparent; }
+
+  /* ---------- 스텝 리스트 ---------- */
+
+  .steps { display: flex; flex-direction: column; gap: 14px; }
+
+  .step { display: flex; gap: 14px; }
+
+  .step-num {
+    flex-shrink: 0;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--primary-container);
+    color: var(--on-primary-container);
+    font-size: 13px;
+    font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .step-body h3 { margin: 0 0 3px; font-size: 14.5px; font-weight: 700; }
+  .step-body p { margin: 0; font-size: 13.5px; color: var(--on-surface-variant); line-height: 1.65; }
+
+  .callout {
+    display: flex;
+    gap: 10px;
+    padding: 14px 16px;
+    border-radius: var(--radius-md);
+    background: var(--tertiary-container);
+    color: var(--on-tertiary-container);
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .callout .material-symbols-outlined { flex-shrink: 0; font-size: 18px; margin-top: 1px; }
+
+  /* ---------- 체크리스트 ---------- */
+
+  .checklist { display: flex; flex-direction: column; gap: 10px; }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 13px 16px;
+    border-radius: var(--radius-md);
+    background: var(--surface-container);
+    border: 1px solid var(--outline-variant);
+    cursor: pointer;
+  }
+
+  .check-item input {
+    margin-top: 2px;
+    width: 17px; height: 17px;
+    accent-color: var(--primary);
+    flex-shrink: 0;
+  }
+
+  .check-item span { font-size: 14px; color: var(--on-surface); line-height: 1.55; }
+  .check-item .sub { display: block; font-size: 12px; color: var(--outline); margin-top: 2px; }
+
+  .check-item:has(input:checked) { background: var(--secondary-container); border-color: transparent; }
+  .check-item:has(input:checked) span { color: var(--on-secondary-container); }
+
+  /* ---------- 푸터 ---------- */
+
+  .foot-note {
+    font-size: 12.5px;
+    color: var(--outline);
+    text-align: center;
+    padding-top: 8px;
+  }
+
+  @media (max-width: 420px) {
+    .tool-pair { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+
+<div class="page">
+
+  <div class="masthead">
+    <div class="eyebrow">아더댄웍스 AI 캐릭터·영상 파일럿 · 0회차</div>
+    <h1>AI가 매번 처음 보는 척<br>안 하게 만드는 <strong>시스템</strong></h1>
+    <div class="promise">
+      <p>이 수업은 AI로 돈 버는 법을 알려주진 않아요. 대신 여러분 캐릭터를 AI한테 매번 새로 설명 안 해도 되는, <strong>계속 쓸 수 있는 시스템</strong>을 0회차에서 먼저 만들어봐요. 딱 한 번만 해두면 끝이에요.</p>
+    </div>
+  </div>
+
+  <nav class="toc">
+    <a href="#s1">01 · ChatGPT vs 클로드</a>
+    <a href="#s2">02 · 캐릭터 시트 만들기</a>
+    <a href="#s3">03 · 프로젝트에 저장하기</a>
+    <a href="#s4">04 · 깜빡했을 때</a>
+    <a href="#s5">05 · 준비물 체크</a>
+    <a href="#s6">06 · 시간 되면(선택)</a>
+  </nav>
+
+  <section id="s1">
+    <div class="section-head"><span class="section-num">01</span><h2>ChatGPT랑 클로드, 뭐가 다른가</h2></div>
+    <div class="card">
+      <p>둘 다 대화로 쓰는 AI예요.<br>웹이나 앱에서 로그인만 하면 바로 쓸 수 있고, 무료로 시작할 수 있어요.<br>오늘 중요한 차이는 딱 하나 — 둘 다 <strong>“프로젝트”</strong>라는 공간을 만들 수 있고, 그 안에 넣어둔 자료를 새 대화를 열 때마다 자동으로 기억한다는 것.<br>이 페이지는 그 공간을 만드는 법을 알려줘요.</p>
+      <div class="tool-pair">
+        <div class="tool-card">
+          <div class="tool-name">ChatGPT</div>
+          <div class="tool-meta">만든 곳: OpenAI<br>접속: chatgpt.com · 앱</div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-name">클로드 (Claude)</div>
+          <div class="tool-meta">만든 곳: Anthropic<br>접속: claude.ai · 앱</div>
+        </div>
+      </div>
+      <div class="chat-pair">
+        <div class="bubble before"><span class="tag">프로젝트 없이 새 대화</span>“어떤 캐릭터인지 다시 설명해줄래?”</div>
+        <div class="bubble after"><span class="tag">프로젝트 안에서 새 대화</span>“그 파란 눈에 갈색 단발머리 캐릭터 말이지? 이번엔 어떤 포즈로 그려볼까?”</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="s2">
+    <div class="section-head"><span class="section-num">02</span><h2>캐릭터 시트 만들기</h2></div>
+    <div class="card">
+      <p>AI에게 캐릭터를 매번 처음부터 설명하는 대신, 한 번 정리해서 계속 재사용하는 <strong>문서</strong>를 만들어요.<br>완벽하지 않아도 돼요 — 아는 만큼만 채우고, 수업 진행하면서 계속 고쳐나가면 됩니다.</p>
+      <div class="template">
+        <button class="copy-btn" data-copy-target="tpl-sheet"><span class="material-symbols-outlined">content_copy</span>복사</button>
+        <pre id="tpl-sheet">이름:
+한 줄 소개:
+외형 (헤어 · 눈 · 의상 · 자주 쓰는 색):
+성격 · 말투:
+자주 나오는 포즈 · 소품:
+이건 절대 안 돼요 (예: 다른 색으로 바뀌기, 성별 바뀌기):
+참고 이미지: (있다면 어떤 그림인지 간단히)</pre>
+      </div>
+      <div class="callout"><span class="material-symbols-outlined">lightbulb</span>빈칸이 많아도 괜찮아요.<br>이건 완성 서류가 아니라, 앞으로 계속 채워나갈 “내 캐릭터 설명서”예요.</div>
+    </div>
+  </section>
+
+  <section id="s3">
+    <div class="section-head"><span class="section-num">03</span><h2>프로젝트에 저장하기</h2></div>
+    <div class="card">
+      <p>방금 만든 캐릭터 시트를 프로젝트 안에 넣어두면, 그 다음부턴 이 프로젝트에서 새 대화를 열 때마다 AI가 알아서 기억해요.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body"><h3>프로젝트 새로 만들기</h3><p>로그인 후 왼쪽 메뉴에서 “프로젝트”(Projects)를 찾아 새로 만들어요.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body"><h3>이름은 캐릭터 이름으로</h3><p>예: “루디 프로젝트”처럼, 나중에 봐도 바로 알아볼 이름이면 됩니다.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body"><h3>캐릭터 시트 넣기</h3><p>02번에서 쓴 내용을 복사해서 프로젝트 지식(또는 파일 업로드)에 붙여넣어요.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body"><h3>끝!</h3><p>이제부터 이 프로젝트 안에서 새 대화를 열면 캐릭터 설명은 안 해도 돼요.</p></div>
+        </div>
+      </div>
+      <div class="callout"><span class="material-symbols-outlined">chat_bubble</span>메뉴 위치는 화면 업데이트로 가끔 바뀌어요.<br>안 보이면 화면 캡처해서 카톡으로 보내주세요.<br>같이 찾아드릴게요.</div>
+    </div>
+  </section>
+
+  <section id="s4">
+    <div class="section-head"><span class="section-num">04</span><h2>프로젝트를 깜빡했을 때</h2></div>
+    <div class="card">
+      <p>프로젝트 안 쓰고 그냥 새 대화창을 열었다면?<br>맨 위에 이 한 줄만 붙이면 캐릭터를 다시 알려줄 수 있어요.</p>
+      <div class="template">
+        <button class="copy-btn" data-copy-target="tpl-opener"><span class="material-symbols-outlined">content_copy</span>복사</button>
+        <pre id="tpl-opener">아래는 제 캐릭터 설명이에요. 이 설정을 기억하고 답변해주세요.
+
+(여기에 02번 캐릭터 시트를 붙여넣으세요)</pre>
+      </div>
+    </div>
+  </section>
+
+  <section id="s5">
+    <div class="section-head"><span class="section-num">05</span><h2>0회차 전에 준비할 것</h2></div>
+    <div class="card">
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"><span>ChatGPT 계정<span class="sub">가입만 해둬도 충분해요</span></span></label>
+        <label class="check-item"><input type="checkbox"><span>클로드(Claude) 계정<span class="sub">가입만 해둬도 충분해요</span></span></label>
+        <label class="check-item"><input type="checkbox"><span>캐릭터 아이디어<span class="sub">그림이든 말로 된 설명이든, 있는 만큼</span></span></label>
+        <label class="check-item"><input type="checkbox"><span>캐릭터 시트 초안<span class="sub">02번 템플릿, 대충 채운 것도 OK</span></span></label>
+        <label class="check-item"><input type="checkbox"><span>레퍼런스 이미지<span class="sub">있다면 몇 장 (없어도 괜찮아요)</span></span></label>
+      </div>
+    </div>
+  </section>
+
+  <section id="s6">
+    <div class="section-head"><span class="section-num">06</span><h2>시간 되면: 캐릭터 말고 다른 것도</h2></div>
+    <div class="card">
+      <p>지금까지 한 건 사실 캐릭터에만 해당하는 게 아니에요.<br>반복해서 하는 일이라면 뭐든, 한 번 정리해서 프로젝트에 넣어두면 계속 재사용할 수 있어요.<br>이런 걸 <strong>워크플로우</strong>라고 불러요 — 뜻은 간단해요, "매번 다시 안 해도 되게 만들어둔 순서."</p>
+      <div class="callout"><span class="material-symbols-outlined">timer</span>시간이 부족하면 여기는 건너뛰어도 괜찮아요.<br>다음에 시간 제대로 잡고 같이 해볼게요.</div>
+    </div>
+    <div class="card">
+      <p>연습 삼아 프로젝트 하나만 더 만들어볼까요?<br>이번엔 캐릭터 말고, 평소에 반복하던 다른 일을 하나 골라보세요.</p>
+      <div class="template">
+        <button class="copy-btn" data-copy-target="tpl-workflow"><span class="material-symbols-outlined">content_copy</span>복사</button>
+        <pre id="tpl-workflow">이 프로젝트에서는 [반복하는 일]을 도와주세요.
+매번 알아야 할 것:
+-
+-
+톤 · 스타일:
+</pre>
+      </div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"><span>반복하는 일 하나 정하기<span class="sub">예: 수업 공지 문구, 인스타 캡션, 학부모 안내 메시지 등</span></span></label>
+        <label class="check-item"><input type="checkbox"><span>새 프로젝트 만들고 위 템플릿 채워서 넣기</span></label>
+        <label class="check-item"><input type="checkbox"><span>실제로 새 대화 열어서 한번 시켜보기</span></label>
+      </div>
+      <div class="callout"><span class="material-symbols-outlined">lightbulb</span>프로젝트가 늘어나면 이름 앞에 번호를 붙여보세요(01-캐릭터, 02-공지문구...).<br>나중에 찾을 때 안 헷갈려요.</div>
+    </div>
+  </section>
+
+  <div class="foot-note">여기까지 하면 0회차 준비 끝이에요. 막히는 거 있으면 편하게 카톡 주세요.</div>
+
+</div>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var target = document.getElementById(btn.getAttribute('data-copy-target'));
+      var text = target.textContent;
+      navigator.clipboard.writeText(text).then(function () {
+        var original = btn.innerHTML;
+        btn.classList.add('copied');
+        btn.innerHTML = '<span class="material-symbols-outlined">check</span>복사됨';
+        setTimeout(function () {
+          btn.classList.remove('copied');
+          btn.innerHTML = original;
+        }, 1600);
+      });
+    });
+  });
+
+  document.querySelectorAll('.check-item input').forEach(function (box) {
+    var key = 'ck-0회차-' + Array.prototype.indexOf.call(document.querySelectorAll('.check-item input'), box);
+    try {
+      if (localStorage.getItem(key) === '1') box.checked = true;
+      box.addEventListener('change', function () {
+        localStorage.setItem(key, box.checked ? '1' : '0');
+      });
+    } catch (e) {}
+  });
+</script>
