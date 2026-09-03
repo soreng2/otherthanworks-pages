@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI 모각일(번개) 사전 파악</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <span class="topbar-title">OTHER THAN WORKS</span>
+  </div>
+</header>
+
+<div class="page">
+
+  <header class="masthead">
+    <span class="eyebrow">아더댄웍스 · AI 모각일(번개)</span>
+    <h1>오시기 전에, 몇 가지만 알려주세요</h1>
+    <div class="promise">
+      <p>당근으로 벌써 몇 번째 모임인지 모르겠어요. 그때마다 다들 새로운 인사이트와 활용법을 나눠주셔서, 이번엔 급하게 번개를 만들었어요.<br><br><strong>9월 4일 금요일 오후 2시, 아더댄웍스</strong>에서 커피 한 잔 + 노트북 들고 가볍게 모여요. 참가 신청은 이미 끝났고, 이건 그냥 <strong>각자 AI를 어디까지 써보셨는지</strong> 미리 알아두려는 설문이에요 — 그래야 그날 이야기 흐름을 알차게 잡을 수 있을 것 같아서요.</p>
+    </div>
+  </header>
+
+  <form id="surveyForm">
+
+    <div class="card">
+      <span class="q-eyebrow">문항 00</span>
+      <label class="q-title" for="당근닉네임">당근 닉네임을 알려주세요.</label>
+      <input type="text" id="당근닉네임" name="당근닉네임" placeholder="당근에서 쓰시는 닉네임 그대로" required autocomplete="off" />
+    </div>
+
+    <div class="card">
+      <span class="q-eyebrow">문항 01</span>
+      <h3 class="q-title">현재 AI 도구 사용 레벨은 어느 정도이신가요?</h3>
+      <div class="choices" role="radiogroup" aria-label="AI 사용 레벨">
+        <div>
+          <input class="choice-input" type="radio" id="level_beginner" name="레벨" value="초보" required />
+          <label class="choice-label" for="level_beginner">
+            <span class="material-symbols-outlined choice-icon">sentiment_satisfied</span>
+            <span class="choice-text">초보 <br>(가입만 해봤거나 거의 안 써봄)</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="radio" id="level_intermediate" name="레벨" value="중급" />
+          <label class="choice-label" for="level_intermediate">
+            <span class="material-symbols-outlined choice-icon">school</span>
+            <span class="choice-text">중급 <br>(ChatGPT, Midjourney 등 몇 번 써봄)</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="radio" id="level_advanced" name="레벨" value="고급" />
+          <label class="choice-label" for="level_advanced">
+            <span class="material-symbols-outlined choice-icon">psychiatry</span>
+            <span class="choice-text">고급 <br>(업무에 적극 활용 중)</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="q-eyebrow">문항 02</span>
+      <h3 class="q-title">AI를 어디까지 활용해보셨나요?</h3>
+      <p class="q-hint">지금 제일 가까운 단계로 하나만 골라주세요</p>
+      <div class="choices" role="radiogroup" aria-label="AI 활용 단계">
+        <div>
+          <input class="choice-input" type="radio" id="depth_1" name="활용단계" value="① 질문하고 답 받는 정도 (검색 대체)" required />
+          <label class="choice-label" for="depth_1">
+            <span class="material-symbols-outlined choice-icon">chat_bubble</span>
+            <span class="choice-text">질문하고 답 받는 정도예요 <br>(검색 대체)</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="radio" id="depth_2" name="활용단계" value="② 초안·아이디어 등 결과물을 직접 만들어봄" />
+          <label class="choice-label" for="depth_2">
+            <span class="material-symbols-outlined choice-icon">edit_note</span>
+            <span class="choice-text">초안·아이디어 등 결과물을 <br>직접 만들어봤어요</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="radio" id="depth_3" name="활용단계" value="③ 반복 작업을 템플릿·프롬프트로 저장해서 재사용" />
+          <label class="choice-label" for="depth_3">
+            <span class="material-symbols-outlined choice-icon">repeat</span>
+            <span class="choice-text">반복 작업을 템플릿·프롬프트로 <br>저장해서 재사용해요</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="radio" id="depth_4" name="활용단계" value="④ 여러 AI·도구를 연결해서 자동화까지 구축" />
+          <label class="choice-label" for="depth_4">
+            <span class="material-symbols-outlined choice-icon">hub</span>
+            <span class="choice-text">여러 AI·도구를 연결해서 <br>자동화까지 구축해봤어요</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="q-eyebrow">문항 03</span>
+      <h3 class="q-title">얼마나 자주 쓰시나요?</h3>
+      <div class="choices" role="radiogroup" aria-label="사용 빈도">
+        <div>
+          <input class="choice-input" type="radio" id="freq_1" name="사용빈도" value="궁금할 때 가끔" required />
+          <label class="choice-label" for="freq_1">
+            <span class="material-symbols-outlined choice-icon">search</span>
+            <span class="choice-text">궁금할 때 가끔</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="radio" id="freq_2" name="사용빈도" value="주 1~2회" />
+          <label class="choice-label" for="freq_2">
+            <span class="material-symbols-outlined choice-icon">calendar_month</span>
+            <span class="choice-text">주 1~2회</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="radio" id="freq_3" name="사용빈도" value="거의 매일" />
+          <label class="choice-label" for="freq_3">
+            <span class="material-symbols-outlined choice-icon">event_repeat</span>
+            <span class="choice-text">거의 매일</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="radio" id="freq_4" name="사용빈도" value="하루에도 여러 번" />
+          <label class="choice-label" for="freq_4">
+            <span class="material-symbols-outlined choice-icon">bolt</span>
+            <span class="choice-text">하루에도 여러 번</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="q-eyebrow">문항 04</span>
+      <label class="q-title" for="써본도구">사용해보신 AI 도구들을 적어주세요. <span class="q-optional">(선택)</span></label>
+      <p class="q-hint">예: ChatGPT, Claude, Gemini, 미드저니...</p>
+      <input type="text" id="써본도구" name="써본도구" placeholder="생각나는 대로 편하게 적어주시면 됩니다" />
+    </div>
+
+    <div class="card">
+      <label class="q-title" for="나누고싶은이야기"><span class="q-eyebrow" style="display:block; margin-bottom:8px;">문항 05</span>이번 모각일에서 나누고 싶은 이야기나 궁금한 거 있으세요? <span class="q-optional">(선택)</span></label>
+      <p class="q-hint">한 줄로 편하게 적어주셔도 돼요</p>
+      <textarea id="나누고싶은이야기" name="나누고싶은이야기" placeholder="자유롭게 적어주세요..."></textarea>
+    </div>
+
+    <div class="card">
+      <span class="q-eyebrow">문항 06</span>
+      <h3 class="q-title">평소 작업하는 기기 <span class="q-optional">(선택)</span></h3>
+      <p class="q-hint">해당하는 거 다 골라도 됩니다</p>
+      <div class="choices">
+        <div>
+          <input class="choice-input" type="checkbox" id="device_pc" name="기기" value="컴퓨터" />
+          <label class="choice-label" for="device_pc">
+            <span class="material-symbols-outlined choice-icon">computer</span>
+            <span class="choice-text">컴퓨터</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="checkbox" id="device_ipad" name="기기" value="아이패드" />
+          <label class="choice-label" for="device_ipad">
+            <span class="material-symbols-outlined choice-icon">tablet_mac</span>
+            <span class="choice-text">아이패드</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="checkbox" id="device_phone" name="기기" value="폰" />
+          <label class="choice-label" for="device_phone">
+            <span class="material-symbols-outlined choice-icon">smartphone</span>
+            <span class="choice-text">폰</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="checkbox" id="device_etc" name="기기" value="기타" />
+          <label class="choice-label" for="device_etc">
+            <span class="material-symbols-outlined choice-icon">devices</span>
+            <span class="choice-text">기타</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="status error" id="errorBox">전송하다 문제가 생겼어요. 인터넷 연결을 확인하고 다시 눌러주세요.</div>
+
+  </form>
+
+  <div class="done" id="doneBox">
+    <h2>제출됐어요, 고마워요 🥕</h2>
+    <p>오늘 이야기 흐름 잡는 데 참고할게요. 이따가 아더댄웍스에서 뵈어요!</p>
+  </div>
+
+  <p class="foot-note">이 응답은 오늘 모각일을 준비하는 데만 사용됩니다.</p>
+
+</div>
+
+<div class="submit-bar" id="submitBar">
+  <div class="submit-bar-inner">
+    <button type="submit" form="surveyForm" class="btn-primary" id="submitBtn">제출하기</button>
+  </div>
+</div>
+
+<script src="submit.js"></script>
+<script>
+  // 다음 모각일에 이 폼을 다시 쓸 때는 이 줄만 바꾸면 시트에서 회차별로 구분됩니다.
+  const 기수 = "2026-09-04 AI모각일(번개) 1회";
+
+  const form = document.getElementById("surveyForm");
+  const submitBtn = document.getElementById("submitBtn");
+  const errorBox = document.getElementById("errorBox");
+  const doneBox = document.getElementById("doneBox");
+  const submitBar = document.getElementById("submitBar");
+  const progressFill = document.getElementById("progressFill");
+
+  // 진행률 바: 폼에 있는 모든 문항(name 기준) 중 하나라도 채워진 비율
+  const fieldNames = [...new Set([...form.elements].map((el) => el.name).filter(Boolean))];
+  function updateProgress() {
+    let filled = 0;
+    fieldNames.forEach((name) => {
+      const field = form.elements[name];
+      const list = field instanceof RadioNodeList ? [...field] : [field];
+      const hasValue = list.some((el) => {
+        if (el.type === "radio" || el.type === "checkbox") return el.checked;
+        return el.value.trim().length > 0;
+      });
+      if (hasValue) filled++;
+    });
+    const pct = Math.max(8, Math.round((filled / fieldNames.length) * 100));
+    progressFill.style.width = pct + "%";
+  }
+  form.addEventListener("input", updateProgress);
+  form.addEventListener("change", updateProgress);
+  updateProgress();
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    errorBox.classList.remove("show");
+    submitBtn.disabled = true;
+    submitBtn.textContent = "보내는 중…";
+
+    const data = new FormData(form);
+    const payload = { 기수 };
+    for (const [key, value] of data.entries()) {
+      if (payload[key] === undefined) {
+        payload[key] = value;
+      } else if (Array.isArray(payload[key])) {
+        payload[key].push(value);
+      } else {
+        payload[key] = [payload[key], value];
+      }
+    }
+
+    try {
+      await submitToSheet("AI모각일_사전설문", payload);
+      form.style.display = "none";
+      submitBar.style.display = "none";
+      doneBox.classList.add("show");
+    } catch (err) {
+      errorBox.classList.add("show");
+      submitBtn.disabled = false;
+      submitBtn.textContent = "제출하기";
+    }
+  });
+</script>
+</body>
+</html>
