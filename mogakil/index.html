@@ -136,10 +136,10 @@
           </label>
         </div>
         <div>
-          <input class="choice-input" type="checkbox" id="learn_work" name="학습방법" value="회사·업무 중 필요해서" />
+          <input class="choice-input" type="checkbox" id="learn_work" name="학습방법" value="회사·업무 중에" />
           <label class="choice-label" for="learn_work">
             <span class="material-symbols-outlined choice-icon">work</span>
-            <span class="choice-text">회사·업무 중에 필요해서</span>
+            <span class="choice-text">회사·업무 중에</span>
           </label>
         </div>
       </div>
@@ -182,9 +182,112 @@
 
     <div class="card">
       <span class="q-eyebrow">문항 07</span>
-      <label class="q-title" for="구독모델">구독해서 쓰고 있는 AI가 있으면 적어주세요. <span class="q-optional">(선택)</span></label>
-      <p class="q-hint">예: ChatGPT Plus, Claude Pro, Gemini Advanced, Perplexity Pro...</p>
-      <input type="text" id="구독모델" name="구독모델" placeholder="없으면 비워두셔도 돼요" />
+      <h3 class="q-title">현재 구독해서 쓰고 있는 AI가 있나요? <span class="q-optional">(선택)</span></h3>
+      <p class="q-hint">해당하는 거 다 골라주세요 — 고르면 요금제도 같이 여쭤볼게요</p>
+      <div class="choices">
+        <div>
+          <input class="choice-input" type="checkbox" id="sub_chatgpt" name="구독서비스" value="ChatGPT" />
+          <label class="choice-label" for="sub_chatgpt">
+            <span class="material-symbols-outlined choice-icon">forum</span>
+            <span class="choice-text">ChatGPT</span>
+          </label>
+        </div>
+        <div class="followup" id="chatgptPlanWrap" hidden>
+          <label class="q-title" style="font-size:14px; font-weight:500;">ChatGPT 요금제가 뭐예요?</label>
+          <div class="choices" role="radiogroup" aria-label="ChatGPT 요금제">
+            <div>
+              <input class="choice-input" type="radio" id="chatgpt_plus" name="챗지피티요금제" value="Plus" />
+              <label class="choice-label" for="chatgpt_plus"><span class="choice-text">Plus</span></label>
+            </div>
+            <div>
+              <input class="choice-input" type="radio" id="chatgpt_pro" name="챗지피티요금제" value="Pro" />
+              <label class="choice-label" for="chatgpt_pro"><span class="choice-text">Pro</span></label>
+            </div>
+            <div>
+              <input class="choice-input" type="radio" id="chatgpt_team" name="챗지피티요금제" value="Team/비즈니스" />
+              <label class="choice-label" for="chatgpt_team"><span class="choice-text">Team/비즈니스</span></label>
+            </div>
+            <div>
+              <input class="choice-input" type="radio" id="chatgpt_other" name="챗지피티요금제" value="그 외 (직접입력)" />
+              <label class="choice-label" for="chatgpt_other"><span class="choice-text">그 외 (직접입력)</span></label>
+            </div>
+          </div>
+          <div class="followup" id="chatgptPlanOtherWrap" hidden>
+            <input type="text" id="챗지피티요금제기타" name="챗지피티요금제기타" placeholder="요금제 이름을 적어주세요" autocomplete="off" />
+          </div>
+        </div>
+
+        <div>
+          <input class="choice-input" type="checkbox" id="sub_claude" name="구독서비스" value="Claude" />
+          <label class="choice-label" for="sub_claude">
+            <span class="material-symbols-outlined choice-icon">smart_toy</span>
+            <span class="choice-text">Claude</span>
+          </label>
+        </div>
+        <div class="followup" id="claudePlanWrap" hidden>
+          <label class="q-title" style="font-size:14px; font-weight:500;">Claude 요금제가 뭐예요?</label>
+          <div class="choices" role="radiogroup" aria-label="Claude 요금제">
+            <div>
+              <input class="choice-input" type="radio" id="claude_pro" name="클로드요금제" value="Pro" />
+              <label class="choice-label" for="claude_pro"><span class="choice-text">Pro</span></label>
+            </div>
+            <div>
+              <input class="choice-input" type="radio" id="claude_max" name="클로드요금제" value="Max" />
+              <label class="choice-label" for="claude_max"><span class="choice-text">Max</span></label>
+            </div>
+            <div>
+              <input class="choice-input" type="radio" id="claude_team" name="클로드요금제" value="Team" />
+              <label class="choice-label" for="claude_team"><span class="choice-text">Team</span></label>
+            </div>
+            <div>
+              <input class="choice-input" type="radio" id="claude_other" name="클로드요금제" value="그 외 (직접입력)" />
+              <label class="choice-label" for="claude_other"><span class="choice-text">그 외 (직접입력)</span></label>
+            </div>
+          </div>
+          <div class="followup" id="claudePlanOtherWrap" hidden>
+            <input type="text" id="클로드요금제기타" name="클로드요금제기타" placeholder="요금제 이름을 적어주세요" autocomplete="off" />
+          </div>
+        </div>
+
+        <div>
+          <input class="choice-input" type="checkbox" id="sub_gemini" name="구독서비스" value="Gemini" />
+          <label class="choice-label" for="sub_gemini">
+            <span class="material-symbols-outlined choice-icon">auto_awesome</span>
+            <span class="choice-text">Gemini</span>
+          </label>
+        </div>
+        <div class="followup" id="geminiPlanWrap" hidden>
+          <label class="q-title" style="font-size:14px; font-weight:500;">Gemini 요금제가 뭐예요?</label>
+          <div class="choices" role="radiogroup" aria-label="Gemini 요금제">
+            <div>
+              <input class="choice-input" type="radio" id="gemini_advanced" name="제미나이요금제" value="Advanced/Pro" />
+              <label class="choice-label" for="gemini_advanced"><span class="choice-text">Advanced/Pro</span></label>
+            </div>
+            <div>
+              <input class="choice-input" type="radio" id="gemini_ultra" name="제미나이요금제" value="Ultra" />
+              <label class="choice-label" for="gemini_ultra"><span class="choice-text">Ultra</span></label>
+            </div>
+            <div>
+              <input class="choice-input" type="radio" id="gemini_other" name="제미나이요금제" value="그 외 (직접입력)" />
+              <label class="choice-label" for="gemini_other"><span class="choice-text">그 외 (직접입력)</span></label>
+            </div>
+          </div>
+          <div class="followup" id="geminiPlanOtherWrap" hidden>
+            <input type="text" id="제미나이요금제기타" name="제미나이요금제기타" placeholder="요금제 이름을 적어주세요" autocomplete="off" />
+          </div>
+        </div>
+
+        <div>
+          <input class="choice-input" type="checkbox" id="sub_other" name="구독서비스" value="기타" />
+          <label class="choice-label" for="sub_other">
+            <span class="material-symbols-outlined choice-icon">edit_square</span>
+            <span class="choice-text">위 목록에 없어요 (직접입력)</span>
+          </label>
+        </div>
+        <div class="followup" id="subOtherWrap" hidden>
+          <input type="text" id="구독기타직접입력" name="구독기타직접입력" placeholder="예: Perplexity Pro, Grok..." autocomplete="off" />
+        </div>
+      </div>
     </div>
 
     <div class="card">
@@ -221,45 +324,43 @@
           </label>
         </div>
       </div>
-    </div>
-
-    <div class="card">
-      <span class="q-eyebrow">문항 09</span>
-      <h3 class="q-title">쓰신다면, 주로 어디서 쓰세요? <span class="q-optional">(선택)</span></h3>
-      <div class="choices" role="radiogroup" aria-label="코딩 도구 사용 환경">
-        <div>
-          <input class="choice-input" type="radio" id="env_app" name="사용환경" value="앱(웹·데스크톱)에서 써요" />
-          <label class="choice-label" for="env_app">
-            <span class="material-symbols-outlined choice-icon">apps</span>
-            <span class="choice-text">앱(웹·데스크톱)에서 써요</span>
-          </label>
-        </div>
-        <div>
-          <input class="choice-input" type="radio" id="env_editor" name="사용환경" value="VS Code 같은 에디터 안에서 써요" />
-          <label class="choice-label" for="env_editor">
-            <span class="material-symbols-outlined choice-icon">code</span>
-            <span class="choice-text">VS Code 같은 에디터 안에서 써요</span>
-          </label>
-        </div>
-        <div>
-          <input class="choice-input" type="radio" id="env_terminal" name="사용환경" value="터미널에서 직접 써요" />
-          <label class="choice-label" for="env_terminal">
-            <span class="material-symbols-outlined choice-icon">terminal</span>
-            <span class="choice-text">터미널에서 직접 써요</span>
-          </label>
-        </div>
-        <div>
-          <input class="choice-input" type="radio" id="env_none" name="사용환경" value="잘 모르겠어요/아직 안 써봐요" />
-          <label class="choice-label" for="env_none">
-            <span class="material-symbols-outlined choice-icon">help</span>
-            <span class="choice-text">잘 모르겠어요 / 아직 안 써봐요</span>
-          </label>
+      <div class="followup" id="envWrap" hidden>
+        <label class="q-title" style="font-size:14px; font-weight:500;">주로 어디서 쓰세요?</label>
+        <div class="choices" role="radiogroup" aria-label="코딩 도구 사용 환경">
+          <div>
+            <input class="choice-input" type="radio" id="env_app" name="사용환경" value="앱(웹·데스크톱)에서 써요" />
+            <label class="choice-label" for="env_app">
+              <span class="material-symbols-outlined choice-icon">apps</span>
+              <span class="choice-text">앱(웹·데스크톱)에서 써요</span>
+            </label>
+          </div>
+          <div>
+            <input class="choice-input" type="radio" id="env_editor" name="사용환경" value="VS Code 같은 에디터 안에서 써요" />
+            <label class="choice-label" for="env_editor">
+              <span class="material-symbols-outlined choice-icon">code</span>
+              <span class="choice-text">VS Code 같은 에디터 안에서 써요</span>
+            </label>
+          </div>
+          <div>
+            <input class="choice-input" type="radio" id="env_terminal" name="사용환경" value="터미널에서 직접 써요" />
+            <label class="choice-label" for="env_terminal">
+              <span class="material-symbols-outlined choice-icon">terminal</span>
+              <span class="choice-text">터미널에서 직접 써요</span>
+            </label>
+          </div>
+          <div>
+            <input class="choice-input" type="radio" id="env_none" name="사용환경" value="잘 모르겠어요" />
+            <label class="choice-label" for="env_none">
+              <span class="material-symbols-outlined choice-icon">help</span>
+              <span class="choice-text">잘 모르겠어요</span>
+            </label>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="card">
-      <span class="q-eyebrow">문항 10</span>
+      <span class="q-eyebrow">문항 09</span>
       <h3 class="q-title">AI를 어디까지 활용해보셨나요?</h3>
       <p class="q-hint">지금 제일 가까운 단계로 하나만 골라주세요</p>
       <div class="choices" role="radiogroup" aria-label="AI 활용 단계">
@@ -295,7 +396,7 @@
     </div>
 
     <div class="card">
-      <span class="q-eyebrow">문항 11</span>
+      <span class="q-eyebrow">문항 10</span>
       <h3 class="q-title">AI로 나만의 워크플로우를 만들어서 쓰고 계신가요?</h3>
       <p class="q-hint">방금 문항의 ④번 같은 것들을 이야기해요 — 여러 AI·도구를 이어붙여서 자동으로 돌아가게 만든 것</p>
       <div class="choices" role="radiogroup" aria-label="워크플로우 사용 여부">
@@ -324,7 +425,7 @@
     </div>
 
     <div class="card">
-      <span class="q-eyebrow">문항 12</span>
+      <span class="q-eyebrow">문항 11</span>
       <h3 class="q-title">얼마나 자주 쓰시나요?</h3>
       <div class="choices" role="radiogroup" aria-label="사용 빈도">
         <div>
@@ -359,13 +460,13 @@
     </div>
 
     <div class="card">
-      <label class="q-title" for="나누고싶은이야기"><span class="q-eyebrow" style="display:block; margin-bottom:8px;">문항 13</span>이번 모각일에서 나누고 싶은 이야기나 궁금한 거 있으세요? <span class="q-optional">(선택)</span></label>
+      <label class="q-title" for="나누고싶은이야기"><span class="q-eyebrow" style="display:block; margin-bottom:8px;">문항 12</span>이번 모각일에서 나누고 싶은 이야기나 궁금한 거 있으세요? <span class="q-optional">(선택)</span></label>
       <p class="q-hint">한 줄로 편하게 적어주셔도 돼요</p>
       <textarea id="나누고싶은이야기" name="나누고싶은이야기" placeholder="자유롭게 적어주세요..."></textarea>
     </div>
 
     <div class="card">
-      <span class="q-eyebrow">문항 14</span>
+      <span class="q-eyebrow">문항 13</span>
       <h3 class="q-title">평소 작업하는 기기 <span class="q-optional">(선택)</span></h3>
       <p class="q-hint">해당하는 거 다 골라도 됩니다</p>
       <div class="choices">
@@ -431,16 +532,52 @@
   const submitBar = document.getElementById("submitBar");
   const progressFill = document.getElementById("progressFill");
 
-  // 문항 01에서 "3번 이상" 선택 시에만 참여 지역 추가 입력을 보여줌
-  const repeatRegionWrap = document.getElementById("repeatRegionWrap");
-  function updateRepeatRegionVisibility() {
-    const checked = document.querySelector('input[name="참여횟수"]:checked');
-    repeatRegionWrap.hidden = !checked || checked.value !== "3번 이상, 거의 매번 와요";
+  // 라디오 그룹에서 특정 값을 골랐을 때만 하위 문항을 보여줌
+  function wireRadioValueReveal(radioName, triggerValue, wrapId) {
+    const wrap = document.getElementById(wrapId);
+    function update() {
+      const checked = document.querySelector(`input[name="${radioName}"]:checked`);
+      wrap.hidden = !checked || checked.value !== triggerValue;
+    }
+    document.querySelectorAll(`input[name="${radioName}"]`).forEach((el) => el.addEventListener("change", update));
+    update();
   }
-  document.querySelectorAll('input[name="참여횟수"]').forEach((el) => {
-    el.addEventListener("change", updateRepeatRegionVisibility);
-  });
-  updateRepeatRegionVisibility();
+
+  // 라디오 그룹에서 특정 값을 뺀 나머지를 골랐을 때만 하위 문항을 보여줌
+  function wireRadioExcludeReveal(radioName, excludeValue, wrapId) {
+    const wrap = document.getElementById(wrapId);
+    function update() {
+      const checked = document.querySelector(`input[name="${radioName}"]:checked`);
+      wrap.hidden = !checked || checked.value === excludeValue;
+    }
+    document.querySelectorAll(`input[name="${radioName}"]`).forEach((el) => el.addEventListener("change", update));
+    update();
+  }
+
+  // 체크박스가 켜져 있을 때만 하위 문항을 보여줌
+  function wireCheckboxReveal(checkboxId, wrapId) {
+    const cb = document.getElementById(checkboxId);
+    const wrap = document.getElementById(wrapId);
+    function update() { wrap.hidden = !cb.checked; }
+    cb.addEventListener("change", update);
+    update();
+  }
+
+  // 문항 01: "3번 이상" 선택 시에만 참여 지역 추가 입력을 보여줌
+  wireRadioValueReveal("참여횟수", "3번 이상, 거의 매번 와요", "repeatRegionWrap");
+
+  // 문항 07: 구독 서비스를 체크하면 그 서비스 요금제 선택지가 열림
+  wireCheckboxReveal("sub_chatgpt", "chatgptPlanWrap");
+  wireCheckboxReveal("sub_claude", "claudePlanWrap");
+  wireCheckboxReveal("sub_gemini", "geminiPlanWrap");
+  wireCheckboxReveal("sub_other", "subOtherWrap");
+  // 각 요금제에서 "그 외 (직접입력)"을 고르면 텍스트 입력이 열림
+  wireRadioValueReveal("챗지피티요금제", "그 외 (직접입력)", "chatgptPlanOtherWrap");
+  wireRadioValueReveal("클로드요금제", "그 외 (직접입력)", "claudePlanOtherWrap");
+  wireRadioValueReveal("제미나이요금제", "그 외 (직접입력)", "geminiPlanOtherWrap");
+
+  // 문항 08: "아직 안 써봤어요"가 아닌 걸 고르면 사용 환경 문항이 열림
+  wireRadioExcludeReveal("코딩에이전트사용여부", "아직 안 써봤어요", "envWrap");
 
   // 진행률 바: 폼에 있는 모든 문항(name 기준) 중 하나라도 채워진 비율
   const fieldNames = [...new Set([...form.elements].map((el) => el.name).filter(Boolean))];
