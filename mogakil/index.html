@@ -61,7 +61,8 @@
         </div>
       </div>
       <div class="followup" id="repeatRegionWrap" hidden>
-        <label class="q-title" style="font-size:14px; font-weight:500;" for="참여지역">어느 지역들에서 참여하셨어요? <span class="q-optional">(선택)</span></label>
+        <label class="q-title" style="font-size:14px; font-weight:500;" for="참여지역">어느 지역 모임에 참석하셨어요? <span class="q-optional">(선택)</span></label>
+        <p class="q-hint">당근에 이런 모임이 저희 말고도 많더라구요 — 생각나는 대로 편하게</p>
         <input type="text" id="참여지역" name="참여지역" placeholder="예: 고양, 은평, 마포... 생각나는 대로 편하게" autocomplete="off" />
       </div>
     </div>
@@ -69,8 +70,8 @@
     <div class="card">
       <span class="q-eyebrow">문항 02</span>
       <label class="q-title" for="거주지역">어느 지역에 사세요?</label>
-      <p class="q-hint">정확한 주소 말고, 고양시·은평구처럼 대충 편하게 적어주세요</p>
-      <input type="text" id="거주지역" name="거주지역" placeholder="예: 고양시, 은평구, 마포구..." required autocomplete="off" />
+      <p class="q-hint">동까지만 편하게 적어주세요 (예: 고양시 원흥동, 마포구 서교동)</p>
+      <input type="text" id="거주지역" name="거주지역" placeholder="예: 고양시 원흥동, 마포구 서교동" required autocomplete="off" />
     </div>
 
     <div class="card">
@@ -174,6 +175,91 @@
 
     <div class="card">
       <span class="q-eyebrow">문항 06</span>
+      <label class="q-title" for="써본도구">사용해보신 AI 도구들을 적어주세요. <span class="q-optional">(선택)</span></label>
+      <p class="q-hint">예: ChatGPT, Claude, Gemini, 미드저니...</p>
+      <input type="text" id="써본도구" name="써본도구" placeholder="생각나는 대로 편하게 적어주시면 됩니다" />
+    </div>
+
+    <div class="card">
+      <span class="q-eyebrow">문항 07</span>
+      <label class="q-title" for="구독모델">구독해서 쓰고 있는 AI가 있으면 적어주세요. <span class="q-optional">(선택)</span></label>
+      <p class="q-hint">예: ChatGPT Plus, Claude Pro, Gemini Advanced, Perplexity Pro...</p>
+      <input type="text" id="구독모델" name="구독모델" placeholder="없으면 비워두셔도 돼요" />
+    </div>
+
+    <div class="card">
+      <span class="q-eyebrow">문항 08</span>
+      <h3 class="q-title">클로드코드나 코덱스, 써보셨어요? <span class="q-optional">(선택)</span></h3>
+      <p class="q-hint">터미널에서 AI한테 코딩을 시키는 도구들이에요</p>
+      <div class="choices" role="radiogroup" aria-label="클로드코드·코덱스 사용 여부">
+        <div>
+          <input class="choice-input" type="radio" id="agent_both" name="코딩에이전트사용여부" value="둘 다 써봤어요" />
+          <label class="choice-label" for="agent_both">
+            <span class="material-symbols-outlined choice-icon">terminal</span>
+            <span class="choice-text">둘 다 써봤어요</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="radio" id="agent_claude" name="코딩에이전트사용여부" value="클로드코드만 써봤어요" />
+          <label class="choice-label" for="agent_claude">
+            <span class="material-symbols-outlined choice-icon">smart_toy</span>
+            <span class="choice-text">클로드코드만 써봤어요</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="radio" id="agent_codex" name="코딩에이전트사용여부" value="코덱스만 써봤어요" />
+          <label class="choice-label" for="agent_codex">
+            <span class="material-symbols-outlined choice-icon">code</span>
+            <span class="choice-text">코덱스만 써봤어요</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="radio" id="agent_none" name="코딩에이전트사용여부" value="아직 안 써봤어요" />
+          <label class="choice-label" for="agent_none">
+            <span class="material-symbols-outlined choice-icon">help</span>
+            <span class="choice-text">아직 안 써봤어요</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="q-eyebrow">문항 09</span>
+      <h3 class="q-title">쓰신다면, 주로 어디서 쓰세요? <span class="q-optional">(선택)</span></h3>
+      <div class="choices" role="radiogroup" aria-label="코딩 도구 사용 환경">
+        <div>
+          <input class="choice-input" type="radio" id="env_app" name="사용환경" value="앱(웹·데스크톱)에서 써요" />
+          <label class="choice-label" for="env_app">
+            <span class="material-symbols-outlined choice-icon">apps</span>
+            <span class="choice-text">앱(웹·데스크톱)에서 써요</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="radio" id="env_editor" name="사용환경" value="VS Code 같은 에디터 안에서 써요" />
+          <label class="choice-label" for="env_editor">
+            <span class="material-symbols-outlined choice-icon">code</span>
+            <span class="choice-text">VS Code 같은 에디터 안에서 써요</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="radio" id="env_terminal" name="사용환경" value="터미널에서 직접 써요" />
+          <label class="choice-label" for="env_terminal">
+            <span class="material-symbols-outlined choice-icon">terminal</span>
+            <span class="choice-text">터미널에서 직접 써요</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="radio" id="env_none" name="사용환경" value="잘 모르겠어요/아직 안 써봐요" />
+          <label class="choice-label" for="env_none">
+            <span class="material-symbols-outlined choice-icon">help</span>
+            <span class="choice-text">잘 모르겠어요 / 아직 안 써봐요</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="q-eyebrow">문항 10</span>
       <h3 class="q-title">AI를 어디까지 활용해보셨나요?</h3>
       <p class="q-hint">지금 제일 가까운 단계로 하나만 골라주세요</p>
       <div class="choices" role="radiogroup" aria-label="AI 활용 단계">
@@ -209,7 +295,7 @@
     </div>
 
     <div class="card">
-      <span class="q-eyebrow">문항 07</span>
+      <span class="q-eyebrow">문항 11</span>
       <h3 class="q-title">AI로 나만의 워크플로우를 만들어서 쓰고 계신가요?</h3>
       <p class="q-hint">방금 문항의 ④번 같은 것들을 이야기해요 — 여러 AI·도구를 이어붙여서 자동으로 돌아가게 만든 것</p>
       <div class="choices" role="radiogroup" aria-label="워크플로우 사용 여부">
@@ -238,7 +324,7 @@
     </div>
 
     <div class="card">
-      <span class="q-eyebrow">문항 08</span>
+      <span class="q-eyebrow">문항 12</span>
       <h3 class="q-title">얼마나 자주 쓰시나요?</h3>
       <div class="choices" role="radiogroup" aria-label="사용 빈도">
         <div>
@@ -273,20 +359,13 @@
     </div>
 
     <div class="card">
-      <span class="q-eyebrow">문항 09</span>
-      <label class="q-title" for="써본도구">사용해보신 AI 도구들을 적어주세요. <span class="q-optional">(선택)</span></label>
-      <p class="q-hint">예: ChatGPT, Claude, Gemini, 미드저니...</p>
-      <input type="text" id="써본도구" name="써본도구" placeholder="생각나는 대로 편하게 적어주시면 됩니다" />
-    </div>
-
-    <div class="card">
-      <label class="q-title" for="나누고싶은이야기"><span class="q-eyebrow" style="display:block; margin-bottom:8px;">문항 10</span>이번 모각일에서 나누고 싶은 이야기나 궁금한 거 있으세요? <span class="q-optional">(선택)</span></label>
+      <label class="q-title" for="나누고싶은이야기"><span class="q-eyebrow" style="display:block; margin-bottom:8px;">문항 13</span>이번 모각일에서 나누고 싶은 이야기나 궁금한 거 있으세요? <span class="q-optional">(선택)</span></label>
       <p class="q-hint">한 줄로 편하게 적어주셔도 돼요</p>
       <textarea id="나누고싶은이야기" name="나누고싶은이야기" placeholder="자유롭게 적어주세요..."></textarea>
     </div>
 
     <div class="card">
-      <span class="q-eyebrow">문항 11</span>
+      <span class="q-eyebrow">문항 14</span>
       <h3 class="q-title">평소 작업하는 기기 <span class="q-optional">(선택)</span></h3>
       <p class="q-hint">해당하는 거 다 골라도 됩니다</p>
       <div class="choices">
