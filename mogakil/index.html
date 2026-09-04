@@ -22,7 +22,7 @@
     <span class="eyebrow">아더댄웍스 · AI 모각일(번개)</span>
     <h1>오시기 전에, 몇 가지만 알려주세요</h1>
     <div class="promise">
-      <p>당근으로 벌써 4번째 모임입니다! 그때마다 다들 새로운 인사이트와 활용법을 나눠주셔서, 이번엔 급하게 번개를 만들었어요.<br><br><strong>9월 4일 금요일 오후 2시, 아더댄웍스</strong>에서 커피 한 잔 + 노트북 들고 가볍게 모여요. 참가 신청은 이미 끝났고, 이건 그냥 <strong>각자 AI를 어디까지 써보셨는지</strong> 미리 알아두려는 설문이에요 — 그래야 그날 이야기 흐름을 알차게 잡을 수 있을 것 같아서요.</p>
+      <p>당근으로 벌써 4번째 모임입니다! 그때마다 다들 새로운 인사이트와 활용법을 나눠주셔서, 이번에도 모각일 번개를 만들었어요! 참여해주셔서 감사합니다.<br><br><strong>9월 4일 금요일 오후 2시, 아더댄웍스</strong>에서 커피 한 잔 + 노트북 들고 가볍게 모여요. 참가 신청은 이미 끝났고, 이건 그냥 <strong>각자 AI를 어디까지 써보셨는지</strong> 미리 알아두려는 설문이에요 — 그래야 그날 이야기 흐름을 알차게 잡을 수 있을 것 같아서요.</p>
     </div>
   </header>
 
@@ -60,10 +60,21 @@
           </label>
         </div>
       </div>
+      <div class="followup" id="repeatRegionWrap" hidden>
+        <label class="q-title" style="font-size:14px; font-weight:500;" for="참여지역">어느 지역들에서 참여하셨어요? <span class="q-optional">(선택)</span></label>
+        <input type="text" id="참여지역" name="참여지역" placeholder="예: 고양, 은평, 마포... 생각나는 대로 편하게" autocomplete="off" />
+      </div>
     </div>
 
     <div class="card">
       <span class="q-eyebrow">문항 02</span>
+      <label class="q-title" for="거주지역">어느 지역에 사세요?</label>
+      <p class="q-hint">정확한 주소 말고, 고양시·은평구처럼 대충 편하게 적어주세요</p>
+      <input type="text" id="거주지역" name="거주지역" placeholder="예: 고양시, 은평구, 마포구..." required autocomplete="off" />
+    </div>
+
+    <div class="card">
+      <span class="q-eyebrow">문항 03</span>
       <h3 class="q-title">이런 자리가 또 있으면 계속 참여하고 싶으신가요?</h3>
       <div class="choices" role="radiogroup" aria-label="지속 참여 의향">
         <div>
@@ -91,7 +102,7 @@
     </div>
 
     <div class="card">
-      <span class="q-eyebrow">문항 03</span>
+      <span class="q-eyebrow">문항 04</span>
       <h3 class="q-title">요즘 AI, 주로 어떤 걸로 배우고 계세요?</h3>
       <p class="q-hint">해당하는 거 다 골라도 됩니다</p>
       <div class="choices">
@@ -128,34 +139,6 @@
           <label class="choice-label" for="learn_work">
             <span class="material-symbols-outlined choice-icon">work</span>
             <span class="choice-text">회사·업무 중에 필요해서</span>
-          </label>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <span class="q-eyebrow">문항 04</span>
-      <h3 class="q-title">AI로 나만의 워크플로우를 만들어서 쓰고 계신가요?</h3>
-      <div class="choices" role="radiogroup" aria-label="워크플로우 사용 여부">
-        <div>
-          <input class="choice-input" type="radio" id="workflow_yes" name="워크플로우사용여부" value="네, 이미 만들어서 쓰고 있어요" required />
-          <label class="choice-label" for="workflow_yes">
-            <span class="material-symbols-outlined choice-icon">hub</span>
-            <span class="choice-text">네, 이미 만들어서 쓰고 있어요</span>
-          </label>
-        </div>
-        <div>
-          <input class="choice-input" type="radio" id="workflow_want" name="워크플로우사용여부" value="아직은 아니고, 만들어보고 싶어요" />
-          <label class="choice-label" for="workflow_want">
-            <span class="material-symbols-outlined choice-icon">build</span>
-            <span class="choice-text">아직은 아니고, 만들어보고 싶어요</span>
-          </label>
-        </div>
-        <div>
-          <input class="choice-input" type="radio" id="workflow_unknown" name="워크플로우사용여부" value="워크플로우가 뭔지 잘 모르겠어요" />
-          <label class="choice-label" for="workflow_unknown">
-            <span class="material-symbols-outlined choice-icon">help</span>
-            <span class="choice-text">워크플로우가 뭔지 잘 모르겠어요</span>
           </label>
         </div>
       </div>
@@ -227,6 +210,35 @@
 
     <div class="card">
       <span class="q-eyebrow">문항 07</span>
+      <h3 class="q-title">AI로 나만의 워크플로우를 만들어서 쓰고 계신가요?</h3>
+      <p class="q-hint">방금 문항의 ④번 같은 것들을 이야기해요 — 여러 AI·도구를 이어붙여서 자동으로 돌아가게 만든 것</p>
+      <div class="choices" role="radiogroup" aria-label="워크플로우 사용 여부">
+        <div>
+          <input class="choice-input" type="radio" id="workflow_yes" name="워크플로우사용여부" value="네, 이미 만들어서 쓰고 있어요" required />
+          <label class="choice-label" for="workflow_yes">
+            <span class="material-symbols-outlined choice-icon">hub</span>
+            <span class="choice-text">네, 이미 만들어서 쓰고 있어요</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="radio" id="workflow_want" name="워크플로우사용여부" value="아직은 아니고, 만들어보고 싶어요" />
+          <label class="choice-label" for="workflow_want">
+            <span class="material-symbols-outlined choice-icon">build</span>
+            <span class="choice-text">아직은 아니고, 만들어보고 싶어요</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="radio" id="workflow_unknown" name="워크플로우사용여부" value="워크플로우가 뭔지 잘 모르겠어요" />
+          <label class="choice-label" for="workflow_unknown">
+            <span class="material-symbols-outlined choice-icon">help</span>
+            <span class="choice-text">워크플로우가 뭔지 잘 모르겠어요</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="q-eyebrow">문항 08</span>
       <h3 class="q-title">얼마나 자주 쓰시나요?</h3>
       <div class="choices" role="radiogroup" aria-label="사용 빈도">
         <div>
@@ -261,20 +273,20 @@
     </div>
 
     <div class="card">
-      <span class="q-eyebrow">문항 08</span>
+      <span class="q-eyebrow">문항 09</span>
       <label class="q-title" for="써본도구">사용해보신 AI 도구들을 적어주세요. <span class="q-optional">(선택)</span></label>
       <p class="q-hint">예: ChatGPT, Claude, Gemini, 미드저니...</p>
       <input type="text" id="써본도구" name="써본도구" placeholder="생각나는 대로 편하게 적어주시면 됩니다" />
     </div>
 
     <div class="card">
-      <label class="q-title" for="나누고싶은이야기"><span class="q-eyebrow" style="display:block; margin-bottom:8px;">문항 09</span>이번 모각일에서 나누고 싶은 이야기나 궁금한 거 있으세요? <span class="q-optional">(선택)</span></label>
+      <label class="q-title" for="나누고싶은이야기"><span class="q-eyebrow" style="display:block; margin-bottom:8px;">문항 10</span>이번 모각일에서 나누고 싶은 이야기나 궁금한 거 있으세요? <span class="q-optional">(선택)</span></label>
       <p class="q-hint">한 줄로 편하게 적어주셔도 돼요</p>
       <textarea id="나누고싶은이야기" name="나누고싶은이야기" placeholder="자유롭게 적어주세요..."></textarea>
     </div>
 
     <div class="card">
-      <span class="q-eyebrow">문항 10</span>
+      <span class="q-eyebrow">문항 11</span>
       <h3 class="q-title">평소 작업하는 기기 <span class="q-optional">(선택)</span></h3>
       <p class="q-hint">해당하는 거 다 골라도 됩니다</p>
       <div class="choices">
@@ -339,6 +351,17 @@
   const doneBox = document.getElementById("doneBox");
   const submitBar = document.getElementById("submitBar");
   const progressFill = document.getElementById("progressFill");
+
+  // 문항 01에서 "3번 이상" 선택 시에만 참여 지역 추가 입력을 보여줌
+  const repeatRegionWrap = document.getElementById("repeatRegionWrap");
+  function updateRepeatRegionVisibility() {
+    const checked = document.querySelector('input[name="참여횟수"]:checked');
+    repeatRegionWrap.hidden = !checked || checked.value !== "3번 이상, 거의 매번 와요";
+  }
+  document.querySelectorAll('input[name="참여횟수"]').forEach((el) => {
+    el.addEventListener("change", updateRepeatRegionVisibility);
+  });
+  updateRepeatRegionVisibility();
 
   // 진행률 바: 폼에 있는 모든 문항(name 기준) 중 하나라도 채워진 비율
   const fieldNames = [...new Set([...form.elements].map((el) => el.name).filter(Boolean))];

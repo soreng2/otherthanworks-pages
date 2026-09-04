@@ -340,6 +340,16 @@ form { display: flex; flex-direction: column; gap: 28px; }
   line-height: 1.45;
 }
 
+/* ---------- 조건부 추가 문항 ---------- */
+
+.followup {
+  margin-top: 4px;
+  padding-left: 14px;
+  border-left: 2px solid var(--outline-variant);
+}
+
+.followup[hidden] { display: none; }
+
 /* ---------- 텍스트 입력 ---------- */
 
 input[type="text"],
