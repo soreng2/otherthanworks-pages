@@ -53,24 +53,23 @@
           </label>
         </div>
         <div>
-          <input class="choice-input" type="radio" id="count_many" name="참여횟수" value="3번 이상, 거의 매번 와요" />
+          <input class="choice-input" type="radio" id="count_many" name="참여횟수" value="3번 이상" />
           <label class="choice-label" for="count_many">
             <span class="material-symbols-outlined choice-icon">workspace_premium</span>
-            <span class="choice-text">3번 이상, 거의 매번 와요</span>
+            <span class="choice-text">3번 이상</span>
           </label>
         </div>
       </div>
       <div class="followup" id="repeatRegionWrap" hidden>
-        <label class="q-title" style="font-size:14px; font-weight:500;" for="참여지역">어느 지역 모임에 참석하셨어요? <span class="q-optional">(선택)</span></label>
-        <p class="q-hint">당근에 이런 모임이 저희 말고도 많더라구요 — 생각나는 대로 편하게</p>
-        <input type="text" id="참여지역" name="참여지역" placeholder="예: 고양, 은평, 마포... 생각나는 대로 편하게" autocomplete="off" />
+        <label class="q-title" style="font-size:14px; font-weight:500;" for="참여지역">어느 지역 모임에 참여하셨어요? <span class="q-optional">(선택)</span></label>
+        <input type="text" id="참여지역" name="참여지역" placeholder="예: 고양, 은평" autocomplete="off" />
       </div>
     </div>
 
     <div class="card">
       <span class="q-eyebrow">문항 02</span>
       <label class="q-title" for="거주지역">어느 지역에 사세요?</label>
-      <p class="q-hint">동까지만 편하게 적어주세요 (예: 고양시 원흥동, 마포구 서교동)</p>
+      <p class="q-hint">동까지만 편하게 적어주세요.</p>
       <input type="text" id="거주지역" name="거주지역" placeholder="예: 고양시 원흥동, 마포구 서교동" required autocomplete="off" />
     </div>
 
@@ -175,13 +174,49 @@
 
     <div class="card">
       <span class="q-eyebrow">문항 06</span>
+      <h3 class="q-title">AI를 어디까지 활용해보셨나요?</h3>
+      <p class="q-hint">지금 제일 가까운 단계로 하나만 골라주세요</p>
+      <div class="choices" role="radiogroup" aria-label="AI 활용 단계">
+        <div>
+          <input class="choice-input" type="radio" id="depth_1" name="활용단계" value="① 질문하고 답 받는 정도 (검색 대체)" required />
+          <label class="choice-label" for="depth_1">
+            <span class="material-symbols-outlined choice-icon">chat_bubble</span>
+            <span class="choice-text">질문하고 답 받는 정도예요 <br>(검색 대체)</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="radio" id="depth_2" name="활용단계" value="② 초안·아이디어 등 결과물을 직접 만들어봄" />
+          <label class="choice-label" for="depth_2">
+            <span class="material-symbols-outlined choice-icon">edit_note</span>
+            <span class="choice-text">초안·아이디어 등 결과물을 <br>직접 만들어봤어요</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="radio" id="depth_3" name="활용단계" value="③ 반복 작업을 템플릿·프롬프트로 저장해서 재사용" />
+          <label class="choice-label" for="depth_3">
+            <span class="material-symbols-outlined choice-icon">repeat</span>
+            <span class="choice-text">반복 작업을 템플릿·프롬프트로 <br>저장해서 재사용해요</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="radio" id="depth_4" name="활용단계" value="④ 여러 AI·도구를 연결해서 자동화까지 구축" />
+          <label class="choice-label" for="depth_4">
+            <span class="material-symbols-outlined choice-icon">hub</span>
+            <span class="choice-text">여러 AI·도구를 연결해서 <br>자동화까지 구축해봤어요</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="q-eyebrow">문항 07</span>
       <label class="q-title" for="써본도구">사용해보신 AI 도구들을 적어주세요. <span class="q-optional">(선택)</span></label>
       <p class="q-hint">예: ChatGPT, Claude, Gemini, 미드저니...</p>
       <input type="text" id="써본도구" name="써본도구" placeholder="생각나는 대로 편하게 적어주시면 됩니다" />
     </div>
 
     <div class="card">
-      <span class="q-eyebrow">문항 07</span>
+      <span class="q-eyebrow">문항 08</span>
       <h3 class="q-title">현재 구독해서 쓰고 있는 AI가 있나요? <span class="q-optional">(선택)</span></h3>
       <p class="q-hint">해당하는 거 다 골라주세요 — 고르면 요금제도 같이 여쭤볼게요</p>
       <div class="choices">
@@ -291,7 +326,7 @@
     </div>
 
     <div class="card">
-      <span class="q-eyebrow">문항 08</span>
+      <span class="q-eyebrow">문항 09</span>
       <h3 class="q-title">클로드코드나 코덱스, 써보셨어요? <span class="q-optional">(선택)</span></h3>
       <p class="q-hint">터미널에서 AI한테 코딩을 시키는 도구들이에요</p>
       <div class="choices" role="radiogroup" aria-label="클로드코드·코덱스 사용 여부">
@@ -355,42 +390,6 @@
               <span class="choice-text">잘 모르겠어요</span>
             </label>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <span class="q-eyebrow">문항 09</span>
-      <h3 class="q-title">AI를 어디까지 활용해보셨나요?</h3>
-      <p class="q-hint">지금 제일 가까운 단계로 하나만 골라주세요</p>
-      <div class="choices" role="radiogroup" aria-label="AI 활용 단계">
-        <div>
-          <input class="choice-input" type="radio" id="depth_1" name="활용단계" value="① 질문하고 답 받는 정도 (검색 대체)" required />
-          <label class="choice-label" for="depth_1">
-            <span class="material-symbols-outlined choice-icon">chat_bubble</span>
-            <span class="choice-text">질문하고 답 받는 정도예요 <br>(검색 대체)</span>
-          </label>
-        </div>
-        <div>
-          <input class="choice-input" type="radio" id="depth_2" name="활용단계" value="② 초안·아이디어 등 결과물을 직접 만들어봄" />
-          <label class="choice-label" for="depth_2">
-            <span class="material-symbols-outlined choice-icon">edit_note</span>
-            <span class="choice-text">초안·아이디어 등 결과물을 <br>직접 만들어봤어요</span>
-          </label>
-        </div>
-        <div>
-          <input class="choice-input" type="radio" id="depth_3" name="활용단계" value="③ 반복 작업을 템플릿·프롬프트로 저장해서 재사용" />
-          <label class="choice-label" for="depth_3">
-            <span class="material-symbols-outlined choice-icon">repeat</span>
-            <span class="choice-text">반복 작업을 템플릿·프롬프트로 <br>저장해서 재사용해요</span>
-          </label>
-        </div>
-        <div>
-          <input class="choice-input" type="radio" id="depth_4" name="활용단계" value="④ 여러 AI·도구를 연결해서 자동화까지 구축" />
-          <label class="choice-label" for="depth_4">
-            <span class="material-symbols-outlined choice-icon">hub</span>
-            <span class="choice-text">여러 AI·도구를 연결해서 <br>자동화까지 구축해봤어요</span>
-          </label>
         </div>
       </div>
     </div>
@@ -564,9 +563,9 @@
   }
 
   // 문항 01: "3번 이상" 선택 시에만 참여 지역 추가 입력을 보여줌
-  wireRadioValueReveal("참여횟수", "3번 이상, 거의 매번 와요", "repeatRegionWrap");
+  wireRadioValueReveal("참여횟수", "3번 이상", "repeatRegionWrap");
 
-  // 문항 07: 구독 서비스를 체크하면 그 서비스 요금제 선택지가 열림
+  // 문항 08: 구독 서비스를 체크하면 그 서비스 요금제 선택지가 열림
   wireCheckboxReveal("sub_chatgpt", "chatgptPlanWrap");
   wireCheckboxReveal("sub_claude", "claudePlanWrap");
   wireCheckboxReveal("sub_gemini", "geminiPlanWrap");
@@ -576,7 +575,7 @@
   wireRadioValueReveal("클로드요금제", "그 외 (직접입력)", "claudePlanOtherWrap");
   wireRadioValueReveal("제미나이요금제", "그 외 (직접입력)", "geminiPlanOtherWrap");
 
-  // 문항 08: "아직 안 써봤어요"가 아닌 걸 고르면 사용 환경 문항이 열림
+  // 문항 09: "아직 안 써봤어요"가 아닌 걸 고르면 사용 환경 문항이 열림
   wireRadioExcludeReveal("코딩에이전트사용여부", "아직 안 써봤어요", "envWrap");
 
   // 진행률 바: 폼에 있는 모든 문항(name 기준) 중 하나라도 채워진 비율
