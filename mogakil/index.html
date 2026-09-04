@@ -22,7 +22,7 @@
     <span class="eyebrow">아더댄웍스 · AI 모각일(번개)</span>
     <h1>오시기 전에, 몇 가지만 알려주세요</h1>
     <div class="promise">
-      <p>당근으로 벌써 몇 번째 모임인지 모르겠어요. 그때마다 다들 새로운 인사이트와 활용법을 나눠주셔서, 이번엔 급하게 번개를 만들었어요.<br><br><strong>9월 4일 금요일 오후 2시, 아더댄웍스</strong>에서 커피 한 잔 + 노트북 들고 가볍게 모여요. 참가 신청은 이미 끝났고, 이건 그냥 <strong>각자 AI를 어디까지 써보셨는지</strong> 미리 알아두려는 설문이에요 — 그래야 그날 이야기 흐름을 알차게 잡을 수 있을 것 같아서요.</p>
+      <p>당근으로 벌써 4번째 모임입니다! 그때마다 다들 새로운 인사이트와 활용법을 나눠주셔서, 이번엔 급하게 번개를 만들었어요.<br><br><strong>9월 4일 금요일 오후 2시, 아더댄웍스</strong>에서 커피 한 잔 + 노트북 들고 가볍게 모여요. 참가 신청은 이미 끝났고, 이건 그냥 <strong>각자 AI를 어디까지 써보셨는지</strong> 미리 알아두려는 설문이에요 — 그래야 그날 이야기 흐름을 알차게 잡을 수 있을 것 같아서요.</p>
     </div>
   </header>
 
@@ -36,6 +36,133 @@
 
     <div class="card">
       <span class="q-eyebrow">문항 01</span>
+      <h3 class="q-title">당근으로 에이아이 모임에 몇 번 참여해보셨나요?</h3>
+      <div class="choices" role="radiogroup" aria-label="당근 AI 모임 참여 횟수">
+        <div>
+          <input class="choice-input" type="radio" id="count_first" name="참여횟수" value="이번이 처음이에요" required />
+          <label class="choice-label" for="count_first">
+            <span class="material-symbols-outlined choice-icon">waving_hand</span>
+            <span class="choice-text">이번이 처음이에요</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="radio" id="count_few" name="참여횟수" value="1~2번 참여했어요" />
+          <label class="choice-label" for="count_few">
+            <span class="material-symbols-outlined choice-icon">repeat</span>
+            <span class="choice-text">1~2번 참여했어요</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="radio" id="count_many" name="참여횟수" value="3번 이상, 거의 매번 와요" />
+          <label class="choice-label" for="count_many">
+            <span class="material-symbols-outlined choice-icon">workspace_premium</span>
+            <span class="choice-text">3번 이상, 거의 매번 와요</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="q-eyebrow">문항 02</span>
+      <h3 class="q-title">이런 자리가 또 있으면 계속 참여하고 싶으신가요?</h3>
+      <div class="choices" role="radiogroup" aria-label="지속 참여 의향">
+        <div>
+          <input class="choice-input" type="radio" id="continue_yes" name="지속참여의향" value="네, 꾸준히 참여하고 싶어요" required />
+          <label class="choice-label" for="continue_yes">
+            <span class="material-symbols-outlined choice-icon">favorite</span>
+            <span class="choice-text">네, 꾸준히 참여하고 싶어요</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="radio" id="continue_maybe" name="지속참여의향" value="상황 봐서 참여할게요" />
+          <label class="choice-label" for="continue_maybe">
+            <span class="material-symbols-outlined choice-icon">schedule</span>
+            <span class="choice-text">상황 봐서 참여할게요</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="radio" id="continue_no" name="지속참여의향" value="이번 한 번이면 충분해요" />
+          <label class="choice-label" for="continue_no">
+            <span class="material-symbols-outlined choice-icon">check_circle</span>
+            <span class="choice-text">이번 한 번이면 충분해요</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="q-eyebrow">문항 03</span>
+      <h3 class="q-title">요즘 AI, 주로 어떤 걸로 배우고 계세요?</h3>
+      <p class="q-hint">해당하는 거 다 골라도 됩니다</p>
+      <div class="choices">
+        <div>
+          <input class="choice-input" type="checkbox" id="learn_youtube" name="학습방법" value="유튜브·블로그" />
+          <label class="choice-label" for="learn_youtube">
+            <span class="material-symbols-outlined choice-icon">smart_display</span>
+            <span class="choice-text">유튜브·블로그 보면서</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="checkbox" id="learn_course" name="학습방법" value="책·강의" />
+          <label class="choice-label" for="learn_course">
+            <span class="material-symbols-outlined choice-icon">menu_book</span>
+            <span class="choice-text">책·강의 들으면서</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="checkbox" id="learn_community" name="학습방법" value="모임·커뮤니티" />
+          <label class="choice-label" for="learn_community">
+            <span class="material-symbols-outlined choice-icon">groups</span>
+            <span class="choice-text">이런 모임·커뮤니티에서</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="checkbox" id="learn_selftaught" name="학습방법" value="혼자 써보면서" />
+          <label class="choice-label" for="learn_selftaught">
+            <span class="material-symbols-outlined choice-icon">touch_app</span>
+            <span class="choice-text">그냥 써보면서 혼자 익혀요</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="checkbox" id="learn_work" name="학습방법" value="회사·업무 중 필요해서" />
+          <label class="choice-label" for="learn_work">
+            <span class="material-symbols-outlined choice-icon">work</span>
+            <span class="choice-text">회사·업무 중에 필요해서</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="q-eyebrow">문항 04</span>
+      <h3 class="q-title">AI로 나만의 워크플로우를 만들어서 쓰고 계신가요?</h3>
+      <div class="choices" role="radiogroup" aria-label="워크플로우 사용 여부">
+        <div>
+          <input class="choice-input" type="radio" id="workflow_yes" name="워크플로우사용여부" value="네, 이미 만들어서 쓰고 있어요" required />
+          <label class="choice-label" for="workflow_yes">
+            <span class="material-symbols-outlined choice-icon">hub</span>
+            <span class="choice-text">네, 이미 만들어서 쓰고 있어요</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="radio" id="workflow_want" name="워크플로우사용여부" value="아직은 아니고, 만들어보고 싶어요" />
+          <label class="choice-label" for="workflow_want">
+            <span class="material-symbols-outlined choice-icon">build</span>
+            <span class="choice-text">아직은 아니고, 만들어보고 싶어요</span>
+          </label>
+        </div>
+        <div>
+          <input class="choice-input" type="radio" id="workflow_unknown" name="워크플로우사용여부" value="워크플로우가 뭔지 잘 모르겠어요" />
+          <label class="choice-label" for="workflow_unknown">
+            <span class="material-symbols-outlined choice-icon">help</span>
+            <span class="choice-text">워크플로우가 뭔지 잘 모르겠어요</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="q-eyebrow">문항 05</span>
       <h3 class="q-title">현재 AI 도구 사용 레벨은 어느 정도이신가요?</h3>
       <div class="choices" role="radiogroup" aria-label="AI 사용 레벨">
         <div>
@@ -63,7 +190,7 @@
     </div>
 
     <div class="card">
-      <span class="q-eyebrow">문항 02</span>
+      <span class="q-eyebrow">문항 06</span>
       <h3 class="q-title">AI를 어디까지 활용해보셨나요?</h3>
       <p class="q-hint">지금 제일 가까운 단계로 하나만 골라주세요</p>
       <div class="choices" role="radiogroup" aria-label="AI 활용 단계">
@@ -99,7 +226,7 @@
     </div>
 
     <div class="card">
-      <span class="q-eyebrow">문항 03</span>
+      <span class="q-eyebrow">문항 07</span>
       <h3 class="q-title">얼마나 자주 쓰시나요?</h3>
       <div class="choices" role="radiogroup" aria-label="사용 빈도">
         <div>
@@ -134,20 +261,20 @@
     </div>
 
     <div class="card">
-      <span class="q-eyebrow">문항 04</span>
+      <span class="q-eyebrow">문항 08</span>
       <label class="q-title" for="써본도구">사용해보신 AI 도구들을 적어주세요. <span class="q-optional">(선택)</span></label>
       <p class="q-hint">예: ChatGPT, Claude, Gemini, 미드저니...</p>
       <input type="text" id="써본도구" name="써본도구" placeholder="생각나는 대로 편하게 적어주시면 됩니다" />
     </div>
 
     <div class="card">
-      <label class="q-title" for="나누고싶은이야기"><span class="q-eyebrow" style="display:block; margin-bottom:8px;">문항 05</span>이번 모각일에서 나누고 싶은 이야기나 궁금한 거 있으세요? <span class="q-optional">(선택)</span></label>
+      <label class="q-title" for="나누고싶은이야기"><span class="q-eyebrow" style="display:block; margin-bottom:8px;">문항 09</span>이번 모각일에서 나누고 싶은 이야기나 궁금한 거 있으세요? <span class="q-optional">(선택)</span></label>
       <p class="q-hint">한 줄로 편하게 적어주셔도 돼요</p>
       <textarea id="나누고싶은이야기" name="나누고싶은이야기" placeholder="자유롭게 적어주세요..."></textarea>
     </div>
 
     <div class="card">
-      <span class="q-eyebrow">문항 06</span>
+      <span class="q-eyebrow">문항 10</span>
       <h3 class="q-title">평소 작업하는 기기 <span class="q-optional">(선택)</span></h3>
       <p class="q-hint">해당하는 거 다 골라도 됩니다</p>
       <div class="choices">
