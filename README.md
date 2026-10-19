@@ -2,6 +2,8 @@
 
 아더댄웍스 클래스 + 디자인 스튜디오 통합 홈페이지. Next.js App Router, TypeScript와 로컬 정적 콘텐츠를 사용합니다.
 
+**브라우저에서 보는 공개 미리보기: https://soreng2.github.io/otherthanworks-pages/preview/** ([배포·검증 기록](docs/PREVIEW_DEPLOYMENT.md)).
+
 ## 먼저 읽기
 
 [운영 검토 항목](docs/REVIEW_REQUIRED.md)을 먼저 확인하세요. 인계 문서가 전제한 Next.js MVP와 `folder-stack.webp` 원본은 제공된 저장소에 없었습니다. 이 구현은 지정 팔레트를 사용해 새로 만든 초안입니다. 기존 HTML 설문 원본은 수정하지 않았고, 실행 가능한 복사본은 `public/legacy/`에 보존했습니다.

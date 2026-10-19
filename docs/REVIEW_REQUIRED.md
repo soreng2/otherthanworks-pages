@@ -54,6 +54,8 @@
 
 ## 검증 상태
 
+- GitHub Pages 검토용 사이트 공개 완료: https://soreng2.github.io/otherthanworks-pages/preview/ . 별도 정적 배포의 26개 화면 검사 및 공개 HTTPS 13개 페이지·연결 자원 검사가 통과했습니다. [배포 기록](PREVIEW_DEPLOYMENT.md) 참조. Vercel 정식 배포와 가비아 DNS는 미변경입니다.
+
 - `npm install`, 잠금파일 기준 `npm ci`, `npm run lint`, `npm run typecheck`, `npm run build` 통과.
 - `npm test`: 입력 검증과 모의 API 테스트 **30개 통과, 실패·건너뜀 0**. 실제 외부 전송은 하지 않았습니다.
 - 13개 지정 경로를 1440×1000 / 390×844에서 검사한 **26개 화면 통과**. HTTP 200, 이미지 로딩, 단일 h1, 가로 넘침 없음, JavaScript 오류 없음. 키보드 본문 이동, 모바일 메뉴 열기·Escape·링크 이동과 문의 비활성 상태를 확인했습니다.
