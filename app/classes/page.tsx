@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import { classes } from "@/content/site";
-import { ClassCard } from "@/components/class-card";
+import { CourseList } from "@/components/course-list";
 
 export const metadata: Metadata = {
   title: "클래스",
   description:
-    "콘텐츠, 포트폴리오, AI 이미지. 나만의 작업으로 이어지는 아더댄웍스의 클래스를 만나보세요.",
+    "아이패드 드로잉 정규반, 콘텐츠, 포트폴리오, 그림책, 이모티콘. 아더댄웍스의 클래스를 만나보세요.",
   alternates: { canonical: "/classes" },
 };
 export default function ClassesPage() {
@@ -24,15 +23,9 @@ export default function ClassesPage() {
           지금의 나에게 필요한 다음 작업을 찾아보세요.
         </p>
       </header>
-      <div className="class-grid">
-        {classes.map((item) => (
-          <ClassCard key={item.slug} item={item} />
-        ))}
-      </div>
+      <CourseList />
       <div className="notice">
-        <strong>새로운 프로그램을 준비하고 있습니다.</strong>소개는 검토 중인
-        초안입니다. 일정·정원·가격과 등록 안내는 운영 내용 확정 후 공개합니다.
-        현재 온라인 결제나 수강 등록은 진행되지 않습니다.
+        수업마다 커리큘럼과 운영 안내를 확인할 수 있습니다. 시작일과 잔여석은 등록 전에 상담으로 확인해 주세요.
       </div>
     </main>
   );

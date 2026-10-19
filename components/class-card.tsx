@@ -35,7 +35,7 @@ export function ClassCard({ item }: { item: (typeof classes)[number] }) {
       <ClassArtwork item={item} />
       <div className="class-card-top">
         <span className="eyebrow">{item.category}</span>
-        <span className="status-dot">준비 중</span>
+        <span className="status-dot">{item.cohort}</span>
       </div>
       <h3>
         {item.title} <Arrow diagonal />

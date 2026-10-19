@@ -1,0 +1,21 @@
+.manager { margin-top: 2rem; }
+.notice { max-width: 40rem; margin: 2rem 0; line-height: 1.8; }
+.form { display: grid; gap: 1.2rem; max-width: 38rem; margin: 2rem 0 4rem; }
+.form label { display: grid; gap: .5rem; }
+.form input:not([type="checkbox"]), .form textarea { width: 100%; border: 1px solid #7f97b0; border-radius: .4rem; padding: .8rem; background: #fff; color: #292a30; font: inherit; }
+.form .check { display: flex; align-items: flex-start; gap: .7rem; }
+.check input { margin-top: .3rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 1.5rem; margin: 2rem 0; }
+.card { padding: 1.2rem; background: #faebce; border-radius: .6rem; min-width: 0; }
+.card img { width: 100%; max-height: 360px; object-fit: contain; }
+.card p { white-space: pre-wrap; overflow-wrap: anywhere; margin: 1rem 0; }
+.editor { border: 0; padding: 0; min-width: 0; }
+.actions { display: flex; flex-wrap: wrap; gap: .75rem; margin: 1rem 0 2rem; }
+.actions button { cursor: pointer; padding: .6rem 1rem; }
+.actions button:disabled { cursor: default; opacity: .55; }
+.form select, .card input { max-width: 100%; padding: .7rem; font: inherit; }
+.curriculum { display: grid; gap: 1rem; margin: 1.5rem 0 3rem; padding-left: 1.5rem; }
+.curriculum li { padding-left: .5rem; line-height: 1.8; white-space: pre-wrap; }
+.detailPhotos { max-width: 900px; margin: 2rem auto; }
+.detailPhotos img { display: block; width: 100%; height: auto; margin: 0 auto 1rem; }
+.summary { margin: 2rem 0; line-height: 1.8; }

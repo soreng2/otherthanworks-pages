@@ -37,6 +37,8 @@ export function Footer() {
               INSTAGRAM <Arrow diagonal />
             </a>
             <Link href="/legal">이용 안내 · 개인정보 처리방침 초안</Link>
+            <Link href="/reviews">수강생 후기</Link>
+            <Link href="/admin">운영자 관리</Link>
           </div>
           <span className="copyright">
             © {new Date().getFullYear()} OTHER THAN WORKS

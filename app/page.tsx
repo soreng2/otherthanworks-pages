@@ -1,9 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Arrow, Asterisk } from "@/components/icons";
-import { ClassCard } from "@/components/class-card";
+import { CourseList } from "@/components/course-list";
 import { CalendarArt } from "@/components/calendar-art";
-import { classes } from "@/content/site";
 
 export const metadata = { alternates: { canonical: "/" } };
 
@@ -104,13 +103,9 @@ export default function Home() {
             모든 클래스 보기 <Arrow diagonal />
           </Link>
         </div>
-        <div className="class-grid">
-          {classes.map((item) => (
-            <ClassCard key={item.slug} item={item} />
-          ))}
-        </div>
+        <CourseList />
         <p className="section-note">
-          프로그램을 준비하고 있어요. 일정과 신청 안내는 확정 후 공개합니다.
+          수업별 커리큘럼을 살펴보고, 시작일과 잔여석은 상담으로 확인해 주세요.
         </p>
       </section>
       <section className="studio-section">
