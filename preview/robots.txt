@@ -1,0 +1,6 @@
+User-Agent: *
+Allow: /
+Disallow: /api/
+Disallow: /legacy/
+
+Sitemap: https://www.otherthanworks.com/sitemap.xml

@@ -1,0 +1,65 @@
+name: Verify website preview
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'preview/**'
+      - '.github/workflows/verify-website-preview.yml'
+  workflow_dispatch:
+permissions: {}
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Wait for Pages and verify the public preview
+        env:
+          PREVIEW_URL: https://soreng2.github.io/otherthanworks-pages/preview/
+          PREVIEW_SOURCE: 2d82561
+        run: |
+          python3 - <<'PY'
+          import os, time
+          from html.parser import HTMLParser
+          from urllib.request import Request, urlopen
+          from urllib.parse import urljoin
+          base = os.environ['PREVIEW_URL']
+          expected = os.environ['PREVIEW_SOURCE']
+          def read(url):
+              req = Request(url, headers={'Cache-Control': 'no-cache', 'User-Agent': 'OTW-Preview-Verification'})
+              with urlopen(req, timeout=20) as response:
+                  assert response.status == 200, url
+                  return response.read()
+          for attempt in range(45):
+              try:
+                  version = read(base + 'preview-version.txt?attempt=' + str(attempt)).decode().strip()
+                  if version == expected: break
+              except Exception as error:
+                  print('Waiting for Pages:', type(error).__name__)
+              time.sleep(5)
+          else:
+              raise RuntimeError('The expected preview version did not become available')
+          routes = ['', 'classes/', 'classes/content-studio/', 'classes/portfolio-ready/', 'classes/portfolio-build/', 'classes/pictureforge/', 'work/', 'work/calendar-making/', 'studio/', 'about/', 'apply/?type=class', 'apply/?type=studio', 'legal/']
+          home = ''
+          for route in routes:
+              body = read(base + route).decode()
+              assert '<html lang="ko"' in body, route
+              assert '<h1' in body, route
+              if route == '':
+                  home = body
+                  assert '좋아하는 딴짓이' in body
+              print('PASS', route or '/')
+          class Assets(HTMLParser):
+              def __init__(self):
+                  super().__init__(); self.urls = set()
+              def handle_starttag(self, tag, attributes):
+                  values = dict(attributes)
+                  if tag in ('img', 'script') or (tag == 'link' and values.get('rel') == 'stylesheet'):
+                      src = values.get('src') or values.get('href')
+                      if src:
+                          url = urljoin(base, src)
+                          if url.startswith(base): self.urls.add(url)
+          assets = Assets(); assets.feed(home)
+          for url in assets.urls:
+              assert len(read(url)) > 0, url
+          print('Verified 13 public pages and', len(assets.urls), 'linked assets over HTTPS')
+          PY
