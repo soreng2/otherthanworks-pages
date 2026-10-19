@@ -1,0 +1,172 @@
+{
+  "screens": 26,
+  "results": [
+    {
+      "width": 1440,
+      "route": "/",
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/classes",
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/classes/content-studio",
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/classes/portfolio-ready",
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/classes/portfolio-build",
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/classes/pictureforge",
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/work",
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/work/calendar-making",
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/studio",
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/about",
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/apply?type=class",
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/apply?type=studio",
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "route": "/legal",
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/",
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/classes",
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/classes/content-studio",
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/classes/portfolio-ready",
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/classes/portfolio-build",
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/classes/pictureforge",
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/work",
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/work/calendar-making",
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/studio",
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/about",
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/apply?type=class",
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/apply?type=studio",
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/legal",
+      "status": 200,
+      "overflow": false
+    }
+  ],
+  "keyboard": true,
+  "mobileMenu": true,
+  "disabledInquiries": true,
+  "api": {
+    "unconfigured": 503,
+    "crossOrigin": 403,
+    "wrongContentType": 415
+  },
+  "legacyAndSeo": true,
+  "notFound": 404,
+  "javascriptErrors": []
+}

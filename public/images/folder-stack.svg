@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="600" viewBox="0 0 700 600" fill="none">
+<defs><filter id="shadow" x="-30%" y="-30%" width="170%" height="170%"><feDropShadow dx="0" dy="17" stdDeviation="17" flood-color="#454b54" flood-opacity=".12"/></filter><linearGradient id="blue" x1="80" y1="370" x2="650" y2="500" gradientUnits="userSpaceOnUse"><stop stop-color="#A8C2D5"/><stop offset="1" stop-color="#8CA8C1"/></linearGradient></defs>
+<ellipse cx="350" cy="531" rx="272" ry="23" fill="#292a30" opacity=".055"/>
+<g transform="rotate(8 350 300)" filter="url(#shadow)"><path d="M98 136q0-16 16-16h127q12 0 19 11l18 28h288q16 0 16 16v314q0 16-16 16H114q-16 0-16-16z" fill="#F5C2A5"/><path d="M113 177h454" stroke="#E5AD90"/></g>
+<g transform="rotate(-7 350 310)" filter="url(#shadow)"><path d="M77 132q0-16 16-16h130q12 0 18 12l16 27h319q16 0 16 16v331q0 16-16 16H93q-16 0-16-16z" fill="#7F97B0"/><path d="M92 173h481" stroke="#7089A3"/></g>
+<g transform="rotate(4 350 300)" filter="url(#shadow)"><rect x="160" y="78" width="402" height="415" rx="4" fill="#FAEBCE"/><path d="M184 111h353M184 460h353" stroke="#D6CCB6" stroke-width=".7"/><path d="M526 78h36v36" fill="#FDEABD"/></g>
+<g filter="url(#shadow)"><path d="M64 327q-2-17 16-17h158q14 0 21 11l17 26h315q17 0 15 17l-18 150q-2 16-18 16H97q-16 0-18-16z" fill="url(#blue)"/><path d="M82 327h153q8 0 13 9l15 26h326" stroke="#BCD0E0" stroke-width="1.3"/><path d="M103 491h172" stroke="#708AA4" opacity=".6"/><rect x="103" y="462" width="112" height="20" rx="2" fill="#D4DEE8"/><path d="M113 472h92" stroke="#7F97B0" stroke-dasharray="3 3"/></g>
+<path d="m111 75 6-16m-25 18-9-9m44 21 15-1" stroke="#7F97B0" stroke-width="2" stroke-linecap="round"/>
+</svg>

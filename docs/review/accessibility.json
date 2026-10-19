@@ -1,0 +1,102 @@
+[
+  {
+    "width": 1440,
+    "route": "/",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "route": "/classes",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "route": "/classes/content-studio",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "route": "/work",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "route": "/work/calendar-making",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "route": "/studio",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "route": "/about",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "route": "/apply?type=class",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "route": "/apply?type=studio",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "route": "/legal",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "route": "/",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "route": "/classes",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "route": "/classes/content-studio",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "route": "/work",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "route": "/work/calendar-making",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "route": "/studio",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "route": "/about",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "route": "/apply?type=class",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "route": "/apply?type=studio",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "route": "/legal",
+    "violations": []
+  }
+]
