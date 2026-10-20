@@ -13,3 +13,16 @@
 - [공개 HTTPS 접속 검사 성공](https://github.com/soreng2/otherthanworks-pages/actions/runs/39217558319): 배포 버전, 13개 페이지 및 홈페이지의 이미지·CSS·JavaScript 자원 응답을 외부 러너에서 확인했습니다.
 
 이 주소는 화면 검토용 사이트입니다. 확정되지 않은 운영 정보·실제 수신·결제·추적은 활성화하지 않습니다.
+# 2026-10-20 업데이트
+
+확정된 5개 수업·기수·커리큘럼, 정규반 가격, 수업/후기 관리자 및 스마트스토어 홈 링크를 공개 미리보기에 반영했다.
+소스 `e446066` (`preview/website-mvp`), 정적 공개 커밋 `37144e1bc03de4815b0eec669778c951d9ff9788` (`main`).
+17개 경로 × PC/모바일 = 34개 로컬 화면 검사 통과. 공통 스토어 URL을 5개 수업에서 확인했다. 실제 원격 스마트스토어 결제 및 Supabase 저장소는 미연결/미검증이다.
+
+- Pages 배포 성공: https://github.com/soreng2/otherthanworks-pages/actions/runs/39346009262
+- 공개 HTTPS 17개 페이지와 연결 자원 검사 성공: https://github.com/soreng2/otherthanworks-pages/actions/runs/39346009912
+- 관리자 주소: https://soreng2.github.io/otherthanworks-pages/preview/admin/ (계정 연결 전 안내 상태)
+- 수업 목록: https://soreng2.github.io/otherthanworks-pages/preview/classes/
+
+아래는 최초 배포 기록이다.
+
