@@ -11,6 +11,11 @@
 <priority>0.7</priority>
 </url>
 <url>
+<loc>https://www.otherthanworks.com/classes/drawing-routine</loc>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
 <loc>https://www.otherthanworks.com/classes/content-studio</loc>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
@@ -21,12 +26,12 @@
 <priority>0.7</priority>
 </url>
 <url>
-<loc>https://www.otherthanworks.com/classes/portfolio-build</loc>
+<loc>https://www.otherthanworks.com/classes/pictureforge</loc>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 <url>
-<loc>https://www.otherthanworks.com/classes/pictureforge</loc>
+<loc>https://www.otherthanworks.com/classes/emoticon</loc>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>

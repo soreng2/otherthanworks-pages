@@ -1,0 +1,44 @@
+1:"$Sreact.fragment"
+2:"static/chunks/244-9566491ae97cdc7d.js"
+3:"static/chunks/app/layout-6a02222eb3a41b62.js"
+4:I[1506,["244","$2","177","$3"],"Header"]
+5:I[6537,[],""]
+6:I[1165,[],""]
+7:"static/chunks/1993905d-6c78f167fd983118.js"
+8:"static/chunks/541-d3ced527b1551b69.js"
+9:"static/chunks/53-0fa73698a615af02.js"
+a:"static/chunks/app/page-58e6892e59d073db.js"
+b:I[9244,["129","$7","244","$2","541","$8","53","$9","974","$a"],""]
+12:"static/chunks/app/reviews/page-3147a94c7495f72b.js"
+13:I[7896,["129","$7","541","$8","564","$12"],"ReviewGallery"]
+14:I[4924,[],"OutletBoundary"]
+15:"$Sreact.suspense"
+18:"ViewportBoundary"
+19:I[4924,[],"$18"]
+1a:"MetadataBoundary"
+1b:I[4924,[],"$1a"]
+:HL["/otherthanworks-pages/preview/_next/static/css/b29e7eedd669f954.css","style"]
+:HL["/otherthanworks-pages/preview/_next/static/css/a6a47addff86dfe2.css","style"]
+:HL["/otherthanworks-pages/preview/_next/static/css/34d74fe204adcdc6.css","style"]
+d:X
+10:X
+10:C
+11:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[["$","main",null,{"id":"main","tabIndex":-1,"className":"section wrap","children":[["$","span",null,{"className":"eyebrow","children":"CLASS STORIES"}],["$","h1",null,{"children":"함께 만든 작업과 이야기"}],["$","$L13",null,{}]]}],[["$","link","0",{"rel":"stylesheet","href":"/otherthanworks-pages/preview/_next/static/css/34d74fe204adcdc6.css","precedence":"next"}]],["$","$L14",null,{"children":["$","$15",null,{"name":"Next.MetadataOutlet","children":"$@16"}]}]]}],"p":"$@17","v":null,"s":"$d"}}]]
+e:[["children",{"s":"reviews","h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}]}]]}],"p":"$@f","v":"$10","s":"$d"},"c":"$Q11"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/otherthanworks-pages/preview/_next/static/css/b29e7eedd669f954.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/otherthanworks-pages/preview/_next/static/css/a6a47addff86dfe2.css","precedence":"next"}]],["$","html",null,{"lang":"ko","children":["$","body",null,{"children":[["$","a",null,{"className":"skip-link","href":"#main","children":"본문으로 건너뛰기"}],["$","$L4",null,{}],["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}],"notFound":[["$","main",null,{"id":"main","tabIndex":-1,"className":"wrap not-found","children":[["$","span",null,{"className":"eyebrow","children":"404 / A DIFFERENT WAY"}],["$","h1",null,{"children":"여긴 아직 빈 폴더예요."}],["$","p",null,{"children":"페이지 주소를 확인하거나 홈페이지에서 다시 시작해 주세요."}],["$","$Lb",null,{"href":"/","className":"button","children":["홈으로 돌아가기 ",["$","svg",null,{"className":"","width":"20","height":"20","viewBox":"0 0 24 24","fill":"none","aria-hidden":"true","children":["$","path",null,{"d":"M4 12h16m-6-6 6 6-6 6","stroke":"currentColor","strokeWidth":"1.6","strokeLinecap":"round","strokeLinejoin":"round"}]}]]}]]}],[]]}],["$","footer",null,{"className":"site-footer","children":["$","div",null,{"className":"wrap","children":[["$","div",null,{"className":"footer-top","children":[["$","div",null,{"children":[["$","span",null,{"className":"eyebrow","children":"A LITTLE DIFFERENT. A LITTLE MORE YOU."}],["$","h2",null,{"children":["우리, 다른 일을",["$","br",null,{}],"만들어볼까요?",["$","svg",null,{"className":"","width":"40","height":"40","viewBox":"0 0 40 40","fill":"none","aria-hidden":"true","children":["$","path",null,{"d":"M20 1v38M1 20h38M6.5 6.5l27 27m0-27-27 27","stroke":"currentColor","strokeWidth":"6"}]}]]}]]}],["$","$Lb",null,{"href":"/apply?type=studio","className":"button button-light","children":["함께할 이야기 남기기 ",["$","svg",null,{"className":"","width":"20","height":"20","viewBox":"0 0 24 24","fill":"none","aria-hidden":"true","children":["$","path",null,{"d":"M5 19 19 5M5 5h14v14","stroke":"currentColor","strokeWidth":"1.6","strokeLinecap":"round","strokeLinejoin":"round"}]}]]}]]}],["$","div",null,{"className":"footer-bottom","children":[["$","$Lb",null,{"href":"/","className":"wordmark","children":["OTHER",["$","span",null,{"children":"THAN WORKS"}]]}],["$","p",null,{"children":"배우고, 만들고, 나누는 아더댄웍스."}],["$","div",null,{"children":[["$","a",null,{"href":"https://www.instagram.com/other.than.works/","target":"_blank","rel":"noopener noreferrer","aria-label":"공식 Instagram, 새 탭에서 열기","children":["INSTAGRAM ",["$","svg",null,{"className":"","width":"20","height":"20","viewBox":"0 0 24 24","fill":"none","aria-hidden":"true","children":["$","path",null,{"d":"M5 19 19 5M5 5h14v14","stroke":"currentColor","strokeWidth":"1.6","strokeLinecap":"round","strokeLinejoin":"round"}]}]]}],["$","$Lb",null,{"href":"/legal","children":"이용 안내 · 개인정보 처리방침 초안"}],["$","$Lb",null,{"href":"/reviews","children":"수강생 후기"}],["$","a",null,{"href":"https://smartstore.naver.com/monmut","target":"_blank","rel":"noopener noreferrer","children":["스마트스토어 ",["$","span",null,{"className":"sr-only","children":"(새 탭)"}],"↗"]}],["$","$Lb",null,{"href":"/admin","children":"운영자 관리"}]]}],["$","span",null,{"className":"copyright","children":["© ",2026," OTHER THAN WORKS"]}]]}]]}]}]]}]}]]}],"p":"$@c","v":null,"s":"$d"},"c":"$Qe"},"h":{"r":["$","$1","h",{"children":[null,["$","$L19",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L1b",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$15",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"수강생 후기 | OTHER THAN WORKS"}],["$","meta","1",{"name":"description","content":"좋아하는 딴짓이 나의 일이 되는 곳. 클래스와 디자인 스튜디오를 연결하는 아더댄웍스입니다."}],["$","meta","2",{"name":"robots","content":"noindex, nofollow"}],["$","link","3",{"rel":"canonical","href":"https://www.otherthanworks.com/reviews/"}],["$","meta","4",{"property":"og:title","content":"OTHER THAN WORKS"}],["$","meta","5",{"property":"og:description","content":"좋아하는 딴짓이 나의 일이 되는 곳. 클래스와 디자인 스튜디오를 연결하는 아더댄웍스입니다."}],["$","meta","6",{"property":"og:site_name","content":"OTHER THAN WORKS"}],["$","meta","7",{"property":"og:locale","content":"ko_KR"}],["$","meta","8",{"property":"og:image","content":"https://www.otherthanworks.com/otherthanworks-pages/preview/opengraph-image?f0de971752d4b50e"}],["$","meta","9",{"property":"og:image:type","content":"image/png"}],["$","meta","10",{"property":"og:image:width","content":"1200"}],["$","meta","11",{"property":"og:image:height","content":"630"}],["$","meta","12",{"property":"og:image:alt","content":"OTHER THAN WORKS — CLASS & DESIGN STUDIO"}],["$","meta","13",{"property":"og:type","content":"website"}],"$L1c","$L1d","$L1e","$L1f","$L20","$L21"]}]}],null]}],null]}],"p":"$@22","v":null,"s":"$d"}},"a":"$@23","u":"$@24","b":"D39ZYr6CzIel6Ltf7UVKb"}
+25:I[2669,[],"IconMark"]
+16:null
+1c:["$","meta","14",{"name":"twitter:card","content":"summary_large_image"}]
+1d:["$","meta","15",{"name":"twitter:title","content":"OTHER THAN WORKS"}]
+1e:["$","meta","16",{"name":"twitter:description","content":"좋아하는 딴짓이 나의 일이 되는 곳. 클래스와 디자인 스튜디오를 연결하는 아더댄웍스입니다."}]
+1f:["$","meta","17",{"name":"twitter:image","content":"https://www.otherthanworks.com/opengraph-image"}]
+20:["$","link","18",{"rel":"icon","href":"/otherthanworks-pages/preview/icon.svg?650e1d617fa9eecc","type":"image/svg+xml","sizes":"any"}]
+21:["$","$L25","19",{}]
+d:300
+24:true
+d:C
+23:0
+f:"$undefined"
+c:"$undefined"
+22:"$undefined"
+17:"$undefined"

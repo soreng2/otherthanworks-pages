@@ -15,7 +15,7 @@ jobs:
       - name: Wait for Pages and verify the public preview
         env:
           PREVIEW_URL: https://soreng2.github.io/otherthanworks-pages/preview/
-          PREVIEW_SOURCE: 2d82561
+          PREVIEW_SOURCE: e446066
         run: |
           python3 - <<'PY'
           import os, time
@@ -38,7 +38,7 @@ jobs:
               time.sleep(5)
           else:
               raise RuntimeError('The expected preview version did not become available')
-          routes = ['', 'classes/', 'classes/content-studio/', 'classes/portfolio-ready/', 'classes/portfolio-build/', 'classes/pictureforge/', 'work/', 'work/calendar-making/', 'studio/', 'about/', 'apply/?type=class', 'apply/?type=studio', 'legal/']
+          routes = ['', 'classes/', 'classes/content-studio/', 'classes/portfolio-ready/', 'classes/portfolio-build/', 'classes/pictureforge/', 'work/', 'work/calendar-making/', 'studio/', 'about/', 'apply/?type=class', 'apply/?type=studio', 'legal/', 'classes/drawing-routine/', 'classes/emoticon/', 'admin/', 'reviews/']
           home = ''
           for route in routes:
               body = read(base + route).decode()
@@ -61,5 +61,5 @@ jobs:
           assets = Assets(); assets.feed(home)
           for url in assets.urls:
               assert len(read(url)) > 0, url
-          print('Verified 13 public pages and', len(assets.urls), 'linked assets over HTTPS')
+          print('Verified 17 public pages and', len(assets.urls), 'linked assets over HTTPS')
           PY
