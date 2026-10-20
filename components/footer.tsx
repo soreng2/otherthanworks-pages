@@ -38,6 +38,7 @@ export function Footer() {
             </a>
             <Link href="/legal">이용 안내 · 개인정보 처리방침 초안</Link>
             <Link href="/reviews">수강생 후기</Link>
+            <a href={site.smartstore} target="_blank" rel="noopener noreferrer">스마트스토어 <span className="sr-only">(새 탭)</span>↗</a>
             <Link href="/admin">운영자 관리</Link>
           </div>
           <span className="copyright">

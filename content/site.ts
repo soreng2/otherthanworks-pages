@@ -5,6 +5,7 @@ export const site = {
   description:
     "좋아하는 딴짓이 나의 일이 되는 곳. 클래스와 디자인 스튜디오를 연결하는 아더댄웍스입니다.",
   instagram: "https://www.instagram.com/other.than.works/",
+  smartstore: "https://smartstore.naver.com/monmut",
   youtube: null,
   inquiriesEnabled: false,
   legalApproved: false,

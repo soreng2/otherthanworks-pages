@@ -63,7 +63,10 @@ export function CourseDetails({ item }: { item: ClassDefinition }) {
         {course.payment_verified && validPaymentUrl(course.payment_url) ? <div className={styles.summary}>
           <p>시작일과 잔여석을 먼저 확인해 주세요. 상품의 가격·일정·환불 기준을 확인한 뒤 스마트스토어에서 결제할 수 있습니다.</p>
           <a className="button" href={course.payment_url} target="_blank" rel="noopener noreferrer">스마트스토어에서 결제 <span className="sr-only">(새 탭)</span>↗</a>
-        </div> : <p className="notice">수업별 결제 상품을 준비하고 있습니다. 등록 상담은 공식 Instagram으로 문의해 주세요.</p>}
+        </div> : <div className={styles.summary}>
+          <p>시작일과 잔여석을 먼저 문의해 주세요. 스마트스토어에서 원하는 수업과 기수·옵션을 선택하고 가격·환불 안내를 확인한 뒤 결제할 수 있습니다.</p>
+          <a className="button" href={site.smartstore} target="_blank" rel="noopener noreferrer">스마트스토어에서 수업 선택하기 <span className="sr-only">(새 탭)</span>↗</a>
+        </div>}
       </section>
     </div>
     <section id="curriculum" className="section">
