@@ -26,3 +26,12 @@
 
 아래는 최초 배포 기록이다.
 
+# 2026-10-23 업데이트
+
+소스 `c37593c`, 정적 공개 커밋 `77bdb54e1d7f8bf8ef1acd0a1e74a4ed3df07e8f`. 후기·작업 예시 분류 관리, Instagram 공유 링크 관리와 클릭 후 embed, 홈페이지 공개 영역, 관리자 미연결 미리보기, 브랜드 색상·모션을 추가했다.
+
+- Pages 배포 성공: https://github.com/soreng2/otherthanworks-pages/actions/runs/39936781158
+- 공개 HTTPS 17개 페이지 및 연결 자원 검사 성공: https://github.com/soreng2/otherthanworks-pages/actions/runs/39936783380
+- 로컬 단위 테스트36개, 주요 PC/모바일8화면·axe 자동 검사 및 모의 등록/공개/Instagram 연결 흐름 통과.
+- 원격 Supabase 계정·SQL·로그인·실제 업로드 및 실제 Instagram 재생은 미연결/미검증. 관리 화면에서 미리보기임을 명시한다.
+
