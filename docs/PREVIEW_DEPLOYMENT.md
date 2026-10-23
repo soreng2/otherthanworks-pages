@@ -35,3 +35,12 @@
 - 로컬 단위 테스트36개, 주요 PC/모바일8화면·axe 자동 검사 및 모의 등록/공개/Instagram 연결 흐름 통과.
 - 원격 Supabase 계정·SQL·로그인·실제 업로드 및 실제 Instagram 재생은 미연결/미검증. 관리 화면에서 미리보기임을 명시한다.
 
+# 수업 공고·후기 중심 시안 배포
+
+소스 `f57a4dd`, 정적 공개 커밋 `81fff4492d5376accb63b466cfa80d853002bcad`. 큰 한글 타이포/포스터 공고/분야 필터/사진과 인용문 후기 중심으로 재구성. ilovecreatives.com은 접근 차단으로 실제 확인하지 못했고, 원본을 복제한 결과가 아니다.
+
+- Pages 배포 성공: https://github.com/soreng2/otherthanworks-pages/actions/runs/39958444554
+- 공개 HTTPS17개 페이지·연결 자원 검증 성공: https://github.com/soreng2/otherthanworks-pages/actions/runs/39958445958
+- 단위 테스트36개 및 PC/모바일10화면·axe 자동 검사 통과. 모의 데이터로 후기 이름/수강 과정/인용문과 수업 대표 사진 로딩 검증.
+- 실제 관리자 계정·업로드는 미연결. `review-profiles.sql` 추가 적용 필요. 상세 범위는 `CREATIVE_BOARD.md`.
+
