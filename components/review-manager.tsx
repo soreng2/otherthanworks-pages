@@ -59,6 +59,7 @@ export function ReviewManager() {
       if (uploaded.error) throw new Error("사진 저장에 실패했습니다. 로그인 상태와 연결을 확인해 주세요.");
       const inserted = await client.from("reviews").insert({
         kind: form.get("kind") === "example" ? "example" : "review",
+        author_name: String(form.get("author_name") ?? "").trim(), course_label: String(form.get("course_label") ?? "").trim(),
         title: String(form.get("title")).trim(), body: String(form.get("body")).trim(),
         alt: String(form.get("alt")).trim(), image_path: path,
         consent: form.get("consent") === "on", published: false,
@@ -96,6 +97,7 @@ export function ReviewManager() {
         title: String(values.get("title")).trim(), body: String(values.get("body")).trim(),
         alt: String(values.get("alt")).trim(), kind: values.get("kind") === "example" ? "example" : "review",
         published: false,
+        author_name: String(values.get("author_name") ?? "").trim(), course_label: String(values.get("course_label") ?? "").trim(),
       }).eq("id", review.id).select("id");
       if (result.error || result.data?.length !== 1) throw new Error("수정 내용을 저장하지 못했습니다.");
       await reload(); setMessage("수정 내용을 비공개로 저장했습니다. 다시 공개해 주세요.");
@@ -124,6 +126,8 @@ export function ReviewManager() {
         <h2>후기·작업 예시 올리기</h2>
         <label>공개할 곳<select name="kind"><option value="review">수강생 후기 · 홈과 후기 페이지</option><option value="example">작업 예시 · 홈과 WORK 페이지</option></select></label>
         <label>제목<input name="title" maxLength={120} required /></label>
+        <label>공개할 작성자·작가 이름 (선택)<input name="author_name" maxLength={80} placeholder="동의받은 이름 또는 닉네임" /></label>
+        <label>관련 수업·기수 (선택)<input name="course_label" maxLength={120} placeholder="예: 드로잉 루틴" /></label>
         <label>후기 또는 작업 설명<textarea name="body" rows={5} maxLength={3000} required /></label>
         <label>사진<input name="photo" type="file" accept="image/jpeg,image/png,image/webp" required /></label>
         <p>JPG·PNG·WebP, 최대 10MB. 업로드할 때 사진 크기를 줄이고 위치 정보를 제거합니다.</p>
@@ -144,6 +148,8 @@ export function ReviewManager() {
         <details><summary>제목·설명·분류 수정</summary>
           <form onSubmit={event => { void editReview(event, review); }} className={styles.form}>
             <label>제목<input name="title" defaultValue={review.title} required maxLength={120} /></label>
+            <label>공개할 이름<input name="author_name" defaultValue={review.author_name ?? ""} maxLength={80} /></label>
+            <label>관련 수업·기수<input name="course_label" defaultValue={review.course_label ?? ""} maxLength={120} /></label>
             <label>설명<textarea name="body" defaultValue={review.body} required maxLength={3000} /></label>
             <label>사진 설명<input name="alt" defaultValue={review.alt} required maxLength={300} /></label>
             <label>분류<select name="kind" defaultValue={review.kind ?? "review"}><option value="review">수강생 후기</option><option value="example">작업 예시</option></select></label>

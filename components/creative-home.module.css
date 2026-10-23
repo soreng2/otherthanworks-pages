@@ -1,0 +1,64 @@
+.home { color: #292a30; }
+.hero { padding: 1.5rem max(24px, calc((100vw - 1280px)/2)) 0; background: #fdeabd; overflow: hidden; }
+.kicker { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid #292a30; padding: 0 0 1.3rem; font-size: .7rem; font-weight: 700; letter-spacing: .08em; }
+.heroGrid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 5%; padding: 5rem 0 4.5rem; align-items: center; }
+.smallLabel { font-size: .75rem; font-weight: 750; letter-spacing: .06em; }
+.hero h1 { font-size: clamp(3.3rem, 6.7vw, 6.5rem); letter-spacing: -.085em; line-height: 1.15; margin: 1.5rem 0 2rem; font-weight: 850; }
+.underlined { position: relative; z-index: 0; }
+.underlined::after { content: ''; position: absolute; z-index: -1; height: 28%; background: #f5c2a5; left: 0; right: -.1em; bottom: 2%; transform: rotate(-3deg); }
+.period { color: #292a30; }
+.heroText { font-size: 1rem; line-height: 1.9; margin-bottom: 2rem; }
+.actions { display: flex; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+.darkButton { display: inline-flex; align-items: center; padding: 1rem 1.4rem; color: #fff; background: #292a30; font-size: .9rem; font-weight: 650; border: 1px solid #292a30; box-shadow: 4px 4px 0 #292a3040; }
+.plainLink { font-size: .85rem; font-weight: 700; text-underline-offset: .4rem; text-decoration: underline; }
+.heroBoard { position: relative; padding: 1rem 1.3rem 0; }
+.note { padding: 2rem; background: #faebce; border: 1px solid #292a30; transform: rotate(-5deg); min-height: 290px; box-shadow: 9px 10px 0 #292a30; }
+.note strong { display: block; font-size: clamp(1.6rem, 3vw, 2.6rem); line-height: 1.4; margin: 1.8rem 0 1rem; letter-spacing: -.05em; }
+.note p { font-size: .9rem; }
+.noteMark { position: absolute; right: 1.5rem; bottom: .5rem; font-size: 5rem; color: #292a30; }
+.noteMark svg { display: block; width: 1em; height: 1em; }
+.heroNotice { display: grid; gap: .5rem; padding: 1.4rem 1.5rem; border: 1px solid #292a30; background: #a0bace; margin: -1rem -1.2rem 0 2rem; position: relative; transform: rotate(3deg); box-shadow: 5px 5px 0 #292a30; }
+.heroNotice strong { font-size: 1.7rem; }
+.heroNotice span { font-size: .72rem; font-weight: 650; }
+.heroNotice p { font-size: .9rem; }
+.sticker { position: absolute; top: -1rem; right: -1rem; border: 1px solid #292a30; background: #f5c2a5; padding: 1.2rem; border-radius: 50%; font-size: .85rem; font-weight: 850; line-height: 1.1; transform: rotate(12deg); }
+.ribbon { display: flex; justify-content: space-between; gap: 1rem; border-top: 1px solid #292a30; padding: 1.2rem 0; font-weight: 800; font-size: clamp(.65rem, 1.3vw, 1rem); letter-spacing: .02em; }
+.classSection, .stories, .workSection, .social, .studio { padding: 5rem max(24px, calc((100vw - 1280px)/2)); border-top: 1px solid #292a30; }
+.classSection { background: #fbf7ef; }
+.sectionTop { display: flex; justify-content: space-between; gap: 1rem; font-size: .8rem; margin-bottom: 2rem; }
+.sectionTop p { text-align: right; }
+.sectionTitle { display: flex; justify-content: space-between; align-items: end; gap: 1.5rem; margin-bottom: 3rem; }
+.sectionTitle h2 { font-size: clamp(2.3rem, 4.4vw, 4rem); font-weight: 800; letter-spacing: -.065em; line-height: 1.2; }
+.sectionTitle em { font-style: normal; font-weight: 450; }
+.footnote { font-size: .8rem; margin-top: 2rem; }
+.stories { background: #a0bace; }
+.roundMark { font-family: Georgia, serif; font-size: 6rem; line-height: .4; }
+.workSection { background: #faebce; }
+.social { background: #f5c2a5; }
+.playMark { border: 1px solid #292a30; border-radius: 50%; font-size: 3rem; padding: .4rem 1.4rem; transform: rotate(8deg); }
+.studio { background: #d4dee8; text-align: center; }
+.studio h2 { font-size: clamp(1.7rem, 3.5vw, 3.2rem); line-height: 1.4; margin: 1.5rem 0 2rem; letter-spacing: -.05em; }
+.studio .actions { justify-content: center; }
+@media (prefers-reduced-motion: no-preference) {
+ .hero h1 { animation: type-in .8s both; }
+ .heroBoard { animation: type-in 1s .15s both; }
+ .heroNotice, .darkButton { transition: translate .2s, box-shadow .2s; }
+ .heroNotice:hover, .heroNotice:focus-visible { translate: 0 -5px; }
+ .darkButton:hover { translate: 2px 2px; box-shadow: 2px 2px 0 #292a3040; }
+ @keyframes type-in { from { opacity: 0; translate: 0 18px; } to { opacity: 1; translate: 0 0; } }
+}
+@media (max-width: 760px) {
+ .kicker span:last-child { display: none; }
+ .kicker { font-size: .6rem; }
+ .heroGrid { grid-template-columns: 1fr; gap: 3rem; padding: 3rem 0; }
+ .hero h1 { font-size: clamp(3rem, 12vw, 5rem); }
+ .heroBoard { margin: 0 .8rem; }
+ .note { min-height: 260px; padding: 1.5rem; }
+ .heroNotice { margin-left: .8rem; }
+ .noteMark { font-size: 4rem; }
+ .ribbon { flex-wrap: wrap; justify-content: center; font-size: .65rem; }
+ .classSection, .stories, .workSection, .social, .studio { padding: 3.5rem 24px; }
+ .sectionTitle { align-items: start; flex-direction: column; margin-bottom: 2rem; }
+ .sectionTop p { max-width: 130px; }
+ .sectionTitle .playMark { display: none; }
+}

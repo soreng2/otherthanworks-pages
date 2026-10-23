@@ -15,6 +15,8 @@ export function createReviewClient() {
 }
 
 export type Review = {
+  author_name?: string;
+  course_label?: string;
   kind: "review" | "example";
   id: string;
   title: string;

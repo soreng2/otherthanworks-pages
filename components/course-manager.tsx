@@ -114,7 +114,7 @@ export function CourseManager({ client }: { client: SupabaseClient }) {
         <label className={styles.check}><input type="checkbox" checked={course.payment_verified} onChange={event => edit("payment_verified", event.target.checked)} />상품의 수업·기수·가격·판매 상태·환불 안내를 확인했으며 결제 버튼을 공개합니다.</label>
         <p>결제와 주문 확인은 스마트스토어에서 처리합니다. 홈페이지에서는 결제 완료나 수강 확정을 표시하지 않습니다.</p>
         <label>상세페이지 사진 추가<input type="file" accept="image/jpeg,image/png,image/webp" multiple onChange={event => { void upload(event.target.files); event.target.value = ""; }} /></label>
-        <p>사진당 10MB, 최대 20장. 긴 상세페이지는 여러 장으로 나눠 올려 주세요. 공개 가능한 사진만 등록해 주세요.</p>
+        <p>첫 번째 사진은 홈과 클래스 공고의 대표 이미지로도 사용됩니다. 사진당 10MB, 최대 20장. 긴 상세페이지는 여러 장으로 나눠 올려 주세요. 공개 가능한 사진만 등록해 주세요.</p>
       </div>
       <div className={styles.grid}>{course.photos.map((photo, index) => <article className={styles.card} key={photo.path}>
         {/* eslint-disable-next-line @next/next/no-img-element */}

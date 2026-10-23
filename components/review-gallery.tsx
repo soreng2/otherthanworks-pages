@@ -27,12 +27,14 @@ export function ReviewGallery({ kind = "review", limit = 60 }: { kind?: "review"
     const timer = setInterval(() => { void load(); }, 240_000);
     return () => { active = false; clearInterval(timer); };
   }, [kind, limit]);
-  return <><p role="status" className={styles.notice}>{status}</p><div className={styles.grid}>
-    {reviews.map(review => <article key={review.id} className={styles.card}>
+  return <>{status && <div role="status" className={styles.emptyStory}><span className="eyebrow">{kind === "review" ? "STUDENT STORIES" : "WORK IN PROGRESS"}</span><p>{status}</p><span>공개 가능한 실제 사진과 이야기로 채워갑니다.</span></div>}<div className={styles.grid}>
+    {reviews.map(review => <article key={review.id} className={`${styles.card} ${styles.publicStory}`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={review.imageUrl} alt={review.alt} loading="lazy" />
       <span className="eyebrow">{kind === "example" ? "WORK / 작업 예시" : "CLASS STORY / 수강 후기"}</span>
-      <h3>{review.title}</h3><p>{review.body}</p>
+      <h3>{review.title}</h3>
+      {kind === "review" ? <blockquote><span className={styles.quoteMark} aria-hidden="true">“</span><p>{review.body}</p></blockquote> : <p>{review.body}</p>}
+      {(review.author_name || review.course_label) && <footer className={styles.byline}>{review.author_name && <strong>{review.author_name}</strong>}{review.course_label && <span>{review.course_label}</span>}</footer>}
     </article>)}
   </div></>;
 }

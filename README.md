@@ -35,6 +35,8 @@ npm start
 
 ## 수업·사진·후기 관리
 
+수업 공고는 분야 필터와 기수·기간·가격·일정을 제공하며, 공개 수업의 첫 번째 사진을 대표 이미지로 사용합니다. 후기는 작성자 공개 이름과 관련 수업을 선택적으로 표시합니다. `supabase/review-profiles.sql`을 showcase SQL 다음에 적용하세요. [수업 공고·후기 중심 시안](docs/CREATIVE_BOARD.md)의 검증 범위와 원본 참고 사이트 접근 제한을 참고하세요.
+
 후기와 작업 예시는 분류하여 홈·후기·WORK에 공개하고, Instagram 릴스/게시물은 공유 링크를 등록해 홈에 공개합니다. `supabase/showcase.sql`을 기존 두 SQL 다음에 적용해야 합니다. [후기·작업·Instagram 운영 안내](docs/SHOWCASE_MANAGEMENT.md)를 참고하세요. 미연결 관리자 화면에서도 가능한 편집 항목을 미리 볼 수 있지만 저장 기능은 활성화되지 않습니다.
 
 `/admin`은 운영자 로그인 뒤 수업 상세·커리큘럼·사진·스마트스토어 상품 주소와 후기를 관리하는 화면입니다. `/reviews`는 공개 후기 목록입니다. Supabase 계정과 저장소 연결 전에는 로그인·업로드가 활성화되지 않습니다. `supabase/reviews.sql` → `supabase/courses.sql` 순으로 적용하고 운영자 UUID 및 공개 환경변수를 설정합니다. [연결과 운영 방법](docs/REVIEW_MANAGEMENT.md)을 따르세요. 실제 DB/Storage 권한·저장·재조회 E2E는 계정 연결 후 검증해야 합니다.

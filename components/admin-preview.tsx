@@ -15,6 +15,8 @@ export function AdminPreview() {
         <label>공개할 곳<select><option>수강생 후기</option><option>작업 예시</option></select></label>
         <label>사진 선택<input type="file" accept="image/jpeg,image/png,image/webp" /></label>
         <label>제목<input placeholder="공개할 사진의 제목" /></label>
+        <label>공개할 이름<input placeholder="동의받은 이름 또는 닉네임" /></label>
+        <label>수강한 수업·기수<input placeholder="관련 수업 또는 기수" /></label>
         <label>설명<textarea placeholder="고객에게 보여줄 이야기" /></label>
         <button className="button">연결 후 저장 가능</button>
       </div>
