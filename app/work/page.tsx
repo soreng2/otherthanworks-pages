@@ -2,6 +2,7 @@ import Link from "next/link";
 import { CalendarArt } from "@/components/calendar-art";
 import { Arrow } from "@/components/icons";
 import { work } from "@/content/site";
+import { ReviewGallery } from "@/components/review-gallery";
 
 export const metadata = {
   title: "작업",
@@ -21,6 +22,7 @@ export default function WorkPage() {
         </h1>
         <p>생각이 형태가 되는 과정과, 작업에 담긴 이야기를 모읍니다.</p>
       </header>
+      <section aria-label="공개 작업 예시"><ReviewGallery kind="example" /></section>
       <div className="work-list">
         <Link href="/work/calendar-making" className="featured-work">
           <CalendarArt />

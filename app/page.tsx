@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Arrow, Asterisk } from "@/components/icons";
 import { CourseList } from "@/components/course-list";
 import { CalendarArt } from "@/components/calendar-art";
+import { HomeShowcase } from "@/components/home-showcase";
 
 export const metadata = { alternates: { canonical: "/" } };
 
@@ -144,6 +145,7 @@ export default function Home() {
           </Link>
         </div>
       </section>
+      <HomeShowcase />
       <section className="section wrap about-strip">
         <span className="eyebrow">03 / THE WAY WE THINK</span>
         <div>

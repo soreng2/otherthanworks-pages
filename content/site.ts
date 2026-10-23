@@ -19,7 +19,7 @@ export const site = {
     {
       id: "review-management",
       detail:
-        "후기 관리자·공개 목록 구현. Supabase 프로젝트와 운영자 계정 연결 및 DB/Storage 권한·실제 업로드 E2E 확인 전 사용 불가.",
+        "수업·후기·작업 예시·Instagram 링크 관리 및 공개 목록 구현. Supabase 프로젝트/관리자 연결과 reviews→courses→showcase SQL 적용 및 실제 권한·업로드 E2E 필요. Instagram 실제 공개 게시물 재생 미검증.",
     },
     {
       id: "original-mvp",

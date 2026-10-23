@@ -15,6 +15,7 @@ export function createReviewClient() {
 }
 
 export type Review = {
+  kind: "review" | "example";
   id: string;
   title: string;
   body: string;
