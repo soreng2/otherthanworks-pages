@@ -53,3 +53,11 @@
 - 공개 버전 및 HTTPS 17경로/연결 자원 검사 성공: https://github.com/soreng2/otherthanworks-pages/actions/runs/41431417473
 - 미리보기: https://soreng2.github.io/otherthanworks-pages/preview/
 - 실제 관리자 저장소/로그인, Vercel, 가비아 DNS는 미연결·미변경.
+
+## 2026-11-02 사진·영상 상세페이지 첨부
+
+- 소스 `a2c3e8a`, 공개 main `7d74f0fc470db88eb366b4a65419870f0d1fefc8`.
+- 관리자 로컬 파일 체험: https://soreng2.github.io/otherthanworks-pages/preview/admin/#media-preview
+- Pages 성공: https://github.com/soreng2/otherthanworks-pages/actions/runs/41432206933
+- 공개 버전/HTTPS 경로 검증 성공: https://github.com/soreng2/otherthanworks-pages/actions/runs/41432207743
+- 단위 테스트 40개, 로컬 PC/모바일 첨부·재생·순서·본문·삭제·오류 검증 및 모의 관리자 저장/공개/상세 재생 통과. 실제 DB·스토리지 계정은 여전히 미연결.
