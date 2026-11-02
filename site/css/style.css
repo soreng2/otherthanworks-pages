@@ -452,7 +452,7 @@ button { font: inherit; cursor: pointer; }
 }
 .profile-avatar {
   aspect-ratio: 4 / 5;
-  background: linear-gradient(145deg, var(--cream-deep), var(--peach-soft));
+  background: var(--peach-soft);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -604,10 +604,12 @@ button { font: inherit; cursor: pointer; }
   justify-content: space-between;
   align-items: center;
   padding: 18px 22px;
-  border: 1px solid var(--line);
+  border: 1.5px solid var(--ink);
   border-radius: var(--radius-sm);
   background: var(--paper);
+  transition: transform 0.15s ease;
 }
+.contact-option:hover { transform: translateY(-2px); }
 .contact-option .name { font-weight: 700; font-size: 15px; }
 .contact-option .sub { font-size: 12.5px; color: var(--ink-soft); margin-top: 3px; }
 
