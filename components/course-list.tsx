@@ -18,14 +18,14 @@ export function CourseList() {
       const { data, error } = await client.from("course_content").select("*").eq("stage", "published");
       if (!active || error || !data) return;
       const rows = data as CourseContent[];
-      const next = await Promise.all(classes.map(async item => {
+      const next: ClassListing[] = await Promise.all(classes.map(async item => {
         const row = rows.find(row => row.slug === item.slug);
         if (!row) return item;
         const photo = row.photos[0];
         const signed = photo ? await client.storage.from("course-photos").createSignedUrl(photo.path, 300) : null;
-        return { ...item, title: row.title, description: row.description, cohort: row.cohort, duration: row.duration, priceLabel: row.price_label, scheduleLabel: row.schedule, coverUrl: signed?.data?.signedUrl, coverAlt: photo?.alt };
+        return { ...item, title: row.title, description: row.description, cohort: row.cohort, duration: row.duration, priceLabel: row.price_label, scheduleLabel: row.schedule, enrollmentStatus: row.enrollment_status, displayOrder: row.display_order, coverUrl: signed?.data?.signedUrl, coverAlt: photo?.alt };
       }));
-      if (active) setItems(next);
+      if (active) setItems(next.sort((a, b) => (a.displayOrder ?? 50) - (b.displayOrder ?? 50)));
     }
     void load();
     const timer = setInterval(() => { void load(); }, 240000);

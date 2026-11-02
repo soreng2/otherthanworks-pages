@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { site, type ClassDefinition } from "@/content/site";
-import { defaultCourse, validPaymentUrl, type CourseContent } from "@/lib/course-content";
+import { defaultCourse, validPaymentUrl, enrollmentLabel, canApply, type CourseContent } from "@/lib/course-content";
 import { createReviewClient } from "@/lib/review-client";
 import { ClassArtwork } from "./class-card";
 import styles from "./reviews.module.css";
@@ -50,6 +50,7 @@ export function CourseDetails({ item }: { item: ClassDefinition }) {
       <section className="detail-copy">
         <h2>수업 안내</h2>
         <dl className="detail-facts">
+          <div><dt>모집 상태</dt><dd>{enrollmentLabel(course.enrollment_status)}</dd></div>
           <div><dt>기수</dt><dd>{course.cohort}</dd></div>
           <div><dt>기간·횟수</dt><dd>{course.duration}</dd></div>
           <div><dt>수강료</dt><dd>{course.price_label}</dd></div>
@@ -60,7 +61,7 @@ export function CourseDetails({ item }: { item: ClassDefinition }) {
           <a className="button" href="#curriculum">커리큘럼 보기 ↓</a>
           <a className="text-link" href={site.instagram} target="_blank" rel="noopener noreferrer">Instagram으로 문의 <span className="sr-only">(새 탭)</span>↗</a>
         </div>
-        {course.payment_verified && validPaymentUrl(course.payment_url) ? <div className={styles.summary}>
+        {!canApply(course.enrollment_status) ? <div className={styles.summary}><p>{course.enrollment_status === "closed" ? "이번 모집은 마감되었습니다. 다음 수업 안내는 Instagram으로 문의해 주세요." : "모집을 준비하고 있습니다. 일정은 Instagram으로 문의해 주세요."}</p></div> : course.payment_verified && validPaymentUrl(course.payment_url) ? <div className={styles.summary}>
           <p>시작일과 잔여석을 먼저 확인해 주세요. 상품의 가격·일정·환불 기준을 확인한 뒤 스마트스토어에서 결제할 수 있습니다.</p>
           <a className="button" href={course.payment_url} target="_blank" rel="noopener noreferrer">스마트스토어에서 결제 <span className="sr-only">(새 탭)</span>↗</a>
         </div> : <div className={styles.summary}>

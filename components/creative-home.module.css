@@ -62,3 +62,41 @@
  .sectionTop p { max-width: 130px; }
  .sectionTitle .playMark { display: none; }
 }
+
+.guide, .join { padding: 4rem max(24px, calc((100vw - 1280px)/2)); border-top: 1px solid #292a30; background: #faebce; }
+.guide h2 { font-size: clamp(1.6rem, 3vw, 2.5rem); margin: 1rem 0; letter-spacing: -.05em; }
+.guide p { line-height: 1.8; }
+.paths { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; margin-top: 2rem; }
+.paths a { display: flex; flex-direction: column; justify-content: space-between; gap: 1.4rem; padding: 1.4rem; border: 1px solid #292a30; background: #fbf7ef; }
+.paths a:nth-child(2n) { background: #d4dee8; }
+.paths a:last-child { background: #f5c2a5; }
+.paths span { font-size: .72rem; line-height: 1.7; }
+.paths strong { font-size: 1.15rem; line-height: 1.6; word-break: keep-all; }
+.paths a:hover, .paths a:focus-visible { box-shadow: 4px 4px 0 #292a30; }
+.join { background: #fbf7ef; }
+.join .sectionTitle { margin-top: 1.5rem; }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); list-style: none; padding: 0; border: 1px solid #292a30; }
+.steps li { padding: 2rem; background: #faebce; }
+.steps li + li { border-left: 1px solid #292a30; }
+.steps li:nth-child(2) { background: #d4dee8; }
+.steps li:nth-child(3) { background: #f5c2a5; }
+.steps span { font-size: 2rem; font-weight: 800; }
+.steps h3 { font-size: 1.15rem; margin: 1.5rem 0 1rem; }
+.steps p, .faq p { font-size: .9rem; line-height: 1.9; word-break: keep-all; }
+.faq { max-width: 860px; margin: 4rem auto 0; }
+.faq h3 { font-size: 1.5rem; margin-bottom: 1.5rem; }
+.faq details { border-top: 1px solid #292a30; padding: 1.3rem 0; }
+.faq details:last-child { border-bottom: 1px solid #292a30; }
+.faq summary { cursor: pointer; font-weight: 650; line-height: 1.8; }
+.faq p { margin-top: 1rem; }
+.faq a { display: inline-block; margin-top: 1rem; text-decoration: underline; }
+@media(max-width: 1000px) { .paths { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media(max-width: 760px) {
+ .guide, .join { padding: 3rem 24px; }
+ .paths { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
+ .paths a { padding: 1rem; }
+ .paths a:last-child { grid-column: 1 / -1; }
+ .steps { grid-template-columns: 1fr; }
+ .steps li + li { border-left: 0; border-top: 1px solid #292a30; }
+ .steps li { padding: 1.5rem; }
+}

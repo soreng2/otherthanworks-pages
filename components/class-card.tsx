@@ -2,9 +2,9 @@ import Link from "next/link";
 import { classes } from "@/content/site";
 import { Arrow } from "./icons";
 import styles from "./course-board.module.css";
-import { defaultCourse } from "@/lib/course-content";
+import { defaultCourse, enrollmentLabel, type EnrollmentStatus } from "@/lib/course-content";
 
-export type ClassListing = (typeof classes)[number] & { coverUrl?: string; coverAlt?: string; priceLabel?: string; scheduleLabel?: string };
+export type ClassListing = (typeof classes)[number] & { enrollmentStatus?: EnrollmentStatus; displayOrder?: number; coverUrl?: string; coverAlt?: string; priceLabel?: string; scheduleLabel?: string };
 
 export function ClassArtwork({ item }: { item: (typeof classes)[number] }) {
   return (
@@ -47,7 +47,7 @@ export function ClassCard({ item }: { item: ClassListing }) {
       <div className={styles.body}>
       <div className={styles.meta}>
         <span className="eyebrow">{item.category}</span>
-        <span>{item.cohort}</span>
+        <span>{enrollmentLabel(item.enrollmentStatus)}</span>
       </div>
       <h3>
         {item.title} <Arrow diagonal />

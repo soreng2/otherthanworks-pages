@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { classes } from "@/content/site";
-import { defaultCourse, validateCourse, type CourseContent } from "@/lib/course-content";
+import { defaultCourse, validateCourse, enrollmentLabels, type EnrollmentStatus, type CourseContent } from "@/lib/course-content";
 import { prepareReviewPhoto } from "@/lib/review-client";
 import styles from "./reviews.module.css";
 
@@ -105,6 +105,9 @@ export function CourseManager({ client }: { client: SupabaseClient }) {
       <div className={styles.form}>
         <label>수업명<input value={course.title} maxLength={120} onChange={event => edit("title", event.target.value)} /></label>
         <label>소개<textarea value={course.description} maxLength={1500} onChange={event => edit("description", event.target.value)} /></label>
+        <label>모집 상태<select value={course.enrollment_status ?? "inquiry"} onChange={event => edit("enrollment_status", event.target.value as EnrollmentStatus)}>{Object.entries(enrollmentLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
+        <label>목록 노출 순서<input type="number" min={0} max={999} step={1} value={Number.isNaN(course.display_order) ? "" : course.display_order ?? 50} onChange={event => edit("display_order", event.target.value === "" ? NaN : Number(event.target.value))} /></label>
+        <p>작은 번호부터 표시합니다. 모집 상태는 실제 운영 상황을 확인한 뒤 공개해 주세요. 모집 예정·마감 수업에서는 결제 링크를 표시하지 않습니다.</p>
         <label>기수<input value={course.cohort} maxLength={50} onChange={event => edit("cohort", event.target.value)} /></label>
         <label>기간·횟수<input value={course.duration} maxLength={200} onChange={event => edit("duration", event.target.value)} /></label>
         <label>수강료<input value={course.price_label} maxLength={200} onChange={event => edit("price_label", event.target.value)} /></label>

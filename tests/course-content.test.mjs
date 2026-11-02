@@ -34,3 +34,15 @@ test("details require descriptions, safe photo paths and bounded content", () =>
   assert.ok(validateCourse({ ...course, photos: [{ path: '11111111-1111-1111-1111-111111111111.jpg', alt: '' }] }));
   assert.ok(validateCourse({ ...course, title: 'x'.repeat(121) }));
 });
+
+test("enrollment is unconfirmed by default and closed/upcoming courses cannot link to checkout", async () => {
+  const { canApply, enrollmentLabel } = await import('../lib/course-content.ts');
+  assert.equal(defaultCourse(classes[0]).enrollment_status, 'inquiry');
+  assert.equal(enrollmentLabel(undefined), '일정 문의');
+  assert.equal(canApply('closed'), false);
+  assert.equal(canApply('upcoming'), false);
+  assert.equal(canApply('open'), true);
+  assert.ok(validateCourse({ ...defaultCourse(classes[0]), enrollment_status: 'invented' }));
+  for (const order of [-1, 1000, 1.5, NaN]) assert.ok(validateCourse({ ...defaultCourse(classes[0]), display_order: order }));
+  assert.equal(validateCourse({ ...defaultCourse(classes[0]), display_order: 0 }), null);
+});
