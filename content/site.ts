@@ -50,7 +50,7 @@ export const site = {
     {
       id: "inquiries",
       detail:
-        "실수신 이메일 및 webhook 제공자·목적지·인증·개인정보 위탁 확인 후 실제 수신 E2E 검증.",
+        "문의는 사이트 관리자 문의함으로 접수하도록 확정. Supabase 비공개 문의 테이블·서버 키·Vercel 연결 및 실제 저장/관리자 조회/익명 거부 E2E, 개인정보 고지 확정 필요. 이메일 자동 발송은 사용하지 않음.",
     },
     {
       id: "payments",

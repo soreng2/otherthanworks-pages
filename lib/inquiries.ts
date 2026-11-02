@@ -69,11 +69,17 @@ export function inquiryConfiguration() {
   )
     return null;
   try {
-    const provider = process.env.INQUIRY_PROVIDER ?? "webhook";
-    if (!["webhook", "resend"].includes(provider)) return null;
+    const provider = process.env.INQUIRY_PROVIDER ?? "database";
+    if (!["webhook", "resend", "database"].includes(provider)) return null;
     if (provider === "resend" && (!process.env.RESEND_API_KEY || !/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(process.env.INQUIRY_FROM_EMAIL ?? ""))) return null;
     if (provider === "webhook" && (!process.env.INQUIRY_WEBHOOK_URL || !process.env.INQUIRY_WEBHOOK_TOKEN)) return null;
-    const webhook = new URL(provider === "resend" ? "https://api.resend.com/emails" : process.env.INQUIRY_WEBHOOK_URL!);
+    let databaseUrl = "";
+    if (provider === "database") {
+      const project = new URL(process.env.NEXT_PUBLIC_SUPABASE_URL ?? "");
+      if (project.protocol !== "https:" || !project.hostname.endsWith(".supabase.co") || project.username || project.password || project.pathname !== "/" || project.search || project.hash || !process.env.SUPABASE_SERVICE_ROLE_KEY) return null;
+      databaseUrl = `${project.origin}/rest/v1/inquiries?select=id`;
+    }
+    const webhook = new URL(provider === "database" ? databaseUrl : provider === "resend" ? "https://api.resend.com/emails" : process.env.INQUIRY_WEBHOOK_URL!);
     const redis = new URL(process.env.UPSTASH_REDIS_REST_URL!);
     if (
       [webhook, redis].some(
@@ -88,7 +94,7 @@ export function inquiryConfiguration() {
       provider,
       from: process.env.INQUIRY_FROM_EMAIL ?? "",
       webhook: webhook.href,
-      webhookToken: provider === "resend" ? process.env.RESEND_API_KEY! : process.env.INQUIRY_WEBHOOK_TOKEN!,
+      webhookToken: provider === "database" ? process.env.SUPABASE_SERVICE_ROLE_KEY! : provider === "resend" ? process.env.RESEND_API_KEY! : process.env.INQUIRY_WEBHOOK_TOKEN!,
       redis: redis.origin,
       redisToken: process.env.UPSTASH_REDIS_REST_TOKEN!,
       salt: process.env.INQUIRY_RATE_SALT!,

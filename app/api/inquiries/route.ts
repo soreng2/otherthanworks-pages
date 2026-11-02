@@ -121,8 +121,12 @@ export async function POST(request: Request) {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${config.webhookToken}`,
+        ...(config.provider === "database" ? { apikey: config.webhookToken, Prefer: "return=representation" } : {}),
       },
-      body: JSON.stringify(config.provider === "resend" ? {
+      body: JSON.stringify(config.provider === "database" ? {
+        type: inquiry.type, program: inquiry.program, name: inquiry.name, email: inquiry.email,
+        message: inquiry.message, privacy_version: config.privacyVersion, consented_at: new Date().toISOString(),
+      } : config.provider === "resend" ? {
         from: config.from,
         to: [site.inquiryEmail],
         reply_to: inquiry.email,
@@ -152,6 +156,10 @@ export async function POST(request: Request) {
         502,
         "전송을 확인하지 못했습니다. 잠시 후 다시 시도해 주세요.",
       );
+    if (config.provider === "database") {
+      const receipt = await delivery.json();
+      if (!Array.isArray(receipt) || receipt.length !== 1 || typeof receipt[0]?.id !== "string" || !receipt[0].id) return reply(502, "문의 저장을 확인하지 못했습니다. 다시 시도해 주세요.");
+    }
     if (config.provider === "resend") {
       const receipt = await delivery.json();
       if (typeof receipt.id !== "string" || !receipt.id.trim()) return reply(502, "전송을 확인하지 못했습니다. 잠시 후 다시 시도해 주세요.");
@@ -160,7 +168,7 @@ export async function POST(request: Request) {
       {
         accepted: true,
         message:
-          "문의가 수신 서비스로 전달되었습니다. 담당자 확인 후 안내드립니다.",
+          config.provider === "database" ? "문의가 접수되었습니다. 담당자가 확인 후 안내드립니다." : "문의가 수신 서비스로 전달되었습니다. 담당자 확인 후 안내드립니다.",
       },
       { status: 201, headers: { "Cache-Control": "no-store" } },
     );

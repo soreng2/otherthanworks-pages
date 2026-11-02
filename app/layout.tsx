@@ -1,3 +1,4 @@
+import { SiteCopyProvider } from "@/components/site-copy";
 import type { Metadata } from "next";
 import "@fontsource-variable/manrope";
 import "@fontsource-variable/noto-sans-kr";
@@ -41,14 +42,14 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ko">
-      <body>
+      <body><SiteCopyProvider>
         <a className="skip-link" href="#main">
           본문으로 건너뛰기
         </a>
         <Header />
         {children}
         <Footer />
-      </body>
+      </SiteCopyProvider></body>
     </html>
   );
 }

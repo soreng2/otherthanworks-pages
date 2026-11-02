@@ -3,6 +3,8 @@
 import { useState, type FormEvent } from "react";
 import { createReviewClient, prepareReviewPhoto, type Review } from "@/lib/review-client";
 import styles from "./reviews.module.css";
+import { InquiryInbox } from "./inquiry-inbox";
+import { SiteCopyManager } from "./site-copy-manager";
 import { CourseManager } from "./course-manager";
 import { InstagramManager } from "./instagram-manager";
 import { AdminPreview } from "./admin-preview";
@@ -118,7 +120,9 @@ export function ReviewManager() {
       <button className="text-link" disabled={busy} onClick={async () => {
         await client.auth.signOut({ scope: "local" }); setAuthorized(false); setReviews([]); setMessage("");
       }}>로그아웃</button>
-      <nav className={styles.actions} aria-label="관리 항목"><a href="#manage-courses">수업 상세</a><a href="#manage-photos">후기·작업 예시</a><a href="#manage-instagram">릴스·게시물</a></nav>
+      <nav className={styles.actions} aria-label="관리 항목"><a href="#manage-inbox">문의함</a><a href="#manage-copy">페이지 문구</a><a href="#manage-courses">수업 상세</a><a href="#manage-photos">후기·작업 예시</a><a href="#manage-instagram">릴스·게시물</a></nav>
+      <InquiryInbox client={client} />
+      <SiteCopyManager client={client} />
       <div id="manage-courses">
       <CourseManager client={client} />
       </div>

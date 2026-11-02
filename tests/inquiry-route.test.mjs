@@ -6,7 +6,7 @@ import { site } from "../content/site.ts";
 // These are local test fixtures. No network request or real delivery occurs.
 const originalFetch = globalThis.fetch;
 const names = [
-  "INQUIRY_PROVIDER", "RESEND_API_KEY", "INQUIRY_FROM_EMAIL",
+  "INQUIRY_PROVIDER", "RESEND_API_KEY", "INQUIRY_FROM_EMAIL", "SUPABASE_SERVICE_ROLE_KEY", "NEXT_PUBLIC_SUPABASE_URL",
   "INQUIRY_WEBHOOK_URL",
   "INQUIRY_WEBHOOK_TOKEN",
   "UPSTASH_REDIS_REST_URL",
@@ -43,6 +43,7 @@ afterEach(() => {
 function enableFixtures() {
   Object.assign(site, { inquiriesEnabled: true, legalApproved: true });
   Object.assign(process.env, {
+    INQUIRY_PROVIDER: "webhook",
     INQUIRY_WEBHOOK_URL: "https://webhook.example.test/inquiries",
     INQUIRY_WEBHOOK_TOKEN: "mock-only",
     UPSTASH_REDIS_REST_URL: "https://mock.upstash.io",
@@ -213,4 +214,14 @@ test("Resend cannot claim delivery on an empty provider receipt", async () => {
   Object.assign(process.env, {INQUIRY_PROVIDER:'resend',RESEND_API_KEY:'mock-key',INQUIRY_FROM_EMAIL:'inquiries@example.com'});
   let calls=0;globalThis.fetch=async()=>Response.json(++calls===1?{result:1}:{});
   assert.equal((await POST(request())).status,502);
+});
+
+test("database inquiry inserts only through the server into the private inbox", async () => {
+ enableFixtures();Object.assign(process.env,{INQUIRY_PROVIDER:'database',NEXT_PUBLIC_SUPABASE_URL:'https://test.supabase.co',SUPABASE_SERVICE_ROLE_KEY:'mock-server-only'});
+ let calls=0;globalThis.fetch=async(url,options)=>{if(++calls===1)return Response.json({result:1});assert.equal(url,'https://test.supabase.co/rest/v1/inquiries?select=id');assert.equal(options.headers.apikey,'mock-server-only');const payload=JSON.parse(options.body);assert.equal(payload.email,body.email);assert.equal(payload.status,undefined);assert.equal(payload.privacy_version,'test-draft');return Response.json([{id:'mock-inquiry'}]);};
+ const response=await POST(request());assert.equal(response.status,201);assert.equal((await response.json()).message,'문의가 접수되었습니다. 담당자가 확인 후 안내드립니다.');
+});
+test("database insert failure never claims receipt", async()=>{
+ enableFixtures();Object.assign(process.env,{INQUIRY_PROVIDER:'database',NEXT_PUBLIC_SUPABASE_URL:'https://test.supabase.co',SUPABASE_SERVICE_ROLE_KEY:'mock-server-only'});
+ let calls=0;globalThis.fetch=async()=>++calls===1?Response.json({result:1}):Response.json([]);assert.equal((await POST(request())).status,502);
 });
