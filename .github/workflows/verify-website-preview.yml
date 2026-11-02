@@ -15,7 +15,7 @@ jobs:
       - name: Wait for Pages and verify the public preview
         env:
           PREVIEW_URL: https://soreng2.github.io/otherthanworks-pages/preview/
-          PREVIEW_SOURCE: a2c3e8a
+          PREVIEW_SOURCE: 4c175ea
         run: |
           python3 - <<'PY'
           import os, time
