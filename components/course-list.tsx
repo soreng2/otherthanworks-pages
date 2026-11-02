@@ -21,7 +21,7 @@ export function CourseList() {
       const next: ClassListing[] = await Promise.all(classes.map(async item => {
         const row = rows.find(row => row.slug === item.slug);
         if (!row) return item;
-        const photo = row.photos[0];
+        const photo = row.photos.find(photo => photo.path.endsWith(".jpg"));
         const signed = photo ? await client.storage.from("course-photos").createSignedUrl(photo.path, 300) : null;
         return { ...item, title: row.title, description: row.description, cohort: row.cohort, duration: row.duration, priceLabel: row.price_label, scheduleLabel: row.schedule, enrollmentStatus: row.enrollment_status, displayOrder: row.display_order, coverUrl: signed?.data?.signedUrl, coverAlt: photo?.alt };
       }));

@@ -4,12 +4,15 @@ import { useEffect, useState } from "react";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { classes } from "@/content/site";
 import { defaultCourse, validateCourse, enrollmentLabels, type EnrollmentStatus, type CourseContent } from "@/lib/course-content";
+import { courseMediaBucket, isCourseVideo, prepareCourseVideo, MEDIA_ACCEPT } from "@/lib/course-media";
+import { CourseMediaView } from "./course-media-view";
 import { prepareReviewPhoto } from "@/lib/review-client";
 import styles from "./reviews.module.css";
 
 export function CourseManager({ client }: { client: SupabaseClient }) {
   const [slug, setSlug] = useState(classes[0].slug);
   const [course, setCourse] = useState(defaultCourse(classes[0]));
+  const [preview, setPreview] = useState(false);
   const [busy, setBusy] = useState(true);
   const [dirty, setDirty] = useState(false);
   const [ready, setReady] = useState(false);
@@ -26,7 +29,7 @@ export function CourseManager({ client }: { client: SupabaseClient }) {
       const next = rows.find(row => row.stage === "draft") ?? rows.find(row => row.stage === "published") ?? defaultCourse(classes.find(item => item.slug === slug)!);
       const urls: Record<string, string> = {};
       for (const photo of next.photos) {
-        const result = await client.storage.from("course-photos").createSignedUrl(photo.path, 300);
+        const result = await client.storage.from(courseMediaBucket(photo.path)).createSignedUrl(photo.path, 3600);
         if (result.data) urls[photo.path] = result.data.signedUrl;
       }
       if (active) { setCourse(next); setImageUrls(urls); setDirty(false); setReady(true); setBusy(false); }
@@ -64,18 +67,20 @@ export function CourseManager({ client }: { client: SupabaseClient }) {
 
   async function upload(files: FileList | null) {
     if (!files?.length) return;
-    if (course.photos.length + files.length > 20) { setMessage("사진은 수업당 20장까지 등록할 수 있습니다."); return; }
+    if (course.photos.length + files.length > 20) { setMessage("사진·영상은 수업당 합계 20개까지 등록할 수 있습니다."); return; }
     setBusy(true); setMessage("");
     const added: { path: string; alt: string }[] = [];
     const urls: Record<string, string> = {};
     try {
       for (const file of Array.from(files)) {
-        const blob = await prepareReviewPhoto(file, true);
-        const path = `${crypto.randomUUID()}.jpg`;
-        const result = await client.storage.from("course-photos").upload(path, blob, { contentType: "image/jpeg", upsert: false });
+        const video = file.type.startsWith("video/");
+        const extension = video ? await prepareCourseVideo(file) : "jpg";
+        const blob = video ? file : await prepareReviewPhoto(file, true);
+        const path = `${crypto.randomUUID()}.${extension}`;
+        const result = await client.storage.from(courseMediaBucket(path)).upload(path, blob, { contentType: video ? file.type : "image/jpeg", upsert: false });
         if (result.error) throw new Error("사진 업로드에 실패했습니다.");
         added.push({ path, alt: "" });
-        const url = await client.storage.from("course-photos").createSignedUrl(path, 300);
+        const url = await client.storage.from(courseMediaBucket(path)).createSignedUrl(path, 3600);
         if (url.data) urls[path] = url.data.signedUrl;
       }
       setMessage("사진 설명을 입력한 뒤 초안 저장 또는 공개 반영을 눌러 주세요.");
@@ -116,13 +121,14 @@ export function CourseManager({ client }: { client: SupabaseClient }) {
         <label>스마트스토어 상품 주소<input type="url" value={course.payment_url} placeholder="https://smartstore.naver.com/monmut/products/상품번호" onChange={event => { edit("payment_url", event.target.value.trim()); edit("payment_verified", false); }} /></label>
         <label className={styles.check}><input type="checkbox" checked={course.payment_verified} onChange={event => edit("payment_verified", event.target.checked)} />상품의 수업·기수·가격·판매 상태·환불 안내를 확인했으며 결제 버튼을 공개합니다.</label>
         <p>결제와 주문 확인은 스마트스토어에서 처리합니다. 홈페이지에서는 결제 완료나 수강 확정을 표시하지 않습니다.</p>
-        <label>상세페이지 사진 추가<input type="file" accept="image/jpeg,image/png,image/webp" multiple onChange={event => { void upload(event.target.files); event.target.value = ""; }} /></label>
-        <p>첫 번째 사진은 홈과 클래스 공고의 대표 이미지로도 사용됩니다. 사진당 10MB, 최대 20장. 긴 상세페이지는 여러 장으로 나눠 올려 주세요. 공개 가능한 사진만 등록해 주세요.</p>
+        <label>상세페이지 사진·영상 추가<input type="file" accept={MEDIA_ACCEPT} multiple onChange={event => { void upload(event.target.files); event.target.value = ""; }} /></label>
+        <p>첫 번째 사진은 홈과 클래스 공고의 대표 이미지로도 사용됩니다. 사진당 10MB, 영상(MP4·WebM)당 50MB, 합계 20개. 긴 상세페이지는 여러 장으로 나눠 올려 주세요. 공개 가능한 자료만 등록해 주세요. 영상은 원본으로 저장되므로 위치 등 메타데이터를 제거한 파일을 사용해 주세요. 음성·중요한 시각 내용은 아래 본문에 텍스트로도 적어 주세요.</p>
       </div>
       <div className={styles.grid}>{course.photos.map((photo, index) => <article className={styles.card} key={photo.path}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        {imageUrls[photo.path] && <img src={imageUrls[photo.path]} alt={photo.alt || "등록한 상세 사진 미리보기"} />}
-        <label>사진 {index + 1} 설명<input value={photo.alt} maxLength={300} onChange={event => edit("photos", course.photos.map((item, i) => i === index ? { ...item, alt: event.target.value } : item))} /></label>
+        {imageUrls[photo.path] && (isCourseVideo(photo.path) ? <video src={imageUrls[photo.path]} controls playsInline preload="none" aria-label={photo.alt || "등록한 영상 미리보기"} /> : <img src={imageUrls[photo.path]} alt={photo.alt || "등록한 상세 사진 미리보기"} />)}
+        <label>자료 {index + 1} 설명<input value={photo.alt} maxLength={300} onChange={event => edit("photos", course.photos.map((item, i) => i === index ? { ...item, alt: event.target.value } : item))} /></label>
+        <label>본문·영상 대본 (선택)<textarea value={photo.caption ?? ""} maxLength={5000} onChange={event => edit("photos", course.photos.map((item, i) => i === index ? { ...item, caption: event.target.value } : item))} /></label>
         <div className={styles.actions}>
           <button disabled={index === 0} onClick={() => move(index, -1)}>위로</button>
           <button disabled={index === course.photos.length - 1} onClick={() => move(index, 1)}>아래로</button>
@@ -130,9 +136,11 @@ export function CourseManager({ client }: { client: SupabaseClient }) {
         </div>
       </article>)}</div>
       <div className={styles.actions}>
+        <button onClick={() => setPreview(!preview)} aria-expanded={preview}>상세페이지 미리보기 {preview ? "닫기" : "열기"}</button>
         <button className="button" onClick={() => { void save(false); }}>초안 저장</button>
         <button className="button" onClick={() => { void save(true); }}>공개 페이지에 반영</button>
       </div>
     </fieldset>
+    {preview && <section aria-label="공개 전 상세페이지 미리보기"><h3>{course.title}</h3><p>저장 전 편집 중인 내용입니다. 아직 공개되지 않았습니다.</p><CourseMediaView items={course.photos.filter(photo => imageUrls[photo.path]).map(photo => ({ ...photo, url: imageUrls[photo.path] }))} /></section>}
   </section>;
 }

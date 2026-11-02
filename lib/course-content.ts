@@ -5,7 +5,7 @@ export type EnrollmentStatus = keyof typeof enrollmentLabels;
 export function enrollmentLabel(value?: EnrollmentStatus): string { return enrollmentLabels[value ?? "inquiry"] ?? enrollmentLabels.inquiry; }
 export function canApply(value?: EnrollmentStatus): boolean { return value !== "closed" && value !== "upcoming"; }
 
-export type CoursePhoto = { path: string; alt: string };
+export type CoursePhoto = { path: string; alt: string; caption?: string };
 export type CourseContent = {
   enrollment_status?: EnrollmentStatus; display_order?: number;
   slug: string; stage: "draft" | "published"; title: string; description: string;
@@ -36,6 +36,6 @@ export function validateCourse(course: CourseContent): string | null {
   }
   if (course.payment_url && !validPaymentUrl(course.payment_url)) return "monmut 스마트스토어의 개별 상품 주소를 입력해 주세요. 예: https://smartstore.naver.com/monmut/products/상품번호";
   if (course.payment_verified && !validPaymentUrl(course.payment_url)) return "결제를 활성화하려면 개별 상품 주소가 필요합니다.";
-  if (course.photos.length > 20 || course.photos.some(photo => !/^[0-9a-f-]{36}\.jpg$/.test(photo.path) || !photo.alt.trim() || photo.alt.length > 300)) return "상세 사진은 20장까지 등록할 수 있으며 각 사진의 설명이 필요합니다.";
+  if (course.photos.length > 20 || course.photos.some(photo => !/^[0-9a-f-]{36}\.(jpg|mp4|webm)$/.test(photo.path) || !photo.alt.trim() || photo.alt.length > 300 || (photo.caption !== undefined && (typeof photo.caption !== "string" || photo.caption.length > 5000)))) return "사진·영상은 합계 20개까지 등록할 수 있습니다. 설명은 필수이며 본문은 5,000자까지 입력해 주세요.";
   return null;
 }

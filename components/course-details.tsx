@@ -5,15 +5,18 @@ import Link from "next/link";
 import { site, type ClassDefinition } from "@/content/site";
 import { defaultCourse, validPaymentUrl, enrollmentLabel, canApply, type CourseContent } from "@/lib/course-content";
 import { createReviewClient } from "@/lib/review-client";
+import { courseMediaBucket } from "@/lib/course-media";
+import { CourseMediaView, type DisplayMedia } from "./course-media-view";
 import { ClassArtwork } from "./class-card";
 import styles from "./reviews.module.css";
 
 export function CourseDetails({ item }: { item: ClassDefinition }) {
   const [course, setCourse] = useState(defaultCourse(item));
-  const [photos, setPhotos] = useState<{ url: string; alt: string }[]>([]);
+  const [photos, setPhotos] = useState<DisplayMedia[]>([]);
   const [error, setError] = useState("");
   useEffect(() => {
     let active = true;
+    const mediaCache = new Map<string, { url: string; until: number }>();
     async function load() {
       const client = createReviewClient();
       if (!client) return;
@@ -26,9 +29,12 @@ export function CourseDetails({ item }: { item: ClassDefinition }) {
         }
         const next = result.data as CourseContent;
         const images = await Promise.all(next.photos.map(async photo => {
-          const signed = await client.storage.from("course-photos").createSignedUrl(photo.path, 300);
+          const cached = mediaCache.get(photo.path);
+          if (cached && cached.until > Date.now()) return { ...photo, url: cached.url };
+          const signed = await client.storage.from(courseMediaBucket(photo.path)).createSignedUrl(photo.path, 3600);
           if (!signed.data || signed.error) throw new Error("Photo unavailable");
-          return { url: signed.data.signedUrl, alt: photo.alt };
+          mediaCache.set(photo.path, { url: signed.data.signedUrl, until: Date.now() + 3300000 });
+          return { ...photo, url: signed.data.signedUrl };
         }));
         if (active) { setCourse(next); setPhotos(images); setError(""); }
       } catch {
@@ -75,12 +81,7 @@ export function CourseDetails({ item }: { item: ClassDefinition }) {
       <ul className={styles.curriculum}>{course.curriculum.split("\n").filter(line => line.trim()).map((line, index) => <li key={index}>{line}</li>)}</ul>
       <p>주제와 참여자의 진행 상황에 따라 세부 구성은 달라질 수 있습니다.</p>
     </section>
-    {photos.length > 0 && <section aria-label="수업 상세 이미지" className={styles.detailPhotos}>
-      {photos.map(photo => <figure key={photo.url}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={photo.url} alt={photo.alt} loading="lazy" />
-      </figure>)}
-    </section>}
+    {photos.length > 0 && <section aria-label="수업 상세 사진과 영상"><h2>수업을 더 자세히 만나보세요</h2><CourseMediaView items={photos} /></section>}
     <Link className="back-link" href="/classes">← 모든 클래스로 돌아가기</Link>
   </>;
 }
