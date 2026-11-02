@@ -61,3 +61,11 @@
 - Pages 성공: https://github.com/soreng2/otherthanworks-pages/actions/runs/41432206933
 - 공개 버전/HTTPS 경로 검증 성공: https://github.com/soreng2/otherthanworks-pages/actions/runs/41432207743
 - 단위 테스트 40개, 로컬 PC/모바일 첨부·재생·순서·본문·삭제·오류 검증 및 모의 관리자 저장/공개/상세 재생 통과. 실제 DB·스토리지 계정은 여전히 미연결.
+
+## 관리자 문의함·공개 페이지 문구
+
+- 소스 `e179c51`, 공개 main `476ca4cdcfe7e93bd89b9102b7c88d6947a3da97`.
+- 사이트 양식→관리자 문의함 방식으로 변경. 기본 페이지 문구 356개 초안/공개/원문 복원 구현.
+- Pages 배포 성공: https://github.com/soreng2/otherthanworks-pages/actions/runs/41440802751
+- 공개 버전/HTTPS 검사 성공: https://github.com/soreng2/otherthanworks-pages/actions/runs/41440803224
+- 로컬 22개 화면 접근성/반응형, API 단위 44개, 모의 문의함·문구 관리 검증 통과. Supabase/Vercel 실제 계정은 미연결이며 운영 문의 접수와 문구 저장/공개는 아직 활성화하지 않음.
