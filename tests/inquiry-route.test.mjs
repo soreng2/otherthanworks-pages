@@ -6,6 +6,7 @@ import { site } from "../content/site.ts";
 // These are local test fixtures. No network request or real delivery occurs.
 const originalFetch = globalThis.fetch;
 const names = [
+  "INQUIRY_PROVIDER", "RESEND_API_KEY", "INQUIRY_FROM_EMAIL",
   "INQUIRY_WEBHOOK_URL",
   "INQUIRY_WEBHOOK_TOKEN",
   "UPSTASH_REDIS_REST_URL",
@@ -189,4 +190,27 @@ test("mocked provider acceptance follows authenticated delivery only", async () 
   assert.equal(payload.privacyVersion, "test-draft");
   assert.equal(payload.email, body.email);
   assert.ok(!("website" in payload));
+});
+
+test("Resend sends plain-text inquiries only to the confirmed owner", async () => {
+  enableFixtures();
+  Object.assign(process.env, {INQUIRY_PROVIDER:'resend',RESEND_API_KEY:'mock-key',INQUIRY_FROM_EMAIL:'inquiries@example.com'});
+  let calls=0;
+  globalThis.fetch=async (url,options)=>{
+    if(++calls===1) return Response.json({result:1});
+    assert.equal(url,'https://api.resend.com/emails');
+    const payload=JSON.parse(options.body);
+    assert.deepEqual(payload.to,['mon.mut.friends@gmail.com']);
+    assert.equal(payload.reply_to,body.email);
+    assert.equal(payload.html,undefined);
+    assert.ok(payload.text.includes(body.message));
+    return Response.json({id:'mock-receipt'});
+  };
+  assert.equal((await POST(request())).status,201);
+});
+test("Resend cannot claim delivery on an empty provider receipt", async () => {
+  enableFixtures();
+  Object.assign(process.env, {INQUIRY_PROVIDER:'resend',RESEND_API_KEY:'mock-key',INQUIRY_FROM_EMAIL:'inquiries@example.com'});
+  let calls=0;globalThis.fetch=async()=>Response.json(++calls===1?{result:1}:{});
+  assert.equal((await POST(request())).status,502);
 });

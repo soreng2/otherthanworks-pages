@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, type FormEvent } from "react";
-import { classes } from "@/content/site";
+import { classes, site } from "@/content/site";
 import { Arrow } from "./icons";
 
 export function InquiryForm({
@@ -55,6 +55,15 @@ export function InquiryForm({
       setPending(false);
     }
   }
+  if (!enabled) return <section className="contact-form">
+    <nav className="form-tabs" aria-label="문의 유형"><Link href="/apply?type=class" aria-current={type === "class" ? "page" : undefined}>클래스 문의</Link><Link href="/apply?type=studio" aria-current={type === "studio" ? "page" : undefined}>스튜디오 문의</Link></nav>
+    <h2>이메일로 문의해 주세요</h2>
+    <p>관심 있는 수업이나 의뢰 내용을 아래 주소로 보내주세요.</p>
+    <p><a href={`mailto:${site.inquiryEmail}?subject=${encodeURIComponent(`[아더댄웍스] ${type === "class" ? "클래스" : "스튜디오"} 문의`)}`} className="button">메일 앱으로 문의하기 <Arrow diagonal /></a></p>
+    <p>{site.inquiryEmail}</p>
+    <p>메일 앱이 열리지 않으면 위 주소를 복사해 Gmail 등에서 보내주세요. 메일 작성창에서 ‘보내기’를 눌러야 전송됩니다.</p>
+    <p>홈페이지에서 바로 접수하는 양식은 연결 중입니다.</p>
+  </section>;
   return (
     <form
       className="contact-form"

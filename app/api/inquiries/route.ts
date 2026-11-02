@@ -1,5 +1,5 @@
 import { createHmac } from "node:crypto";
-import { site } from "../../../content/site.ts";
+import { site, classes } from "../../../content/site.ts";
 import {
   inquiryConfiguration,
   validateInquiry,
@@ -122,7 +122,19 @@ export async function POST(request: Request) {
         "Content-Type": "application/json",
         Authorization: `Bearer ${config.webhookToken}`,
       },
-      body: JSON.stringify({
+      body: JSON.stringify(config.provider === "resend" ? {
+        from: config.from,
+        to: [site.inquiryEmail],
+        reply_to: inquiry.email,
+        subject: `[아더댄웍스] ${inquiry.type === "class" ? "클래스" : "스튜디오"} 문의`,
+        text: [
+          `이름: ${inquiry.name}`, `회신 이메일: ${inquiry.email}`,
+          `수업: ${classes.find(item => item.slug === inquiry.program)?.title ?? "스튜디오"}`,
+          "", inquiry.message, "",
+          `개인정보 안내 버전: ${config.privacyVersion}`,
+          `동의 시각: ${new Date().toISOString()}`,
+        ].join("\n"),
+      } : {
         type: inquiry.type,
         program: inquiry.program,
         name: inquiry.name,
@@ -140,6 +152,10 @@ export async function POST(request: Request) {
         502,
         "전송을 확인하지 못했습니다. 잠시 후 다시 시도해 주세요.",
       );
+    if (config.provider === "resend") {
+      const receipt = await delivery.json();
+      if (typeof receipt.id !== "string" || !receipt.id.trim()) return reply(502, "전송을 확인하지 못했습니다. 잠시 후 다시 시도해 주세요.");
+    }
     return Response.json(
       {
         accepted: true,

@@ -58,8 +58,6 @@ export function validateInquiry(value: unknown): Inquiry | null {
 
 export function inquiryConfiguration() {
   const names = [
-    "INQUIRY_WEBHOOK_URL",
-    "INQUIRY_WEBHOOK_TOKEN",
     "UPSTASH_REDIS_REST_URL",
     "UPSTASH_REDIS_REST_TOKEN",
     "INQUIRY_RATE_SALT",
@@ -71,7 +69,11 @@ export function inquiryConfiguration() {
   )
     return null;
   try {
-    const webhook = new URL(process.env.INQUIRY_WEBHOOK_URL!);
+    const provider = process.env.INQUIRY_PROVIDER ?? "webhook";
+    if (!["webhook", "resend"].includes(provider)) return null;
+    if (provider === "resend" && (!process.env.RESEND_API_KEY || !/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(process.env.INQUIRY_FROM_EMAIL ?? ""))) return null;
+    if (provider === "webhook" && (!process.env.INQUIRY_WEBHOOK_URL || !process.env.INQUIRY_WEBHOOK_TOKEN)) return null;
+    const webhook = new URL(provider === "resend" ? "https://api.resend.com/emails" : process.env.INQUIRY_WEBHOOK_URL!);
     const redis = new URL(process.env.UPSTASH_REDIS_REST_URL!);
     if (
       [webhook, redis].some(
@@ -83,8 +85,10 @@ export function inquiryConfiguration() {
     if (!redis.hostname.endsWith(".upstash.io") || redis.pathname !== "/")
       return null;
     return {
+      provider,
+      from: process.env.INQUIRY_FROM_EMAIL ?? "",
       webhook: webhook.href,
-      webhookToken: process.env.INQUIRY_WEBHOOK_TOKEN!,
+      webhookToken: provider === "resend" ? process.env.RESEND_API_KEY! : process.env.INQUIRY_WEBHOOK_TOKEN!,
       redis: redis.origin,
       redisToken: process.env.UPSTASH_REDIS_REST_TOKEN!,
       salt: process.env.INQUIRY_RATE_SALT!,
