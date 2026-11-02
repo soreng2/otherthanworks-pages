@@ -44,3 +44,12 @@
 - 단위 테스트36개 및 PC/모바일10화면·axe 자동 검사 통과. 모의 데이터로 후기 이름/수강 과정/인용문과 수업 대표 사진 로딩 검증.
 - 실제 관리자 계정·업로드는 미연결. `review-profiles.sql` 추가 적용 필요. 상세 범위는 `CREATIVE_BOARD.md`.
 
+
+## 2026-11-02 메인 탐색·모집 상태 개선
+
+- 소스 `efcdc6e`, 공개 main `a0c89659e4bab23144b24c7e4d85bf3944acf28a`.
+- 목표별 수업 선택, 신청 단계, FAQ, 관리자 모집 상태/노출 순서 추가.
+- Pages 배포 성공: https://github.com/soreng2/otherthanworks-pages/actions/runs/41431417038
+- 공개 버전 및 HTTPS 17경로/연결 자원 검사 성공: https://github.com/soreng2/otherthanworks-pages/actions/runs/41431417473
+- 미리보기: https://soreng2.github.io/otherthanworks-pages/preview/
+- 실제 관리자 저장소/로그인, Vercel, 가비아 DNS는 미연결·미변경.
