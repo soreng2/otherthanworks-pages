@@ -1,6 +1,6 @@
 :HL["/otherthanworks-pages/preview/_next/static/css/b29e7eedd669f954.css","style"]
 :HL["/otherthanworks-pages/preview/_next/static/css/684c13ce388bdb5e.css","style"]
-:HL["/otherthanworks-pages/preview/_next/static/css/fbcaa20ddfa1fc6f.css","style"]
+:HL["/otherthanworks-pages/preview/_next/static/css/3a6445172e039ce0.css","style"]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":"work","h":96,"c":"$Q2"}]]
-0:{"b":"osG3eBsg2Okj79_f2epHJ","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"sWu1KEQhjPFva32ZMQnkv","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
