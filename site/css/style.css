@@ -4,16 +4,17 @@
    ========================================================================== */
 
 :root {
-  --cream: #faf3e5;
-  --cream-deep: #f0e3cc;
-  --paper: #fffdf9;
-  --peach: #ef8d4e;
-  --peach-soft: #f7d2a8;
-  --navy: #141a2c;
-  --navy-deep: #0a0e1a;
-  --ink: #17140f;
+  --cream: #f5efe1;
+  --cream-deep: #e9dcc0;
+  --paper: #ffffff;
+  --peach: #e8431c;
+  --peach-soft: #f6c3ab;
+  --navy: #121521;
+  --navy-deep: #06070c;
+  --ink: #14110c;
   --ink-soft: #5c564d;
-  --line: rgba(23, 20, 15, 0.14);
+  --pop: #d7ff3e;
+  --line: rgba(20, 17, 12, 0.18);
   --line-on-navy: rgba(255, 255, 255, 0.18);
   --shape-a: var(--peach);
   --shape-b: var(--navy);
@@ -154,9 +155,11 @@ button { font: inherit; cursor: pointer; }
 .btn--solid { background: var(--ink); color: var(--paper); }
 .btn--solid:hover { background: var(--navy); }
 .btn--outline { background: transparent; }
-.btn--peach { background: var(--peach); border-color: var(--peach); color: var(--navy-deep); }
-.btn--peach:hover { background: #ef9f78; }
+.btn--outline:hover { background: var(--pop); border-color: var(--ink); color: var(--ink); }
+.btn--peach { background: var(--peach); border-color: var(--peach); color: var(--paper); }
+.btn--peach:hover { background: #ff5b2e; }
 .tone-navy .btn--outline { border-color: var(--paper); color: var(--paper); }
+.tone-navy .btn--outline:hover { color: var(--ink); }
 
 .nav-toggle {
   display: none;
@@ -213,6 +216,44 @@ button { font: inherit; cursor: pointer; }
 .tone-peach .hero::before, .tone-peach-strong .hero::before { background: var(--navy); }
 .tone-peach.hero::after, .tone-peach-strong.hero::after,
 .tone-peach .hero::after, .tone-peach-strong .hero::after { background: var(--paper); opacity: 0.55; }
+
+/* Photo-ready hero — drop-in replacement for the shape-based hero once a
+   real photo exists. Add class="hero hero--photo" and, right after the
+   opening <section> tag (before .wrap), add:
+     <div class="hero-photo-layer"><img src="../images/hero.jpg" alt=""></div>
+   The shapes auto-hide, the headline switches to white, and a dark
+   scrim keeps the outline/solid type legible over any photo. See
+   site/README.md for the full swap checklist. */
+.hero--photo::before, .hero--photo::after { content: none; }
+.hero-photo-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+.hero-photo-layer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero-photo-layer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6,7,12,0.25) 0%, rgba(6,7,12,0.65) 100%);
+}
+.hero--photo .hero-title,
+.hero--photo .eyebrow,
+.hero--photo .hero-sub,
+.hero--photo .hero-quip { color: var(--paper); }
+.hero--photo .eyebrow::before { background: var(--peach); }
+.hero--photo .hero-outline { -webkit-text-stroke: clamp(1.5px, 0.3vw, 3px) var(--paper); }
+.hero--photo .hero-sub,
+.hero--photo .hero-quip {
+  background: rgba(6,7,12,0.55);
+  border-color: var(--paper);
+}
 
 .hero-eyebrow {
   margin-bottom: 18px;
@@ -519,12 +560,15 @@ button { font: inherit; cursor: pointer; }
 .process-num {
   font-family: var(--font-display);
   font-size: 15px;
-  width: 38px; height: 38px;
+  width: 40px; height: 40px;
   border-radius: 50%;
-  border: 1.5px solid currentColor;
+  background: var(--pop);
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
   display: flex; align-items: center; justify-content: center;
   margin-bottom: 16px;
 }
+.tone-navy .process-num { border-color: var(--paper); }
 .process-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
 .process-card p { font-size: 13.5px; color: var(--ink-soft); }
 .tone-navy .process-card p { color: rgba(255,255,255,0.65); }

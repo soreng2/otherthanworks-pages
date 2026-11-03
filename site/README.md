@@ -48,6 +48,53 @@ class cards, Creative-Profiles-style grid, founder quote block) are
 inspired by ilovecreatives.com's structure — no copy, images, or course
 content was copied from that site.
 
+## Palette
+
+The cream/vermillion/near-black/lime palette in `css/style.css`'s `:root`
+is a deliberate redesign, not a holdover from the old chatgpt.site /
+`preview/` build — 소랭 asked for it to be bolder and more original rather
+than preserved for its own sake. Only the light neutral base (cream) was
+kept, since that's guided by `30-knowledge/02-brand/WEBSITE_DIRECTION.md`
+("밝은 회색·아이보리 기반 우선"), not by what the old site happened to use.
+Feel free to push this further — nothing about the current colors is
+meant to be final.
+
+## Photo-ready hero (activate once real photos land)
+
+소랭 is providing real photos/video directly — drop zones are set up at
+`site/images/intake/` (see that folder's own README for what goes where)
+and `site/videos/intake/`. Right now every hero uses flat CSS shapes
+(circle + diagonal plane) as a transitional stand-in since no photos
+exist yet.
+
+`css/style.css` already has a `.hero--photo` variant built and tested
+(full-bleed photo, dark scrim for legibility, white outline/solid type —
+the same type-over-photo trick ilovecreatives uses, but with a real OTW
+photo instead of a stock/AI image). The **hero is the top priority** to
+convert once a usable photo exists — it's the single biggest remaining
+gap between this site and feeling as strong as the ilovecreatives
+reference. To activate it on any page:
+
+1. Move the chosen photo from `images/intake/...` into `site/images/`
+   (e.g. `site/images/hero.jpg`) and resize/crop to roughly 16:9–3:2,
+   at least 1600px wide.
+2. On that page's `<section class="hero tone-...">`, add `hero--photo`
+   to the class list.
+3. Right after that opening `<section>` tag (before `<div class="wrap">`),
+   add:
+   ```html
+   <div class="hero-photo-layer"><img src="../images/hero.jpg" alt=""></div>
+   ```
+   (adjust the relative path depth to match the page, same as every other
+   asset link on that page).
+4. That's it — the shapes hide automatically, and the CSS handles the
+   scrim/contrast. No other markup or CSS changes needed.
+
+This applies page-by-page: the homepage hero is the obvious first swap,
+but the same two edits work for any class/about/studio hero once that
+page has its own photo (the intake folder already has per-class
+subfolders for exactly this).
+
 ## Known placeholders (intentional — do not fill with fake content)
 
 - **Reviews** (`reviews/`, home "FROM THE CLASSROOM") — empty-state cards
