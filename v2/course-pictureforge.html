@@ -87,45 +87,60 @@
       line-height: 1.6;
       margin-bottom: 32px;
     }
-    .meta-box {
+
+    /* Photo 7 Big Price Box */
+    .price-enroll-box {
       border: 1.5px solid var(--border);
-      padding: 24px;
+      padding: 36px 28px;
       background: #FAFAFA;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin-bottom: 36px;
-    }
-    .meta-item span {
-      display: block;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-    .meta-item strong {
-      font-size: 15px;
-      color: #000;
-    }
-    .cta-btn {
-      display: block;
       text-align: center;
-      background: var(--accent-orange);
-      color: #FFF;
+      margin-bottom: 40px;
+    }
+    .price-meta-label {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .price-date {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 46px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+    .price-amount {
+      font-size: 32px;
       font-weight: 800;
+      color: var(--accent-orange);
+      margin-bottom: 20px;
+    }
+    .price-amount span {
       font-size: 16px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    .pill-enroll-btn {
+      display: inline-block;
+      width: 100%;
+      max-width: 420px;
       padding: 18px 24px;
+      background: #191816;
+      color: #FFF;
+      font-size: 16px;
+      font-weight: 800;
       text-decoration: none;
-      border: 1.5px solid #000;
-      box-shadow: 4px 4px 0px #000;
+      border-radius: 999px;
       transition: all 0.15s ease;
       letter-spacing: -0.01em;
+      border: 1.5px solid #191816;
     }
-    .cta-btn:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0px #000;
+    .pill-enroll-btn:hover {
+      background: var(--accent-orange);
+      border-color: var(--accent-orange);
     }
+
     .section-block {
       margin-top: 50px;
       padding-top: 40px;
@@ -138,9 +153,10 @@
       margin-bottom: 20px;
     }
     @media (max-width: 640px) {
-      .hero-title { font-size: 30px !important; }
+      .hero-title { font-size: 32px !important; }
       .hero-lead { font-size: 15px !important; }
-      .meta-box { grid-template-columns: 1fr !important; gap: 12px; }
+      .price-date { font-size: 34px !important; }
+      .price-amount { font-size: 26px !important; }
       .container { padding: 30px 16px 60px; }
     }
   </style>
@@ -153,30 +169,20 @@
   </header>
 
   <main class="container">
-    <span class="tag-badge">Picture Forge ✹ 16주 장기 독립출판</span>
+    <span class="tag-badge">Independent Publishing ● 모집중</span>
     <h1 class="hero-title">픽처포지 그림책·출판 독립 프로젝트</h1>
     <p class="hero-lead">단 한 권뿐인 나의 첫 그림책. 이야기 원고 기획부터 더미북 제작, 인쇄 감리, 텀블벅 크라우드펀딩과 독립서점 입고까지 완주하는 16주 실전 출판 프로젝트입니다.</p>
 
-    <div class="meta-box">
-      <div class="meta-item">
-        <span>수강료</span>
-        <strong style="color:var(--accent-orange); font-size:18px;">₩920,000 / 16주 과정 (4개월 분납 가능)</strong>
-      </div>
-      <div class="meta-item">
-        <span>정원</span>
-        <strong>출판 프로젝트 4인 소수정예</strong>
-      </div>
-      <div class="meta-item">
-        <span>수업 일정</span>
-        <strong>주 1회 (2.5시간), 총 16회 프로젝트</strong>
-      </div>
-      <div class="meta-item">
-        <span>장비 지원</span>
-        <strong>공용 아이패드 프로 & 애플펜슬 무료 대여</strong>
+    <!-- Photo 7 ilovecreatives Style Big Date & Price Box -->
+    <div class="price-enroll-box">
+      <div class="price-meta-label">다음 개강</div>
+      <div class="price-date">16주 장기 코스 모집중</div>
+      <div class="price-amount">월 230,000원 <span>(4개월 과정, 총 16회)</span></div>
+      <a href="https://talk.naver.com" target="_blank" class="pill-enroll-btn">네이버 톡톡으로 오늘 등록하기 →</a>
+      <div style="font-size:13px; color:var(--text-muted); margin-top:14px;">
+        출판 프로젝트 4인 소수정예 · 주 1회 (2.5시간), 총 16회 프로젝트
       </div>
     </div>
-
-    <a href="https://talk.naver.com" target="_blank" class="cta-btn">네이버 톡톡으로 실시간 문의 & 수강 신청 →</a>
 
     <!-- Who is this for -->
     <div class="section-block">
@@ -195,7 +201,7 @@
 
         <div style="border:1px solid #191816; padding:22px; background:#FFF; margin-bottom:16px;">
           <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
-            <span style="font-size:12px; font-weight:800; text-transform:uppercase; color:var(--accent-orange); letter-spacing:0.06em;">1~4주차</span>
+            <span style="font-size:12px; font-weight:800; text-transform:uppercase; color:var(--accent-orange); letter-spacing:0.06em;">1개월차</span>
           </div>
           <h3 style="font-size:18px; font-weight:700; margin-bottom:8px; line-height:1.35;">원고 기획 & 캐릭터/세계관 설정, 콘티 및 페이지네이션</h3>
           <p style="font-size:14px; color:#555; line-height:1.55; margin:0;">이야기의 흐름을 잡고 32페이지 그림책의 콘티와 캐릭터 시트를 설계합니다.</p>
@@ -203,7 +209,7 @@
 
         <div style="border:1px solid #191816; padding:22px; background:#FFF; margin-bottom:16px;">
           <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
-            <span style="font-size:12px; font-weight:800; text-transform:uppercase; color:var(--accent-orange); letter-spacing:0.06em;">5~8주차</span>
+            <span style="font-size:12px; font-weight:800; text-transform:uppercase; color:var(--accent-orange); letter-spacing:0.06em;">2개월차</span>
           </div>
           <h3 style="font-size:18px; font-weight:700; margin-bottom:8px; line-height:1.35;">본문 일러스트 본작업 채색 및 텍스트 타이포그래피 배치</h3>
           <p style="font-size:14px; color:#555; line-height:1.55; margin:0;">일관된 톤앤매너로 본문 아트워크를 채색하고 읽기 편한 글줄을 배치합니다.</p>
@@ -211,18 +217,18 @@
 
         <div style="border:1px solid #191816; padding:22px; background:#FFF; margin-bottom:16px;">
           <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
-            <span style="font-size:12px; font-weight:800; text-transform:uppercase; color:var(--accent-orange); letter-spacing:0.06em;">9~12주차</span>
+            <span style="font-size:12px; font-weight:800; text-transform:uppercase; color:var(--accent-orange); letter-spacing:0.06em;">3개월차</span>
           </div>
           <h3 style="font-size:18px; font-weight:700; margin-bottom:8px; line-height:1.35;">표지 디자인, 지류(종이) 샘플링 & 인쇄용 CMYK 최종 조판</h3>
-          <p style="font-size:14px; color:#555; line-height:1.55; margin:0;">책의 얼굴인 표지 타이틀과 면지, 에폭시/박 가공을 기획하고 인쇄용 출력 데이터를 마감합니다.</p>
+          <p style="font-size:14px; color:#555; line-height:1.55; margin:0;">책의 얼굴인 표지 타이틀과 면지, 가공을 기획하고 인쇄용 출력 데이터를 마감합니다.</p>
         </div>
 
         <div style="border:1px solid #191816; padding:22px; background:#FFF; margin-bottom:16px;">
           <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
-            <span style="font-size:12px; font-weight:800; text-transform:uppercase; color:var(--accent-orange); letter-spacing:0.06em;">13~16주차</span>
+            <span style="font-size:12px; font-weight:800; text-transform:uppercase; color:var(--accent-orange); letter-spacing:0.06em;">4개월차</span>
           </div>
           <h3 style="font-size:18px; font-weight:700; margin-bottom:8px; line-height:1.35;">인쇄소 감리 동행, 텀블벅 펀딩 페이지 오픈 & 독립서점 입고 제안</h3>
-          <p style="font-size:14px; color:#555; line-height:1.55; margin:0;">인쇄소에 직접 방문해 색감을 확인하고, 크라우드펀딩 스토리보드 작성과 서점 입고를 완료합니다.</p>
+          <p style="font-size:14px; color:#555; line-height:1.55; margin:0;">인쇄소에 직접 방문해 색감을 확인하고, 크라우드펀딩 오픈과 서점 입고를 완료합니다.</p>
         </div>
 
     </div>
@@ -241,15 +247,18 @@
     <!-- Studio Address -->
     <div class="section-block">
       <h2 class="section-h">Studio & Location ✹ 오프라인 작업실 안내</h2>
-      <div style="border:1px solid #191816; padding:20px; background:#FAFAFA; font-size:14px; line-height:1.6;">
+      <div style="border:1px solid #191816; padding:22px; background:#FAFAFA; font-size:14px; line-height:1.6;">
         <p style="margin-bottom:8px;"><strong>스튜디오 위치:</strong> 경기도 고양시 덕양구 권율대로 656 (3호선 원흥역 1번 출구 도보 3분)</p>
-        <p style="margin-bottom:8px;"><strong>운영 시간:</strong> 월~토 10:00 ~ 21:00 (사전 예약제 운영)</p>
-        <p><strong>주차:</strong> 건물 내 무료 주차 지원</p>
+        <p style="margin-bottom:8px;"><strong>운영 시간:</strong> <span style="color:var(--accent-orange); font-weight:700;">월~토 10:00 ~ 21:00 (사전 예약제 운영)</span></p>
+        <p><strong>장비 지원:</strong> 스튜디오 비치 공용 아이패드 프로 & 애플펜슬 전 기종 무료 대여</p>
       </div>
     </div>
 
-    <div style="margin-top:50px;">
-      <a href="https://talk.naver.com" target="_blank" class="cta-btn">네이버 톡톡으로 실시간 문의 & 수강 신청 →</a>
+    <div style="margin-top:50px; text-align:center;">
+      <a href="https://talk.naver.com" target="_blank" class="pill-enroll-btn">네이버 톡톡으로 오늘 등록하기 →</a>
+      <div style="margin-top:16px;">
+        <a href="index.html" style="font-size:13px; color:var(--text-muted); font-weight:700; text-decoration:none;">← 다른 코스 둘러보기</a>
+      </div>
     </div>
   </main>
 

@@ -87,45 +87,60 @@
       line-height: 1.6;
       margin-bottom: 32px;
     }
-    .meta-box {
+
+    /* Photo 7 Big Price Box */
+    .price-enroll-box {
       border: 1.5px solid var(--border);
-      padding: 24px;
+      padding: 36px 28px;
       background: #FAFAFA;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin-bottom: 36px;
-    }
-    .meta-item span {
-      display: block;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-    .meta-item strong {
-      font-size: 15px;
-      color: #000;
-    }
-    .cta-btn {
-      display: block;
       text-align: center;
-      background: var(--accent-orange);
-      color: #FFF;
+      margin-bottom: 40px;
+    }
+    .price-meta-label {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .price-date {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 46px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+    .price-amount {
+      font-size: 32px;
       font-weight: 800;
+      color: var(--accent-orange);
+      margin-bottom: 20px;
+    }
+    .price-amount span {
       font-size: 16px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    .pill-enroll-btn {
+      display: inline-block;
+      width: 100%;
+      max-width: 420px;
       padding: 18px 24px;
+      background: #191816;
+      color: #FFF;
+      font-size: 16px;
+      font-weight: 800;
       text-decoration: none;
-      border: 1.5px solid #000;
-      box-shadow: 4px 4px 0px #000;
+      border-radius: 999px;
       transition: all 0.15s ease;
       letter-spacing: -0.01em;
+      border: 1.5px solid #191816;
     }
-    .cta-btn:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0px #000;
+    .pill-enroll-btn:hover {
+      background: var(--accent-orange);
+      border-color: var(--accent-orange);
     }
+
     .section-block {
       margin-top: 50px;
       padding-top: 40px;
@@ -138,9 +153,10 @@
       margin-bottom: 20px;
     }
     @media (max-width: 640px) {
-      .hero-title { font-size: 30px !important; }
+      .hero-title { font-size: 32px !important; }
       .hero-lead { font-size: 15px !important; }
-      .meta-box { grid-template-columns: 1fr !important; gap: 12px; }
+      .price-date { font-size: 34px !important; }
+      .price-amount { font-size: 26px !important; }
       .container { padding: 30px 16px 60px; }
     }
   </style>
@@ -153,30 +169,20 @@
   </header>
 
   <main class="container">
-    <span class="tag-badge">Portfolio Accelerator ✹ 3개월 집중 코스</span>
+    <span class="tag-badge">Portfolio Accelerator ● 모집중</span>
     <h1 class="hero-title">창작자 포트폴리오 집중반</h1>
     <p class="hero-lead">하드디스크에 흩어진 그림들을 모아, 실제 브랜드 외주 의뢰와 협업 제안이 들어오는 완성도 높은 프로페셔널 포트폴리오 북으로 완성합니다.</p>
 
-    <div class="meta-box">
-      <div class="meta-item">
-        <span>수강료</span>
-        <strong style="color:var(--accent-orange); font-size:18px;">₩350,000 / 월 (3개월 완성 코스)</strong>
-      </div>
-      <div class="meta-item">
-        <span>정원</span>
-        <strong>1:1 밀착 디렉팅 (최대 3인)</strong>
-      </div>
-      <div class="meta-item">
-        <span>수업 일정</span>
-        <strong>주 1회 (2.5시간), 월 4회 (3개월, 총 12회 과정)</strong>
-      </div>
-      <div class="meta-item">
-        <span>장비 지원</span>
-        <strong>공용 아이패드 프로 & 애플펜슬 무료 대여</strong>
+    <!-- Photo 7 ilovecreatives Style Big Date & Price Box -->
+    <div class="price-enroll-box">
+      <div class="price-meta-label">다음 개강</div>
+      <div class="price-date">12월 기수 모집중</div>
+      <div class="price-amount">월 350,000원 <span>(3개월 집중 완성 코스)</span></div>
+      <a href="https://talk.naver.com" target="_blank" class="pill-enroll-btn">네이버 톡톡으로 오늘 등록하기 →</a>
+      <div style="font-size:13px; color:var(--text-muted); margin-top:14px;">
+        1:1 밀착 디렉팅 (최대 3인) · 주 1회 (2.5시간), 3개월 집중 과정
       </div>
     </div>
-
-    <a href="https://talk.naver.com" target="_blank" class="cta-btn">네이버 톡톡으로 실시간 문의 & 수강 신청 →</a>
 
     <!-- Who is this for -->
     <div class="section-block">
@@ -195,7 +201,7 @@
 
         <div style="border:1px solid #191816; padding:22px; background:#FFF; margin-bottom:16px;">
           <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
-            <span style="font-size:12px; font-weight:800; text-transform:uppercase; color:var(--accent-orange); letter-spacing:0.06em;">1~2주차</span>
+            <span style="font-size:12px; font-weight:800; text-transform:uppercase; color:var(--accent-orange); letter-spacing:0.06em;">1개월차</span>
           </div>
           <h3 style="font-size:18px; font-weight:700; margin-bottom:8px; line-height:1.35;">나만의 창작 키워드 정의 & 타겟 클라이언트 리서치</h3>
           <p style="font-size:14px; color:#555; line-height:1.55; margin:0;">내 그림의 강점과 타겟 시장을 분석하고, 매력적인 일러스트레이터 소개서와 목차를 기획합니다.</p>
@@ -203,7 +209,7 @@
 
         <div style="border:1px solid #191816; padding:22px; background:#FFF; margin-bottom:16px;">
           <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
-            <span style="font-size:12px; font-weight:800; text-transform:uppercase; color:var(--accent-orange); letter-spacing:0.06em;">3~4주차</span>
+            <span style="font-size:12px; font-weight:800; text-transform:uppercase; color:var(--accent-orange); letter-spacing:0.06em;">2개월차</span>
           </div>
           <h3 style="font-size:18px; font-weight:700; margin-bottom:8px; line-height:1.35;">상업 일러스트 시리즈 기획 (북커버, 패키지, 굿즈 가상 프로젝트)</h3>
           <p style="font-size:14px; color:#555; line-height:1.55; margin:0;">단순 개인작을 넘어 실제 클라이언트가 탐내는 상업 프로젝트 형태로 3개 테마 시리즈를 구축합니다.</p>
@@ -211,18 +217,10 @@
 
         <div style="border:1px solid #191816; padding:22px; background:#FFF; margin-bottom:16px;">
           <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
-            <span style="font-size:12px; font-weight:800; text-transform:uppercase; color:var(--accent-orange); letter-spacing:0.06em;">5~6주차</span>
+            <span style="font-size:12px; font-weight:800; text-transform:uppercase; color:var(--accent-orange); letter-spacing:0.06em;">3개월차</span>
           </div>
-          <h3 style="font-size:18px; font-weight:700; margin-bottom:8px; line-height:1.35;">인디자인 레이아웃 조판, 고화질 목업 적용 & 디지털 PDF 북 완성</h3>
-          <p style="font-size:14px; color:#555; line-height:1.55; margin:0;">세련된 타이포그래피 배치와 프로페셔널 목업을 적용해 한눈에 읽히는 포트폴리오 북을 조판합니다.</p>
-        </div>
-
-        <div style="border:1px solid #191816; padding:22px; background:#FFF; margin-bottom:16px;">
-          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
-            <span style="font-size:12px; font-weight:800; text-transform:uppercase; color:var(--accent-orange); letter-spacing:0.06em;">7~8주차</span>
-          </div>
-          <h3 style="font-size:18px; font-weight:700; margin-bottom:8px; line-height:1.35;">클라이언트 피칭 콜드메일 작성법, 계약서 검토 & 실전 단가 산정</h3>
-          <p style="font-size:14px; color:#555; line-height:1.55; margin:0;">실제 브랜드 및 출판사에 제안서를 보내는 법, 계약 시 필수 조항과 실무 프로세스를 정리합니다.</p>
+          <h3 style="font-size:18px; font-weight:700; margin-bottom:8px; line-height:1.35;">인디자인 레이아웃 조판, 목업 적용 & 피칭 콜드메일 작성법</h3>
+          <p style="font-size:14px; color:#555; line-height:1.55; margin:0;">세련된 타이포그래피 배치와 프로페셔널 목업을 적용해 한눈에 읽히는 포트폴리오 북을 완성하고 단가를 산정합니다.</p>
         </div>
 
     </div>
@@ -232,7 +230,7 @@
       <h2 class="section-h">What's Included ✹ 수업 제공 혜택</h2>
       <ul style="list-style:none; font-size:14px; line-height:1.7;">
         <li style="margin-bottom:10px; display:flex; align-items:flex-start; gap:10px;"><span style="color:#191816; font-weight:700;">✓</span><span>완성된 포트폴리오 실물 출력 감리 및 고급 제본 샘플링 지원</span></li>
-        <li style="margin-bottom:10px; display:flex; align-items:flex-start; gap:10px;"><span style="color:#191816; font-weight:700;">✓</span><span>15년 차 브랜드 디자이너의 1:1 포트폴리오 정밀 크리틱 2회</span></li>
+        <li style="margin-bottom:10px; display:flex; align-items:flex-start; gap:10px;"><span style="color:#191816; font-weight:700;">✓</span><span>15년 차 브랜드 디자이너의 1:1 포트폴리오 정밀 크리틱</span></li>
         <li style="margin-bottom:10px; display:flex; align-items:flex-start; gap:10px;"><span style="color:#191816; font-weight:700;">✓</span><span>실제 사용 중인 상업 일러스트 표준 계약서 템플릿 제공</span></li>
         <li style="margin-bottom:10px; display:flex; align-items:flex-start; gap:10px;"><span style="color:#191816; font-weight:700;">✓</span><span>국내외 에이전시 및 브랜드 제안용 콜드메일 영/한문 템플릿 제공</span></li>
       </ul>
@@ -241,15 +239,18 @@
     <!-- Studio Address -->
     <div class="section-block">
       <h2 class="section-h">Studio & Location ✹ 오프라인 작업실 안내</h2>
-      <div style="border:1px solid #191816; padding:20px; background:#FAFAFA; font-size:14px; line-height:1.6;">
+      <div style="border:1px solid #191816; padding:22px; background:#FAFAFA; font-size:14px; line-height:1.6;">
         <p style="margin-bottom:8px;"><strong>스튜디오 위치:</strong> 경기도 고양시 덕양구 권율대로 656 (3호선 원흥역 1번 출구 도보 3분)</p>
-        <p style="margin-bottom:8px;"><strong>운영 시간:</strong> 월~토 10:00 ~ 21:00 (사전 예약제 운영)</p>
-        <p><strong>주차:</strong> 건물 내 무료 주차 지원</p>
+        <p style="margin-bottom:8px;"><strong>운영 시간:</strong> <span style="color:var(--accent-orange); font-weight:700;">월~토 10:00 ~ 21:00 (사전 예약제 운영)</span></p>
+        <p><strong>장비 지원:</strong> 스튜디오 비치 공용 아이패드 프로 & 애플펜슬 전 기종 무료 대여</p>
       </div>
     </div>
 
-    <div style="margin-top:50px;">
-      <a href="https://talk.naver.com" target="_blank" class="cta-btn">네이버 톡톡으로 실시간 문의 & 수강 신청 →</a>
+    <div style="margin-top:50px; text-align:center;">
+      <a href="https://talk.naver.com" target="_blank" class="pill-enroll-btn">네이버 톡톡으로 오늘 등록하기 →</a>
+      <div style="margin-top:16px;">
+        <a href="index.html" style="font-size:13px; color:var(--text-muted); font-weight:700; text-decoration:none;">← 다른 코스 둘러보기</a>
+      </div>
     </div>
   </main>
 
