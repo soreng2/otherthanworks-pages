@@ -409,6 +409,12 @@ button { font: inherit; cursor: pointer; }
 .class-desc { font-size: 14px; margin-top: 10px; opacity: 0.85; max-width: 42ch; }
 .class-meta { font-size: 13px; line-height: 1.9; opacity: 0.85; }
 .class-meta b { font-size: 15px; }
+
+/* ---------- Tuition detail (2026-11 confirmed price table) ---------- */
+.price-note { display: block; margin-top: 6px; font-size: 13px; line-height: 1.6; color: var(--ink-soft); }
+.price-note b { color: var(--ink); }
+.price-caution { margin-top: 14px; font-size: 12.5px; line-height: 1.6; color: var(--ink-soft); }
+.class-card .price-sub { font-size: 12px; line-height: 1.6; color: var(--ink-soft); }
 .class-cta { text-align: right; display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
 
 /* ---------- Class card (home board, compact) ---------- */
